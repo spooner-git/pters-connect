@@ -1,5 +1,5 @@
 """
-WSGI config for pters_connect project.
+WSGI config for skill_abc project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
