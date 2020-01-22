@@ -1,1 +1,6 @@
+.idea/*
 pters_connect/configs/__pycache__/
+pters_connect/golf_pro/__pycache__/
+pters_connect/golf_pro/migrations/__pycache__/
+pters_connect/connect_home/__pycache__/
+pters_connect/connect_home/migrations/__pycache__/
