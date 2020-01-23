@@ -152,7 +152,15 @@ class ConnectSearchResult extends DomController{
                                             // show_page_popup(popup_name, animation, size, callback)
                                         });
 
-        let wrapper = CComp.container("article", photo_box + name_box, null, {class:"profile_brick anim_fade_in anim_scale_up"});
+        let wrapper = 
+            CComp.container(
+                "article", 
+                CComp.element("div", "", {"padding-top":"130%"}) + //더미
+                photo_box + name_box
+                , 
+                {"position":"relative", "display":"inline-block", "width":"46%", "margin":"2%", "max-width":"250px"}, 
+                {class:"anim_fade_in anim_scale_up"}
+            );
         return wrapper;
     }
 }
