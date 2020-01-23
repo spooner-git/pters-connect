@@ -2,7 +2,7 @@
 
 /*모바일 팝업 페이지 기본 요소*/
     #shade_for_popup{
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         height: 100vh;
@@ -21,14 +21,15 @@
         visibility: hidden;
         position: fixed;
         /* position: fixed; */
-        overflow: hidden;
+        /* overflow: hidden; */
+        overflow-y: auto;
     }
     @media(min-width:650px){
-        .popup_mobile{
+        /* .popup_mobile{
             position: absolute;
             box-shadow: 0 0 24px 0 #28282870;
             border-radius: 10px;
-        }
+        } */
     }
         .popup_mobile .wrapper_top{
             line-height: 20px;

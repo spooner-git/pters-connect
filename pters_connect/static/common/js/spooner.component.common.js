@@ -3,31 +3,31 @@ const DELETE = 'delete';
 const HIDE = 'hide';
 const SHOW = 'show';
 
-class CComponent{
+class CComp{
     static div(title, style){
-        let style_code = CComponent.data_to_style_code(style);
+        let style_code = CComp.data_to_style_code(style);
         let html = `<div style="${style_code}">${title}</div>`;
         return html;
     }
     static container(type, title, style, attr){
-        let style_code = style == null ? "" : `style="${CComponent.data_to_style_code(style)}"`;
-        let attr_code = CComponent.data_to_attr_code(attr);
+        let style_code = style == null ? "" : `style="${CComp.data_to_style_code(style)}"`;
+        let attr_code = CComp.data_to_attr_code(attr);
         
         let html = `<${type} ${style_code} ${attr_code}>${title}</${type}>`;
         return html;
     }
 
     static element(type, title, style, attr){
-        let style_code = style == null ? "" : `style="${CComponent.data_to_style_code(style)}"`;
-        let attr_code = CComponent.data_to_attr_code(attr);
+        let style_code = style == null ? "" : `style="${CComp.data_to_style_code(style)}"`;
+        let attr_code = CComp.data_to_attr_code(attr);
         
         let html = `<${type} ${style_code} ${attr_code}>${title}</${type}>`;
         return html;
     }
 
     static text(title, style, attr){
-        let style_code = CComponent.data_to_style_code(style);
-        let attr_code = CComponent.data_to_attr_code(attr);
+        let style_code = CComp.data_to_style_code(style);
+        let attr_code = CComp.data_to_attr_code(attr);
         let html = `<div style="display:inline-block;${style_code};" ${attr_code}>${title}</div>`;
         
         return html;
@@ -35,8 +35,8 @@ class CComponent{
 
     //버튼
     static button (id, title, style, attr, onclick){
-        let style_code = CComponent.data_to_style_code(style);
-        let attr_code = CComponent.data_to_attr_code(attr);
+        let style_code = CComp.data_to_style_code(style);
+        let attr_code = CComp.data_to_attr_code(attr);
         let html = `<div id="button_${id}" ${attr_code} style="text-align:center;cursor:pointer;padding:3px 8px;${style_code}">${title}</div>`;
         
         $(document).off('click', `#button_${id}`).on('click', `#button_${id}`, function(e){
@@ -49,7 +49,7 @@ class CComponent{
     //텍스트만 있는 버튼
 
     static toggle_button (id, power, style, onclick){
-        let html = `<div id="toggle_button_${id}" style="${CComponent.data_to_style_code(style)}" class="toggle_button ${power == ON ? 'toggle_button_active': ''}">
+        let html = `<div id="toggle_button_${id}" style="${CComp.data_to_style_code(style)}" class="toggle_button ${power == ON ? 'toggle_button_active': ''}">
                         <div class="toggle_button_ball ${power == ON ? 'toggle_button_ball_active':''}"></div>
                     </div>`;
         
@@ -65,7 +65,7 @@ class CComponent{
     }
 
     static radio_button (id, checked, style, onclick){
-        let html = `<div id="radio_button_${id}" style="${CComponent.data_to_style_code(style)}" class="radio_button ${checked == ON ? 'radio_button_active': ''}">
+        let html = `<div id="radio_button_${id}" style="${CComp.data_to_style_code(style)}" class="radio_button ${checked == ON ? 'radio_button_active': ''}">
                         <div class="radio_button_ball ${checked == ON ? 'radio_button_ball_active':''}"></div>
                     </div>`;
         
@@ -81,7 +81,7 @@ class CComponent{
     }
 
     static check_button (id, checked, style, onclick){
-        let html = `<div id="check_button_${id}" style="${CComponent.data_to_style_code(style)}" class="check_button ${checked == ON ? 'check_button_active': ''}">
+        let html = `<div id="check_button_${id}" style="${CComp.data_to_style_code(style)}" class="check_button ${checked == ON ? 'check_button_active': ''}">
                         ${checked == ON ? CImg.confirm(["#fe4e65"], {"width":"100%", "height":"100%", "vertical-align":"top"}) : ""}
                     </div>`;
         

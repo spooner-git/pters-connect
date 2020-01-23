@@ -262,27 +262,29 @@ function func_set_popup_position ($popup_selector, animation_type, popup_size){
 
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
-    if(windowWidth > 650){
-        windowWidth = $('body').width();
-        windowHeight = $('body').height();
-    }
+    // if(windowWidth > 650){
+    //     windowWidth = $('body').width();
+    //     windowHeight = $('body').height();
+    // }
     switch (animation_type) {
         case POPUP_FROM_LEFT:
             translate_x = -windowWidth;
             width = popup_size;
             if(windowWidth > MAX_WIDTH) {
-                left = MAX_WIDTH - (windowWidth - popup_size * windowWidth / 100);
+                // left = MAX_WIDTH - (windowWidth - popup_size * windowWidth / 100);
+                left = (windowWidth - MAX_WIDTH*(popup_size/100))/2;
                 width = MAX_WIDTH * width / windowWidth;
             }
             break;
         case POPUP_FROM_RIGHT:
+            
             translate_x = windowWidth;
             width = popup_size;
             if(windowWidth > MAX_WIDTH) {
 
                 /* 계산식 : 왼쪽 공백 크기 + (content 화면 크기 - 팝업 크기) - (animation translate 크기) */
-                left = (windowWidth - MAX_WIDTH)/2 + (MAX_WIDTH - MAX_WIDTH*width/100) - (windowWidth - popup_size * windowWidth / 100);
-
+                // left = (windowWidth - MAX_WIDTH)/2 + (MAX_WIDTH - MAX_WIDTH*width/100) - (windowWidth - popup_size * windowWidth / 100);
+                left = (windowWidth - MAX_WIDTH*(popup_size/100))/2;
                 width = MAX_WIDTH * width / windowWidth;
             }
             break;
@@ -320,10 +322,10 @@ function func_set_popup_position ($popup_selector, animation_type, popup_size){
 function func_set_open_popup_animation ($popup_selector, animation_type, popup_size){
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
-    if(windowWidth > 650){
-        windowWidth = $('body').width();
-        windowHeight = $('body').height();
-    }
+    // if(windowWidth > 650){
+    //     windowWidth = $('body').width();
+    //     windowHeight = $('body').height();
+    // }
 
     let animation_info = "";
     // if(animation_type != POPUP_FROM_PAGE){
@@ -365,10 +367,10 @@ function func_set_open_popup_animation ($popup_selector, animation_type, popup_s
 function func_set_close_popup_animation ($popup_selector, animation_type){
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
-    if(windowWidth > 650){
-        windowWidth = $('body').width();
-        windowHeight = $('body').height();
-    }
+    // if(windowWidth > 650){
+    //     windowWidth = $('body').width();
+    //     windowHeight = $('body').height();
+    // }
 
     let animation_info = "";
     // if(animation_type != POPUP_FROM_PAGE){
@@ -479,7 +481,6 @@ function show_user_confirm (message, callback){
 }
 
 function show_page_popup(popup_name, animation, size, callback){
-    console.log(popup_name, animation, size, callback)
     size = size == "" || size == null || size == undefined ? 100 : size;
     layer_popup.open_layer_popup(POPUP_BASIC, popup_name, size, animation, null, ()=>{
         if(callback != undefined){
