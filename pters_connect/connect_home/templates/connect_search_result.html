@@ -1,0 +1,31 @@
+{% extends "connect_base.html" %}
+
+{% load static_url %}
+{% block local_css %}
+    
+{% endblock %}
+
+{% block top_right %}
+
+{% endblock %} 
+
+{% block content %}
+<section id="connect_search_result">
+</section>
+
+{% endblock %}
+
+{% block local_js_footer %}
+    <link rel="stylesheet" href={% static_url "user/css/page/connect_search_result.css" %}>    
+    <script type="text/javascript" src={% static_url "user/js/page/connect_search_result.js" %}></script>
+    <script>
+        top_nav.change_bg("white");
+
+        let connect_search_result = new ConnectSearchResult();
+        connect_search_result.draw_layout("#connect_search_result");
+        connect_search_result.draw_map_box();
+        connect_search_result.draw_search_input();
+        connect_search_result.draw_result_list();
+        
+    </script>
+{% endblock %}

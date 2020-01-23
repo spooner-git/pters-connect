@@ -24,6 +24,8 @@
 
     <link rel="stylesheet" href={% static_url "user/css/page/connect_base.css" %}>    
     <script type="text/javascript" src={% static_url "user/js/page/connect_base.js" %}></script>
+
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=62c589bbccdf47bc59bca187bac43199&libraries=services,clusterer,drawing"></script>
 </head>
 
 <body>
@@ -41,16 +43,17 @@
 {% block footer %}
 {% endblock %}
 
+<script type="text/javascript">
+
+    var top_nav = new ConnectBase("#top_nav");
+    top_nav.init();
+
+</script>
 {% block local_js_footer %}
 {% endblock %}
 
 
-<script type="text/javascript">
 
-    var main = new ConnectBase("#top_nav");
-    main.init();
-
-</script>
 
 </body>
 </html>

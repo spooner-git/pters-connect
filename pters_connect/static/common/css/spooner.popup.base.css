@@ -1,6 +1,16 @@
 /* 예/아니오 등 기본 팝업 CSS */
 
 /*모바일 팝업 페이지 기본 요소*/
+    #shade_for_popup{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: var(--bg-for-only-shade);
+        opacity: 0.5;
+        display: none;
+    }
     .popup_mobile{
         background-color: var(--bg-main);
         width: 100%;

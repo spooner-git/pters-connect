@@ -1,9 +1,41 @@
 /*슬라이드 팝업에 대한 동작*/
 /* global $, windowHeight, windowWidth */
+const ON = 'on';
+const OFF = 'off';
+const OPEN = "open";
+const CLOSE = "close";
+const ALL_CLOSE = "all_close";
+const POPUP_INNER_HTML = 0;
+const POPUP_AJAX_CALL = 1;
+const POPUP_BASIC = 2;
+const POPUP_SIZE_WINDOW = 0;
+const POPUP_FROM_LEFT = 0;
+const POPUP_FROM_RIGHT = 1;
+const POPUP_FROM_BOTTOM = 2;
+const POPUP_FROM_TOP = 3;
+const POPUP_FROM_PAGE = 4;
+const MAX_WIDTH = 800;
 
 let layer_popup = (function (){
     let popup_array = [];
     let windowHeight = window.innerHeight;
+
+    function ready_popup_html(popup_name, popup_size){
+        let html = `<div class="popup_mobile">
+                        <div class="${popup_name}">
+                        </div>
+                    </div>`;
+        $('body').append(html);
+        html_no_scroll(ON);
+    }
+
+    function html_no_scroll(onoff){
+        if(onoff == ON){
+            $('html').css('overflow-y', 'hidden');
+        }else if(onoff == OFF){
+            $('html').css('overflow-y', 'auto');
+        }
+    }
 
     function func_open_layer_popup (popup_name, popup_size, animation_type){
         // $('.content_page').css('overflow-y', 'hidden');
@@ -48,25 +80,21 @@ let layer_popup = (function (){
         let popup_data = {};
         //혹시 있을 pop 에러 방지
         if(popup_array.length > 0){
-            let $popup_selector;
-            // if(popup_specified == undefined){ //특정 팝업을 지정하지 않았을 때
-                popup_data = popup_array.pop();
-                $popup_selector = $(`.${popup_data.popup_name}`).parents('.popup_mobile');
-            // }else{ //특정 팝업을 닫고자 지정했을 때
-            //     for(let i=0; i<popup_array.length; i++){
+            if(popup_array.length == 1){
+                html_no_scroll(OFF);
+            }
 
-            //     }
-            // }
+            let $popup_selector;
+            popup_data = popup_array.pop();
+            $popup_selector = $(`.${popup_data.popup_name}`).parents('.popup_mobile');
+
             
             //팝업이 옆으로 닫히는 애니메이션이 종료된후 해당 팝업의 html을 지운다.
-            let delay_time = 250;
-            // if(popup_size == POPUP_SIZE_WINDOW){
-            //     delay_time = 0;
-            // }
-            setTimeout(function(){
-                $popup_selector.css({"z-index":0});
-                $(`#${popup_data.popup_name}`).remove();
-            }, delay_time);
+            // let delay_time = 250;
+            // setTimeout(function(){
+            //     $popup_selector.css({"z-index":0});
+            //     $(`#${popup_data.popup_name}`).remove();
+            // }, delay_time);
         }
 
         // if(popup_array.length == 0){
@@ -123,6 +151,7 @@ let layer_popup = (function (){
                 func_set_popup_basic(popup_name, data);
                 let func_animation_set = this.animation_set;
                 setTimeout(function (){
+                    ready_popup_html(popup_name, popup_size);
                     func_set_popup_position($(`.${popup_name}`).parents('.popup_mobile'), animation_type, popup_size);
 
                     let popup_data = func_open_layer_popup(popup_name, popup_size, animation_type);
@@ -178,11 +207,11 @@ let layer_popup = (function (){
         "stack": popup_array,
 
         "disable_shade_click_close": function(){
-            $('#shade_for_popup_basic').attr('onclick', '');
+            $('#shade_for_popup').attr('onclick', '');
         },
         
         "enable_shade_click_close": function(){
-            $('#shade_for_popup_basic').attr('onclick', 'layer_popup.close_layer_popup()');
+            $('#shade_for_popup').attr('onclick', 'layer_popup.close_layer_popup()');
         }
 
     };
@@ -234,8 +263,8 @@ function func_set_popup_position ($popup_selector, animation_type, popup_size){
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
     if(windowWidth > 650){
-        windowWidth = $root_content.width();
-        windowHeight = $root_content.height();
+        windowWidth = $('body').width();
+        windowHeight = $('body').height();
     }
     switch (animation_type) {
         case POPUP_FROM_LEFT:
@@ -292,8 +321,8 @@ function func_set_open_popup_animation ($popup_selector, animation_type, popup_s
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
     if(windowWidth > 650){
-        windowWidth = $root_content.width();
-        windowHeight = $root_content.height();
+        windowWidth = $('body').width();
+        windowHeight = $('body').height();
     }
 
     let animation_info = "";
@@ -337,8 +366,8 @@ function func_set_close_popup_animation ($popup_selector, animation_type){
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
     if(windowWidth > 650){
-        windowWidth = $root_content.width();
-        windowHeight = $root_content.height();
+        windowWidth = $('body').width();
+        windowHeight = $('body').height();
     }
 
     let animation_info = "";
@@ -369,6 +398,7 @@ function func_set_close_popup_animation ($popup_selector, animation_type){
     }
     if(animation_type==POPUP_FROM_PAGE){
         $popup_selector.fadeOut(300);
+        $popup_selector.remove();
     }
     else{
         $popup_selector.css({
@@ -377,13 +407,18 @@ function func_set_close_popup_animation ($popup_selector, animation_type){
         });
         setTimeout(()=>{
             $popup_selector.css({"visibility":"hidden"});
+            $popup_selector.remove();
         }, 300);
     }
 }
 
 function func_set_shade (popup_array_length, open_or_close){
+    if($('#shade_for_popup').length == 0){
+        $('body').append(`<div id="shade_for_popup" onclick="layer_popup.close_layer_popup();"></div>`);
+    }
+
     if(popup_array_length > 0){
-        $('#shade_for_popup_basic').css({"display":'block', "z-index":100*popup_array_length-50});
+        $('#shade_for_popup').css({"display":'block', "z-index":100*popup_array_length-50});
         if(open_or_close == OPEN){
             $('#shade_for_popup_preventing_touch').css({"display":'block', "z-index":100*popup_array_length-50-1});
         }else if(open_or_close == CLOSE){
@@ -393,7 +428,7 @@ function func_set_shade (popup_array_length, open_or_close){
         }  
     }
     else{
-        $('#shade_for_popup_basic').css({"display":'none', "z-index":0});
+        $('#shade_for_popup').css({"display":'none', "z-index":0});
         setTimeout(()=>{
             $('#shade_for_popup_preventing_touch').css({"display":'none', "z-index":0});
         }, 400);
@@ -431,7 +466,7 @@ function show_error_message (message){
                                  POPUP_SIZE_WINDOW, POPUP_FROM_PAGE,
                                  {'popup_title':message.title,
                                   'popup_comment':message.comment,
-                                  'onclick_function':()=>{layer_popup.close_layer_popup(POPUP_SIZE_WINDOW);}});
+                                  'onclick_function':()=>{layer_popup.close_layer_popup();}});
 }
 
 function show_user_confirm (message, callback){
@@ -442,3 +477,14 @@ function show_user_confirm (message, callback){
                                   'popup_comment':message.comment,
                                   'onclick_function':()=>{callback();}});
 }
+
+function show_page_popup(popup_name, animation, size, callback){
+    console.log(popup_name, animation, size, callback)
+    size = size == "" || size == null || size == undefined ? 100 : size;
+    layer_popup.open_layer_popup(POPUP_BASIC, popup_name, size, animation, null, ()=>{
+        if(callback != undefined){
+            callback();
+        }
+    });
+}
+

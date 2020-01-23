@@ -5,8 +5,22 @@ class DomController{
 }
 
 class ConnectBase{
-    constructor(install_target){
+    constructor(install_target, background){
         this.install_target = install_target;
+        this.background = "transparent"; /*black, white, transparent*/
+        this.color_combination = {
+            transparent:{icon:"var(--fundamental-white)", bg:"transparent", logo:"/static/common/res/logo/logo_white.png"},
+            black:{icon:"var(--fundamental-white)", bg:"#282828", logo:"/static/common/res/logo/logo_white.png"},
+            white:{icon:"var(--fundamental-black)", bg:"#ffffff", logo:"/static/common/res/logo/logo.png"}
+        };
+        if(background != undefined){
+            this.background = background;
+        }
+    }
+
+    change_bg(color){
+        this.background = color;
+        this.render();
     }
 
     init(){
@@ -24,7 +38,7 @@ class ConnectBase{
 
         let assembly = CComponent.div(
             nav_button_left + nav_center_logo + nav_button_right,
-            {"display":"flex", "line-height":"80px"}
+            {"display":"flex", "line-height":"80px", "height":"80px", "background-color":this.color_combination[this.background].bg, "max-width":"1024px", "margin":"0 auto"}
         );
 
         let html = assembly;
@@ -33,34 +47,57 @@ class ConnectBase{
 
     dom_nav_button_left(){
         let id = "nav_button_left";
-        let title = CImg.menu();
+        let title = CImg.menu([this.color_combination[this.background].icon]);
         let style = {"flex-basis":"50px"};
+        let attr = null;
         let onclick = ()=>{
-            alert('Nav left');
+            show_page_popup('test_popup', POPUP_FROM_LEFT, 100, ()=>{
+                document.querySelector('.test_popup').innerHTML = this.dom_left_menu();
+            });
         };
-        let html = CComponent.button (id, title, style, onclick);
+        let html = CComponent.button (id, title, style, attr, onclick);
         return html;
     }
 
     dom_nav_button_right(){
         let id = "nav_button_right";
-        let title = CImg.account();
-        let style = {"flex-basis":"50px"};
+        let title = CImg.account([this.color_combination[this.background].icon]);
+        let style = {"flex-basis":"50px", "visibility":"hidden"};
+        let attr = null;
         let onclick = ()=>{
-            alert('Nav right');
+            // alert('Nav right');
         };
-        let html = CComponent.button (id, title, style, onclick);
+        let html = CComponent.button (id, title, style, attr, onclick);
         return html;
     }
 
     dom_center_logo(){
+        let img = CComponent.element("img", "", {"max-width":"150px", "vertical-align":"middle"}, {src:this.color_combination[this.background].logo});
+
         let onclick = ()=>{
-            alert('로고');
+            location.href = '/';
         };
         let id = "nav_button_center_logo";
-        let title = CComponent.button(id, "PTERS 골프 커넥트", {"font-size":"20px", "font-weight":900, "display":"inline-block"}, onclick);
+        let title = CComponent.button(id, img, {"font-size":"22px", "font-weight":900, "display":"inline-block", "color":this.color_combination[this.background].icon, "height":"100%"}, null, onclick);
         let style = {"flex":"1 1 0", "text-align":"center"};
         let html = CComponent.div (title, style);
         return html;
     }
+
+    dom_left_menu(){
+        let menu1_style = {"padding":"15px 0", "color":"var(--fundamental-white)", "font-size":"20px", "font-weight":"bold", "animation-delay":"0.1s", "animation-duration":"1.5s"};
+        let menu2_style = {"padding":"15px 0", "color":"var(--fundamental-white)", "font-size":"20px", "font-weight":"bold", "animation-delay":"0.1s", "animation-duration":"1.5s"};
+        let menu3_style = {"padding":"15px 0", "color":"var(--fundamental-white)", "font-size":"20px", "font-weight":"bold", "animation-delay":"0.1s", "animation-duration":"1.5s"};
+        let close_style = {"padding":"15px", "color":"var(--fundamental-white)", "position":"absolute", "top":"15px", "right":"15px", "animation-delay":"0.2s", "animation-duration":"1s"};
+        let menu1 = CComponent.button("menu_search", "찾아보기", menu1_style, {class:"anim_fade_in"}, ()=>{});
+        let menu2 = CComponent.button("menu_mypage", "내 정보", menu2_style, {class:"anim_fade_in"}, ()=>{});
+        let menu3 = CComponent.button("menu_about", "About US", menu3_style, {class:"anim_fade_in"}, ()=>{});
+        let close = CComponent.button("menu_about", CImg.x(["var(--fundamental-white)"]), close_style, {class:"anim_fade_in"}, ()=>{layer_popup.close_layer_popup()});
+
+        let menu_wrapper = CComponent.container("div", menu1 + menu2 + menu3, {"position":"absolute", "top":"50%", "left":"50%", "transform":"translate(-50%, -50%)"}, null);
+        let box = CComponent.container("div", menu_wrapper + close, {"background-color":"var(--fundamental-black)", "width":"100%", "height":"100%", "position":"relative"}, null);
+        
+        return box;
+    }
+
 }

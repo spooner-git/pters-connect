@@ -10,7 +10,7 @@
 {% endblock %} 
 
 {% block content %}
-<section id = "connect_main">
+<section id="connect_main">
 </section>
 
 {% endblock %}
@@ -19,8 +19,9 @@
     <link rel="stylesheet" href={% static_url "user/css/page/connect_main.css" %}>    
     <script type="text/javascript" src={% static_url "user/js/page/connect_main.js" %}></script>
     <script>
-        let connect_main = new ConnectMain("");
-        connect_main.draw_init("#connect_main");
+
+        let connect_main = new ConnectMain();
+        connect_main.draw_layout("#connect_main");
         connect_main.draw_search_box();
         connect_main.draw_program_guide();
         connect_main.draw_magazine();

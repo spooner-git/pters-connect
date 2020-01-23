@@ -10,24 +10,34 @@ class CComponent{
         return html;
     }
     static container(type, title, style, attr){
-        let style_code = style == null ? "" : `style=${CComponent.data_to_style_code(style)}`;
+        let style_code = style == null ? "" : `style="${CComponent.data_to_style_code(style)}"`;
         let attr_code = CComponent.data_to_attr_code(attr);
         
         let html = `<${type} ${style_code} ${attr_code}>${title}</${type}>`;
         return html;
     }
 
-    static text(title, style){
+    static element(type, title, style, attr){
+        let style_code = style == null ? "" : `style="${CComponent.data_to_style_code(style)}"`;
+        let attr_code = CComponent.data_to_attr_code(attr);
+        
+        let html = `<${type} ${style_code} ${attr_code}>${title}</${type}>`;
+        return html;
+    }
+
+    static text(title, style, attr){
         let style_code = CComponent.data_to_style_code(style);
-        let html = `<div style="${style_code};display:inline-block;">${title}</div>`;
+        let attr_code = CComponent.data_to_attr_code(attr);
+        let html = `<div style="display:inline-block;${style_code};" ${attr_code}>${title}</div>`;
         
         return html;
     }
 
     //버튼
-    static button (id, title, style, onclick){
+    static button (id, title, style, attr, onclick){
         let style_code = CComponent.data_to_style_code(style);
-        let html = `<div id="button_${id}" style="text-align:center;cursor:pointer;padding:3px 8px;${style_code}">${title}</div>`;
+        let attr_code = CComponent.data_to_attr_code(attr);
+        let html = `<div id="button_${id}" ${attr_code} style="text-align:center;cursor:pointer;padding:3px 8px;${style_code}">${title}</div>`;
         
         $(document).off('click', `#button_${id}`).on('click', `#button_${id}`, function(e){
             if(onclick!=undefined){
@@ -767,8 +777,7 @@ class CImg{
             style_to_join.push( `${item}:${data[item]}` );
         }
 
-        let style_code = style_to_join.join(';')+"vertical-align:middle;";
+        let style_code = style_to_join.join(';')+";vertical-align:middle;";
         return style_code;
     }
 }
-

@@ -18,3 +18,9 @@ class IndexView(TemplateView):
         context = super(IndexView, self).get_context_data(**kwargs)
         return context
 
+class SearchResultView(TemplateView):
+    template_name = 'connect_search_result.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(SearchResultView, self).get_context_data(**kwargs)
+        return context

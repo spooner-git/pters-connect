@@ -51,6 +51,7 @@
     
     /* fundamental color */
     --fundamental-white: #ffffff;
+    --fundamental-black: #1e1d1d;
 }
 
 .spooner_dark_mode {
@@ -104,4 +105,5 @@
 
     /* fundamental color */
     --fundamental-white: #ffffff;
+    --fundamental-black: #1e1d1d;
 }
