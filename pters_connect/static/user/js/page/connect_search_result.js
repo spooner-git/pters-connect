@@ -370,13 +370,14 @@ class SendMessageToTeacher extends DomController{
                                         /*title*/ "", 
                                         /*style*/ {"width":"100%", "height":"50px", "font-size":"16px"}, 
                                         /*attr*/ {id:"send_message_to_teacher_input_content", placeholder:"상담 내용을 입력 해주세요.(30자 이내)", type:"text", maxlength:"30"} );
+        let el_content_write_guide = CComp.text(`레슨 목적, 원하시는 요일 및 시간, 장소를 적어주시면 프로님께서 상담을 진행하시는데 도움이 됩니다.`, {"display":"block", "font-size":"12px", "padding":"5px", "color":"var(--font-sub-normal)"});
 
         this.$_forms.push("#send_message_to_teacher_input_phone", "#send_message_to_teacher_input_content");
 
         let html = 
             CComp.container(
                 "div", 
-                el_phone + el_content
+                el_phone + el_content + el_content_write_guide
             );
 
         this.render(install_target, html);
@@ -394,7 +395,8 @@ class SendMessageToTeacher extends DomController{
                     {"-webkit-appearance":"checkbox", "width":"25px", "height":"25px", "flex-basis":"30px"},
                     {"type":"checkbox", "name":"agreement", "id":"send_agreement"}
                 ) + 
-                CComp.text("PTERS Connect는 중개자일뿐 상담에서 발생하는 모든 상황에 대해서 책임 지지 않습니다.", {"font-size":"12px", "flex":"1 1 0"}),
+                CComp.text(`PTERS Connect는 중개자일뿐 상담에서 발생하는 모든 상황에 대해서 책임 지지 않습니다.`, 
+                            {"font-size":"12px", "flex":"1 1 0"}),
                 {"display":"flex", "margin-bottom":"15px"}
             );
 
