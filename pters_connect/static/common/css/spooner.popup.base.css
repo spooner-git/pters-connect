@@ -19,8 +19,8 @@
         top: 0;
         /*display: none;*/
         visibility: hidden;
-        position: fixed;
         /* position: fixed; */
+        position: fixed;
         /* overflow: hidden; */
         overflow-y: auto;
     }

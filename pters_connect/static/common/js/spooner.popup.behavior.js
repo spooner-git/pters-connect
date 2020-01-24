@@ -25,7 +25,11 @@ let layer_popup = (function (){
                         <div class="${popup_name}">
                         </div>
                     </div>`;
-        $('body').append(html);
+        if($('#popup_store').length == 0){
+            $('body').append(`<div id="popup_store"></div>`)
+        }
+        
+        $('#popup_store').append(html);
         html_no_scroll(ON);
     }
 

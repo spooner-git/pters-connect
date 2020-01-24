@@ -250,7 +250,20 @@ class TeacherInfo extends DomController{
                 CComp.text("서울시 동작구 흑석동", {"max-width":"180px", "font-size":"12px", "display":"block"}, null) + 
                 CComp.element("a", "www.pters.co.kr", {"font-size":"12px", "color":"cornflowerblue"}, {href:"https://www.pters.co.kr"})+
                 CComp.element("div",
-                            CComp.button("send_message_to", "상담 요청 보내기", {"border":"2px solid var(--bg-highlight)", "border-radius":"10px", "padding":"5px 10px", "display":"inline-block", "color":"var(--font-highlight)", "font-weight":"bold"}, null, ()=>{alert("상담 발송")}),
+                            CComp.button(
+                                        "send_message_to", 
+                                        "상담 요청 보내기", 
+                                        {"border":"2px solid var(--bg-highlight)", "border-radius":"10px", "padding":"5px 10px", "display":"inline-block", "color":"var(--font-highlight)", "font-weight":"bold"},
+                                        null, 
+                                        ()=>{
+                                            layer_popup.open_layer_popup(POPUP_BASIC, 'send_message_to_teacher', 100, POPUP_FROM_BOTTOM, null, ()=>{ 
+                                                let sm = new SendMessageToTeacher();
+                                                sm.draw_layout(".send_message_to_teacher");
+                                                sm.draw_send_message_top_title();
+                                                sm.draw_send_message_input_wrap();
+                                                sm.draw_send_message_send();
+                                            })}
+                                        ),
                             {"position":"absolute", "top":"150px", "text-align":"right", "width":"100%"}   
                 )
                 ,
@@ -293,8 +306,126 @@ class TeacherInfo extends DomController{
 
         this.render(install_target, html);
     }
+}
+
+class SendMessageToTeacher extends DomController{
+    constructor(){
+        super();
+        this.install_target = {
+            send_message_top_title:"#send_message_top_title",
+            send_message_input_wrap:"#send_message_input_wrap",
+            send_message_send:"#send_message_send"
+        };
+    }
+
+    draw_layout(install_target){
+
+        let send_message_top_title = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
+                                            /*attr*/ {id:this.install_target.send_message_top_title.replace(/#/, ''), class:"article_padding"});
+        let send_message_input_wrap = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
+                                                /*attr*/ {id:this.install_target.send_message_input_wrap.replace(/#/, ''), class:"article_padding"});
+        let send_message_send = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
+                                                /*attr*/ {id:this.install_target.send_message_send.replace(/#/, ''), class:"article_padding"});
+        
+        let html = send_message_top_title + send_message_input_wrap + send_message_send;
+
+        this.render(install_target, html);
+    }
+
+
+    draw_send_message_top_title(install_target){
+        install_target = install_target == undefined ? this.install_target.send_message_top_title : install_target;
+        let el_main_title = CComp.text("상담 요청 보내기", {"font-size":"20px", "font-weight":"bold", "display":"block"});
+        let el_sub_title = CComp.text(`${"홍길동"} 레슨 프로님께 상담을 요청합니다.`, {"font-size":"14px", "font-weight":"500", "display":"block"});
+        let el_close_button = 
+            CComp.button(
+                "close_send_message_to_teacher_popup",
+                CImg.x(),
+                {"position":"absolute", "top":0, "right":0, "padding-right":0},
+                null,
+                ()=>{
+                    layer_popup.close_layer_popup();
+                }
+            );
+
+        let html = 
+            CComp.container(
+                "div",
+                el_main_title + el_sub_title + el_close_button,
+                {"position":"relative"}
+            );
+
+        this.render(install_target, html);
+    }
+
+    draw_send_message_input_wrap(install_target){
+        install_target = install_target == undefined ? this.install_target.send_message_input_wrap : install_target;
+        let el_phone = CComp.element(/*type*/ "input", 
+                                        /*title*/ "", 
+                                        /*style*/ {"width":"100%", "height":"50px", "font-size":"16px", "margin-bottom":"15px"}, 
+                                        /*attr*/ {id:"send_message_to_teacher_input_phone", placeholder:"연락 받으실 번호", type:"tel"} );
+
+        let el_content = CComp.element(/*type*/ "input", 
+                                        /*title*/ "", 
+                                        /*style*/ {"width":"100%", "height":"50px", "font-size":"16px"}, 
+                                        /*attr*/ {id:"send_message_to_teacher_input_content", placeholder:"상담 내용을 입력 해주세요.(30자 이내)", type:"text", maxlength:"30"} );
+
+        let html = 
+            CComp.container(
+                "div", 
+                el_phone + el_content
+            );
+
+        this.render(install_target, html);
+    }
+
+    draw_send_message_send(install_target){
+        install_target = install_target == undefined ? this.install_target.send_message_send : install_target;
+
+        let el_agreement = 
+            CComp.container(
+                "div",
+                CComp.element(
+                    "input",
+                    "",
+                    {"-webkit-appearance":"checkbox", "width":"25px", "height":"25px", "flex-basis":"30px"},
+                    {"type":"checkbox", "name":"agreement", "id":"send_agreement"}
+                ) + 
+                CComp.text("PTERS Connect는 중개자일뿐 상담에서 발생하는 모든 상황에 대해서 책임 지지 않습니다.", {"font-size":"12px", "flex":"1 1 0"}),
+                {"display":"flex", "margin-bottom":"15px"}
+            );
+
+        let el_button = 
+            CComp.container(
+                "div",
+                CComp.button(
+                    "send_message_to_teacher_button", 
+                    "보내기", 
+                    {"border":"2px solid var(--bg-highlight)", "font-size":"18px", "font-weight":"bold", "color":"var(--font-highlight)", "display":"inline-block", "border-radius":"5px"},
+                    null,
+                    ()=>{
+                        if($('#send_agreement').prop("checked")){
+                            alert("보내기");
+                        }else{
+                            alert("체크 필요");
+                        }
+                    }
+                ),
+                {"text-align":"center"}
+            );
+            
+
+        let html = 
+            CComp.container(
+                "div",
+                el_agreement + el_button
+            );
+
+        this.render(install_target, html);
+    }
 
 }
+
 
 class RecommentTeachers extends DomController{
     constructor(){
