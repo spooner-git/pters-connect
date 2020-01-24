@@ -781,3 +781,12 @@ class CImg{
         return style_code;
     }
 }
+
+class Anim{
+    static vibrate(target){
+        $(target).addClass('anim_vibrate');
+        setTimeout(()=>{
+            $(target).removeClass('anim_vibrate');
+        }, 500);
+    }
+}

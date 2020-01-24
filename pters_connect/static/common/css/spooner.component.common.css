@@ -37,7 +37,7 @@
 	animation-timing-function: ease-out;
 }
 
-.anim_spark{
+.anim_vibrate{
 	animation-name: vibrate;
 	animation-duration: 0.5s;
 }

@@ -413,11 +413,7 @@ class SendMessageToTeacher extends DomController{
                             layer_popup.close_layer_popup();
                             alert("보내기 완료");
                         }else{
-                            let $this = $(e.target);
-                            $this.addClass("anim_spark");
-                            setTimeout(()=>{
-                                $this.removeClass("anim_spark");
-                            }, 500);
+                            Anim.vibrate(e.target);
                         }
                     }
                 ),
@@ -439,9 +435,10 @@ class SendMessageToTeacher extends DomController{
         this.$_forms.forEach((el)=>{
             if($(el).val().length == 0){
                 $(el).addClass('border_red');
+                Anim.vibrate(el);
                 problems++;
             }else{
-                $(el).removeClass('border_red');
+                $(el).removeClass('border_red anim_spark');
             }
         });
         if(problems > 0){
