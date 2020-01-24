@@ -41,7 +41,7 @@ class CComp{
         
         $(document).off('click', `#button_${id}`).on('click', `#button_${id}`, function(e){
             if(onclick!=undefined){
-                onclick();
+                onclick(e);
             }
         });
         return html;

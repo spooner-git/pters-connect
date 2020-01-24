@@ -82,7 +82,7 @@ class ConnectSearchResult extends DomController{
 
     dom_search_box_title(){
         let title = CComp.text(/*title*/ "주변을 검색 해보세요", /*style*/ {"font-size":"1.3em", "font-weight":"bold", "word-break":"keep-all", "display":"block"}, /*attr*/{});
-        let title_description = CComp.text(/*title*/ "나와 가까운 코치님을 찾아보세요.", /*style*/ {"font-size":"0.8em", "font-weight":"normal", "word-break":"keep-all", "display":"block", "padding-left":"3px"}, /*attr*/{});
+        let title_description = CComp.text(/*title*/ "나와 가까운 코치님을 찾아보세요.", /*style*/ {"font-size":"0.8em", "color":"var(--font-sub-normal)", "font-weight":"normal", "word-break":"keep-all", "display":"block", "padding-left":"3px"}, /*attr*/{});
         let html = CComp.container(/*type*/ "div", 
                                         /*title*/ title + title_description, 
                                         /*style*/ {"margin":"0 auto", "margin-bottom":"15px", "max-width":"600px", "animation-duration":"1s"}, 
@@ -399,15 +399,19 @@ class SendMessageToTeacher extends DomController{
             CComp.container(
                 "div",
                 CComp.button(
-                    "send_message_to_teacher_button", 
+                    "send_message_to_teacher_button",
                     "보내기", 
                     {"border":"2px solid var(--bg-highlight)", "font-size":"18px", "font-weight":"bold", "color":"var(--font-highlight)", "display":"inline-block", "border-radius":"5px"},
                     null,
-                    ()=>{
+                    (e)=>{
                         if($('#send_agreement').prop("checked")){
                             alert("보내기");
                         }else{
-                            alert("체크 필요");
+                            let $this = $(e.target);
+                            $this.addClass("anim_spark");
+                            setTimeout(()=>{
+                                $this.removeClass("anim_spark");
+                            }, 500);
                         }
                     }
                 ),
