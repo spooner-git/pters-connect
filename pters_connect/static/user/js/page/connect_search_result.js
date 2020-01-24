@@ -316,6 +316,7 @@ class SendMessageToTeacher extends DomController{
             send_message_input_wrap:"#send_message_input_wrap",
             send_message_send:"#send_message_send"
         };
+        this.$_forms = [];
     }
 
     draw_layout(install_target){
@@ -370,6 +371,8 @@ class SendMessageToTeacher extends DomController{
                                         /*style*/ {"width":"100%", "height":"50px", "font-size":"16px"}, 
                                         /*attr*/ {id:"send_message_to_teacher_input_content", placeholder:"상담 내용을 입력 해주세요.(30자 이내)", type:"text", maxlength:"30"} );
 
+        this.$_forms.push("#send_message_to_teacher_input_phone", "#send_message_to_teacher_input_content");
+
         let html = 
             CComp.container(
                 "div", 
@@ -404,8 +407,11 @@ class SendMessageToTeacher extends DomController{
                     {"border":"2px solid var(--bg-highlight)", "font-size":"18px", "font-weight":"bold", "color":"var(--font-highlight)", "display":"inline-block", "border-radius":"5px"},
                     null,
                     (e)=>{
-                        if($('#send_agreement').prop("checked")){
-                            alert("보내기");
+                        let form_check = this.check_data_before_send();
+
+                        if($('#send_agreement').prop("checked") && form_check == true){
+                            layer_popup.close_layer_popup();
+                            alert("보내기 완료");
                         }else{
                             let $this = $(e.target);
                             $this.addClass("anim_spark");
@@ -426,6 +432,22 @@ class SendMessageToTeacher extends DomController{
             );
 
         this.render(install_target, html);
+    }
+
+    check_data_before_send(){
+        let problems = 0;
+        this.$_forms.forEach((el)=>{
+            if($(el).val().length == 0){
+                $(el).addClass('border_red');
+                problems++;
+            }else{
+                $(el).removeClass('border_red');
+            }
+        });
+        if(problems > 0){
+            return false;
+        }
+        return true;
     }
 
 }
