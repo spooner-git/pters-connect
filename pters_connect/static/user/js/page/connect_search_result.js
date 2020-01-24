@@ -300,12 +300,222 @@ class TeacherInfo extends DomController{
                             {"background-image":"url('/static/user/res/background/golf_background.jpg')", "background-size":"cover", "background-repeat":"no-repeat"}
                         ) +
             CComp.text("chungho 골프 아카데미", {"font-size":"15px", "font-weight":"500", "display":"block"}) +
-            CComp.text("서울특별시 동작구 흑석동 중앙하이츠빌 아파트 1001-1808", {"font-size":"10px", "display":"block"})
-
+            CComp.text("서울특별시 동작구 흑석동 중앙하이츠빌 아파트 1001-1808", {"font-size":"10px", "display":"block"}),
+            null,
+            {id:`teacher_facility_${"1"}`},
+            ()=>{
+                layer_popup.open_layer_popup(POPUP_BASIC, 'facility_info_popup', 100, POPUP_FROM_BOTTOM, null, ()=>{ 
+                    let facility_info = new FacilityInfo();
+                    facility_info.draw_layout(".facility_info_popup");
+                    facility_info.draw_all();
+                });
+            }
         );
 
         this.render(install_target, html);
     }
+}
+
+class FacilityInfo extends DomController{
+    constructor(){
+        super();
+        this.install_target = {
+            facility_top_title:"#facility_top_title",
+            facility_album:"#facility_album",
+            facility_info:"#facility_info",
+            facility_introduce:"#facility_introduce",
+            facility_map:"#facility_map",
+            facility_teachers:"#facility_teachers"
+        };
+        this.map;
+        this.swiper;
+    }
+
+    draw_layout(install_target){
+
+        let facility_top_title = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
+                                            /*attr*/ {id:this.install_target.facility_top_title.replace(/#/, ''), class:"article_padding"});
+        let facility_album = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
+                                                /*attr*/ {id:this.install_target.facility_album.replace(/#/, ''), class:""});
+        let facility_info = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
+                                                /*attr*/ {id:this.install_target.facility_info.replace(/#/, ''), class:"article_padding"});
+        let facility_introduce = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
+                                                /*attr*/ {id:this.install_target.facility_introduce.replace(/#/, ''), class:"article_padding"});
+        let facility_map = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
+                                                /*attr*/ {id:this.install_target.facility_map.replace(/#/, ''), class:"article_padding"});
+        let facility_teachers = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
+                                                /*attr*/ {id:this.install_target.facility_teachers.replace(/#/, ''), class:"article_padding"});
+
+        let html = facility_top_title + facility_album + facility_info + facility_introduce + facility_map + facility_teachers;
+
+        this.render(install_target, html);
+    }
+
+    draw_all(){
+        this.draw_facility_top_title();
+        this.draw_facility_album();
+        this.draw_facility_info();
+        this.draw_facility_introduce();
+        this.draw_facility_map();
+        this.draw_facility_teachers();
+    }
+
+    draw_facility_top_title(install_target){
+        install_target = install_target == undefined ? this.install_target.facility_top_title : install_target;
+        let el_main_title = CComp.text("시설 정보", {"font-size":"20px", "font-weight":"bold", "display":"block"});
+        let el_close_button = 
+            CComp.button(
+                "close_facility_top_title",
+                CImg.x(),
+                {"position":"absolute", "top":0, "right":0, "padding-right":0},
+                null,
+                ()=>{
+                    layer_popup.close_layer_popup();
+                }
+            );
+
+        let html = 
+            CComp.container(
+                "div",
+                el_main_title + el_close_button,
+                {"position":"relative"}
+            );
+        this.render(install_target, html);
+    }
+
+    draw_facility_album(install_target){
+        install_target = install_target == undefined ? this.install_target.facility_album : install_target;
+        let demos = ['/static/user/res/background/golf_background.jpg', 
+                    '/static/user/res/background/golf_background.jpg',
+                    '/static/user/res/background/golf_background.jpg'];
+        let pages = demos.map((image_url)=>{ 
+            let page = 
+                CComp.container(
+                    "div", 
+                    "",
+                    {"background-image":`url('${image_url}')`, "background-size":"cover", "background-repeat":"no-repeat"},
+                    {class:"swiper-slide"}
+                )
+            return page;
+        });
+
+        let swiper_buttons =
+            CComp.element("div", "", {"height":"22px"}, {class:"swiper-button-prev"}) +
+            CComp.element("div", "", {"height":"22px"}, {class:"swiper-button-next"});
+        
+        let album = 
+            CComp.container(
+                "div",
+                CComp.container(
+                    "div",
+                    pages.join(""),
+                    null,
+                    {class:"swiper-wrapper"}
+                ) + swiper_buttons,
+                {"height":"100%", "width":"100%"},
+                {class:"swiper-container"}
+            )
+        
+        let html = 
+            CComp.container(
+                "div",
+                album,
+                {"height":"35vh"}
+            );
+
+        this.render(install_target, html);
+        this.swiper_init('.swiper-container');
+    }
+
+    swiper_init(install_target){
+        this.swiper = new Swiper (install_target, {
+            loop:true,
+            navigation:{
+                nextEl:".swiper-button-next",
+                prevEl:".swiper-button-prev"
+            },
+            spaceBetween:15
+        });
+    }
+
+    draw_facility_info(install_target){
+        install_target = install_target == undefined ? this.install_target.facility_info : install_target;
+
+        let facility_name = CComp.text("chungho 골프 아카데미", {"font-size":"24px", "font-weight":"bold", "display":"block"});
+        let facility_address = CComp.text("서울시 동작구 흑석동 86-14 무지개 아파트 1010-1515", {"font-size":"12px", "display":"block"});
+        let facility_homepage = CComp.text("www.pters.co.kr", {"font-size":"12px", "color":"cornflowerblue", "display":"block"});
+
+        let html = 
+            CComp.container(
+                "div",
+                facility_name + facility_address + facility_homepage,
+            );
+
+        this.render(install_target, html);
+    }
+
+    draw_facility_introduce(install_target){
+        install_target = install_target == undefined ? this.install_target.facility_introduce : install_target;
+
+        let content_demo = `청호 골프 아카데미는 서울 동작구 흑석동에 2010년 오픈하였으며, 누적 수강생을 2,500명을 돌파하였습니다.<br><br>
+        카카오 vx를 이용한 스크린 골프와 룸형태 모두 완비되어있습니다.`;
+
+        let html = 
+            CComp.container(
+                "div",
+                content_demo
+            )
+        this.render(install_target, html);
+    }
+
+    draw_facility_map(install_target){
+        install_target = install_target == undefined ? this.install_target.facility_map : install_target;
+        let html = CComp.container("div", "", {"height":"35vh"}, {id:"map_container_facility"});
+        this.render(install_target, html);
+        this.draw_kakao_map("#map_container_facility");
+        this.kakao_addressSearch("보라매로 5가길 7", "스푸너 본사");
+    }
+
+    draw_kakao_map(install_target){
+        this.infowindow = new kakao.maps.InfoWindow({zIndex:1});
+        let $map_container = document.querySelector(install_target);
+        let map_options = {
+            center: new kakao.maps.LatLng(33.45071, 126.570667), //지도 중심 좌표
+            level: 3 //지도 레벨 (확대 축소)
+        };
+        this.map = new kakao.maps.Map($map_container, map_options); 
+    }
+
+    kakao_addressSearch(address, facility_name){
+        let geocoder = new kakao.maps.services.Geocoder();
+        geocoder.addressSearch(address, (result, status)=>{
+            if(status === kakao.maps.services.Status.OK){
+                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                var marker = new kakao.maps.Marker({
+                    map: this.map,
+                    position: coords
+                });
+
+                var infowindow = new kakao.maps.InfoWindow({
+                    content: CComp.element(
+                        "div",
+                        facility_name,
+                        {"width":"150px", "text-align":"center", "padding":"6px 0"}
+                    )
+                });
+                infowindow.open(this.map, marker);
+
+                this.map.setCenter(coords);
+            }
+        })
+    }
+
+    draw_facility_teachers(install_target){
+        install_target = install_target == undefined ? this.install_target.facility_teachers : install_target;
+        let html = "";
+        this.render(install_target, html);
+    }
+
 }
 
 class SendMessageToTeacher extends DomController{

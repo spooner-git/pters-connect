@@ -9,19 +9,43 @@ class CComp{
         let html = `<div style="${style_code}">${title}</div>`;
         return html;
     }
-    static container(type, title, style, attr){
+    static container(type, title, style, attr, onclick){
         let style_code = style == null ? "" : `style="${CComp.data_to_style_code(style)}"`;
         let attr_code = CComp.data_to_attr_code(attr);
         
         let html = `<${type} ${style_code} ${attr_code}>${title}</${type}>`;
+
+        //onclick을 사용하려면 attr에 무조건 id가 부여되어야함
+        if(onclick != undefined && attr != undefined){
+            if(attr.id != undefined){
+                $(document).off("click", `#${attr.id}`).on("click", `#${attr.id}`, (e)=>{
+                    if(onclick != undefined){
+                        onclick(e);
+                    }
+                });
+            }
+        }
+
         return html;
     }
 
-    static element(type, title, style, attr){
+    static element(type, title, style, attr, onclick){
         let style_code = style == null ? "" : `style="${CComp.data_to_style_code(style)}"`;
         let attr_code = CComp.data_to_attr_code(attr);
         
         let html = `<${type} ${style_code} ${attr_code}>${title}</${type}>`;
+
+        //onclick을 사용하려면 attr에 무조건 id가 부여되어야함
+        if(onclick != undefined && attr != undefined){
+            if(attr.id != undefined){
+                $(document).off("click", `#${attr.id}`).on("click", `#${attr.id}`, (e)=>{
+                    if(onclick != undefined){
+                        onclick(e);
+                    }
+                });
+            }
+        }
+
         return html;
     }
 
