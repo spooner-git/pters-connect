@@ -342,7 +342,7 @@ class FacilityInfo extends DomController{
         let facility_introduce = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
                                                 /*attr*/ {id:this.install_target.facility_introduce.replace(/#/, ''), class:"article_padding"});
         let facility_map = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
-                                                /*attr*/ {id:this.install_target.facility_map.replace(/#/, ''), class:"article_padding"});
+                                                /*attr*/ {id:this.install_target.facility_map.replace(/#/, ''), class:""});
         let facility_teachers = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
                                                 /*attr*/ {id:this.install_target.facility_teachers.replace(/#/, ''), class:"article_padding"});
 
@@ -357,7 +357,7 @@ class FacilityInfo extends DomController{
         this.draw_facility_info();
         this.draw_facility_introduce();
         this.draw_facility_map();
-        this.draw_facility_teachers();
+        // this.draw_facility_teachers();
     }
 
     draw_facility_top_title(install_target){
