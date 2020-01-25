@@ -11,11 +11,11 @@ class GolfProMypage extends DomController{
     draw_layout(install_target){
 
         let top_full_image = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ {"padding-top":"100px"}, 
-                                            /*attr*/ {id:this.install_target.top_full_image.replace(/#/, '')});
+                                            /*attr*/ {id:this.install_target.top_full_image.replace(/#/, ''), class:"anim_fade_in"});
         let profile_image = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ {"background-color":"var(--bg-light)", "margin-top":"-100px"}, 
                                                 /*attr*/ {id:this.install_target.profile_image.replace(/#/, ''), class:"article_padding"});
         let account_info = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ {"margin-bottom":"30px"}, 
-                                                /*attr*/ {id:this.install_target.account_info.replace(/#/, ''), class:"article_padding"});
+                                                /*attr*/ {id:this.install_target.account_info.replace(/#/, ''), class:"article_padding anim_fade_in"});
         
         let html = top_full_image + profile_image + account_info;
 
@@ -87,7 +87,7 @@ class GolfProMypage extends DomController{
                             {"position":"absolute", "top":"150px", "text-align":"right", "width":"100%"}   
                 )
                 ,
-                {"position":"relative"},
+                {"position":"relative", "max-width":"800px", "margin":"0 auto"},
                 null
             );
 
@@ -103,7 +103,7 @@ class GolfProMypage extends DomController{
                 CComp.element("div", "ID", {"flex":"1 1 0"})+
                 CComp.element("div", "kildong0000", {"flex":"1 1 0", "text-align":"right"})+
                 CComp.element("div", CImg.arrow_right([""], {"margin-bottom":"3px"}), {"flex-basis":"24px"}),
-                {"display":"flex", "height":"45px", "line-height":"45px"},
+                {"display":"flex", "height":"45px", "line-height":"45px", "font-size":"14px"},
                 {id:"golf_pro_mypage_id_info"},
                 ()=>{
                     alert("ID 가입 정보 페이지로 이동");
@@ -115,7 +115,7 @@ class GolfProMypage extends DomController{
                 CComp.element("div", "휴대 전화", {"flex":"1 1 0"})+
                 CComp.element("div", "000-0000-0000", {"flex":"1 1 0", "text-align":"right"})+
                 CComp.element("div", CImg.arrow_right([""], {"margin-bottom":"3px"}), {"flex-basis":"24px"}),
-                {"display":"flex", "height":"45px", "line-height":"45px"},
+                {"display":"flex", "height":"45px", "line-height":"45px", "font-size":"14px"},
                 {id:"golf_pro_mypage_id_info"},
                 ()=>{
                     alert("휴대폰 인증 페이지로 이동");
@@ -127,7 +127,7 @@ class GolfProMypage extends DomController{
                 CComp.element("div", "자격 인증", {"flex":"1 1 0"})+
                 CComp.element("div", "미인증", {"flex":"1 1 0", "color":"#fe4e65", "text-align":"right"})+
                 CComp.element("div", CImg.arrow_right([""], {"margin-bottom":"3px"}), {"flex-basis":"24px"}),
-                {"display":"flex", "height":"45px", "line-height":"45px"},
+                {"display":"flex", "height":"45px", "line-height":"45px", "font-size":"14px"},
                 {id:"golf_pro_mypage_id_info"},
                 ()=>{
                     alert("자격 서류 업로드 페이지로 이동");
@@ -144,7 +144,8 @@ class GolfProMypage extends DomController{
                     phone_row + 
                     verification_row,
                     {"padding":"5px 0"}
-                )
+                ),
+                {"max-width":"800px", "margin":"0 auto"}
             );
         
         this.render(install_target, html);

@@ -122,8 +122,13 @@ class ConnectSearchResult extends DomController{
             );
         }
 
+        let html = 
+            CComp.container(
+                "div",
+                html_to_join.join(""),
+                {"max-width":"1024px", "margin":"0 auto"}
+            );
 
-        let html = html_to_join.join("");
         this.render(install_target, html);
     }
 
@@ -158,7 +163,7 @@ class ConnectSearchResult extends DomController{
                 CComp.element("div", "", {"padding-top":"130%"}) + //더미
                 photo_box + name_box
                 , 
-                {"position":"relative", "display":"inline-block", "width":"46%", "margin":"2%", "max-width":"250px"}, 
+                {"position":"relative", "display":"inline-block", "width":"46%", "margin":"2%", "max-width":"200px"}, 
                 {class:"anim_fade_in anim_scale_up"}
             );
         return wrapper;
