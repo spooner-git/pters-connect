@@ -50,7 +50,7 @@ class ConnectSearchResult extends DomController{
             this.kakao_removeMarkers();
             for (var i=0; i<data.length; i++) {
 
-                context.kakao_displayMarker(data[i]);
+                // context.kakao_displayMarker(data[i]);
                 
                 bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
             }   
