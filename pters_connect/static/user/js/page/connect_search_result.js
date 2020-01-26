@@ -6,6 +6,8 @@ class ConnectSearchResult extends DomController{
             search_input:"#search_input",
             result_list:"#result_list"
         };
+
+        this.map_markers = [];
     }
 
     draw_layout(install_target){
@@ -45,7 +47,7 @@ class ConnectSearchResult extends DomController{
             // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
             // LatLngBounds 객체에 좌표를 추가합니다
             let bounds = new kakao.maps.LatLngBounds();
-
+            this.kakao_removeMarkers();
             for (var i=0; i<data.length; i++) {
 
                 context.kakao_displayMarker(data[i]);
@@ -53,25 +55,30 @@ class ConnectSearchResult extends DomController{
                 bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
             }   
             // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-            console.log(bounds)
             context.map.setBounds(bounds);
         }
     }
 
     kakao_displayMarker(place){
         // 마커를 생성하고 지도에 표시합니다
-        this.marker = new kakao.maps.Marker({
+        let marker = new kakao.maps.Marker({
             map: this.map,
             position: new kakao.maps.LatLng(place.y, place.x)
         });
-        this.marker.setMap(null);
+
+        this.map_markers.push(marker);
 
         // 마커에 클릭이벤트를 등록합니다
-        kakao.maps.event.addListener(this.marker, 'click', ()=> {
+        kakao.maps.event.addListener(marker, 'click', ()=> {
             // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
             this.infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
-            this.infowindow.open(this.map, this.marker);
+            this.infowindow.open(this.map, marker);
         });
+    }
+
+    kakao_removeMarkers(){
+        this.map_markers.forEach((el)=>{el.setMap(null);});
+        this.map_markers = [];
     }
 
     draw_search_input(install_target){
@@ -281,13 +288,13 @@ class TeacherInfo extends DomController{
 
     draw_teacher_introduce(install_target){
         install_target = install_target == undefined ? this.install_target.teacher_introduce : install_target;
-        let text_sample = `서울 동작구 상도동에 위치한 chungho 골프 아카데미의 공동 창업자입니다.<br><br>
+        let text_demo = `서울 동작구 상도동에 위치한 chungho 골프 아카데미의 공동 창업자입니다.<br><br>
         2004년도 브리티시 PGA로 프로 무대에 데뷔하여 2006년 유로피언 투어까지 3년간 선수로 활약했습니다.<br><br>
         2007년부터는 일반인을 대상으로 하는 레슨 스튜디오를 오픈하여 현재까지 1,600여명의 수강생이 있습니다.`;
 
         let html = CComp.container(
             "div",
-            CComp.element("div", text_sample, {"font-size":"16px", "word-break":"keep-all"}, "")
+            CComp.element("div", text_demo, {"font-size":"16px", "word-break":"keep-all"}, "")
         );
 
         this.render(install_target, html);

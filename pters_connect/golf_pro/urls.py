@@ -20,5 +20,6 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
-    url(r'^main/$', views.GolfProMainView.as_view(), name='main'),
+    url(r'^mypage/$', views.GolfProMypageView.as_view(), name='mypage'),
+    url(r'^profile_edit/$', views.GolfProProfileEditView.as_view(), name='profile_edit')
 ]

@@ -70,7 +70,7 @@ class GolfProMypage extends DomController{
                 CComp.text(`홍길동`, {"max-width":"180px", "font-size":"24px", "font-weight":"bold", "display":"block"}, null) +
                 CComp.text("서울시 동작구 흑석동", {"max-width":"180px", "font-size":"12px", "display":"block"}, null) + 
                 CComp.element("a", "www.pters.co.kr", {"font-size":"12px", "color":"cornflowerblue"}, {href:"https://www.pters.co.kr"}) +
-                CComp.button("post_status_button", "게시중", {"border":"1px solid var(--bg-highlight)", "border-radius":"5px", "padding":"2px 5px", "display":"block", "max-width":"180px","color":"var(--font-highlight)"}, null, ()=>{alert("status 변경, 공개 or 비공개");}) +
+                CComp.button("post_status_button", "게시중", {"width":"40vw", "border":"1px solid var(--bg-highlight)", "border-radius":"5px", "padding":"2px 5px", "display":"block", "max-width":"180px","color":"var(--font-highlight)"}, null, ()=>{alert("status 변경, 공개 or 비공개");}) +
                 CComp.element("div",
                             CComp.button(
                                         "send_message_to", 
@@ -78,10 +78,7 @@ class GolfProMypage extends DomController{
                                         {"border":"2px solid var(--bg-highlight)", "border-radius":"10px", "padding":"5px 10px", "display":"inline-block", "color":"var(--font-highlight)", "font-weight":"bold"},
                                         null, 
                                         ()=>{
-                                            alert("프로필 페이지");
-                                            // layer_popup.open_layer_popup(POPUP_BASIC, 'send_message_to_teacher', 100, POPUP_FROM_BOTTOM, null, ()=>{ 
-                                                
-                                            // });
+                                            location.href = "/golf_pro/profile_edit";
                                         }
                                         ),
                             {"position":"absolute", "top":"150px", "text-align":"right", "width":"100%"}   

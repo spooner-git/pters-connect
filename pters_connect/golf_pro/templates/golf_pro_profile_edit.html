@@ -1,0 +1,29 @@
+{% extends "connect_base.html" %}
+
+{% load static_url %}
+{% block local_css %}
+    
+{% endblock %}
+
+{% block top_right %}
+
+{% endblock %} 
+
+{% block content %}
+<section id="golf_pro_profile_edit">
+</section>
+
+{% endblock %}
+
+{% block local_js_footer %}
+    <link rel="stylesheet" href={% static_url "user/css/page/golf_pro/profile_edit.css" %}>    
+    <script type="text/javascript" src={% static_url "user/js/page/golf_pro/profile_edit.js" %}></script>
+    <script>
+        top_nav.change_bg("white");
+
+        let golf_pro_myinfo = new ProfileEditpage();
+        golf_pro_myinfo.draw_layout("#golf_pro_profile_edit");
+        golf_pro_myinfo.draw_children();
+        
+    </script>
+{% endblock %}

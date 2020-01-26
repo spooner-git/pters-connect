@@ -18,9 +18,16 @@ class IndexView(TemplateView):
         context = super(IndexView, self).get_context_data(**kwargs)
         return context
 
-class GolfProMainView(TemplateView):
-    template_name = 'golf_pro_main.html'
+class GolfProMypageView(TemplateView):
+    template_name = 'golf_pro_mypage.html'
 
     def get_context_data(self, **kwargs):
-        context = super(GolfProMainView, self).get_context_data(**kwargs)
+        context = super(GolfProMypageView, self).get_context_data(**kwargs)
+        return context
+
+class GolfProProfileEditView(TemplateView):
+    template_name = 'golf_pro_profile_edit.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(GolfProProfileEditView, self).get_context_data(**kwargs)
         return context
