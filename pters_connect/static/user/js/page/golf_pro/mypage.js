@@ -113,7 +113,7 @@ class GolfProMypage extends DomController{
                 CComp.element("div", "000-0000-0000", {"flex":"1 1 0", "text-align":"right"})+
                 CComp.element("div", CImg.arrow_right([""], {"margin-bottom":"3px"}), {"flex-basis":"24px"}),
                 {"display":"flex", "height":"45px", "line-height":"45px", "font-size":"14px"},
-                {id:"golf_pro_mypage_id_info"},
+                {id:"golf_pro_mypage_phone_info"},
                 ()=>{
                     alert("휴대폰 인증 페이지로 이동");
                 }
@@ -125,7 +125,7 @@ class GolfProMypage extends DomController{
                 CComp.element("div", "미인증", {"flex":"1 1 0", "color":"#fe4e65", "text-align":"right"})+
                 CComp.element("div", CImg.arrow_right([""], {"margin-bottom":"3px"}), {"flex-basis":"24px"}),
                 {"display":"flex", "height":"45px", "line-height":"45px", "font-size":"14px"},
-                {id:"golf_pro_mypage_id_info"},
+                {id:"golf_pro_mypage_verification_info"},
                 ()=>{
                     alert("자격 서류 업로드 페이지로 이동");
                 }
