@@ -151,6 +151,7 @@ class ConnectSearchResult extends DomController{
                                                 teacher_info.draw_layout(".popup_teacher_info");
                                                 teacher_info.draw_top_full_image();
                                                 teacher_info.draw_teacher_profile();
+                                                teacher_info.draw_teacher_certifications();
                                                 teacher_info.draw_teacher_introduce();
                                                 teacher_info.draw_teacher_facility();
                                             });
@@ -184,6 +185,7 @@ class TeacherInfo extends DomController{
         this.install_target = {
             teacher_top_full_image:"#teacher_top_full_image",
             teacher_profile:"#teacher_profile",
+            teacher_cetifications:"#teacher_cetifications",
             teacher_introduce:"#teacher_introduce",
             teacher_facility:"#teacher_facility",
             recommend_teachers:"#recommend_teachers"
@@ -196,6 +198,8 @@ class TeacherInfo extends DomController{
                                             /*attr*/ {id:this.install_target.teacher_top_full_image.replace(/#/, '')});
         let teacher_profile = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ {"position":"relative", "margin-top":"-100px"}, 
                                                 /*attr*/ {id:this.install_target.teacher_profile.replace(/#/, ''), class:"article_padding"});
+        let teacher_certifications = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
+                                                /*attr*/ {id:this.install_target.teacher_cetifications.replace(/#/, ''), class:"article_padding"});
         let teacher_introduce = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
                                                 /*attr*/ {id:this.install_target.teacher_introduce.replace(/#/, ''), class:"article_padding"});
         let teacher_facility = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
@@ -203,7 +207,7 @@ class TeacherInfo extends DomController{
         let recommend_teachers = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
                                                 /*attr*/ {id:this.install_target.recommend_teachers.replace(/#/, ''), class:"article_padding"});
 
-        let html = teacher_top_full_image + teacher_profile + teacher_introduce + teacher_facility + recommend_teachers;
+        let html = teacher_top_full_image + teacher_profile + teacher_certifications + teacher_introduce + teacher_facility + recommend_teachers;
 
         this.render(install_target, html);
     }
@@ -286,14 +290,43 @@ class TeacherInfo extends DomController{
         this.render(install_target, html);
     }
 
+    draw_teacher_certifications(install_target){
+        install_target = install_target == undefined ? this.install_target.teacher_cetifications : install_target;
+        let certifications_demo = [
+            "KLPGA 프로", "생활체육 지도사 2급"
+        ];
+        let article_title = 
+            CComp.text(
+                "자격 인증",
+                {"display":"block", "font-size": "13px", "font-weight":"bold", "margin-bottom":"5px"}
+            )
+
+        let html = CComp.container(
+            "div",
+            article_title +
+            certifications_demo.map((el)=>{
+                return CComp.element("div", el)
+            }).join("")
+        );
+
+        this.render(install_target, html);
+    }
+
     draw_teacher_introduce(install_target){
         install_target = install_target == undefined ? this.install_target.teacher_introduce : install_target;
         let text_demo = `서울 동작구 상도동에 위치한 chungho 골프 아카데미의 공동 창업자입니다.<br><br>
         2004년도 브리티시 PGA로 프로 무대에 데뷔하여 2006년 유로피언 투어까지 3년간 선수로 활약했습니다.<br><br>
         2007년부터는 일반인을 대상으로 하는 레슨 스튜디오를 오픈하여 현재까지 1,600여명의 수강생이 있습니다.`;
 
+        let article_title = 
+            CComp.text(
+                "강사 소개",
+                {"display":"block", "font-size": "13px", "font-weight":"bold", "margin-bottom":"5px"}
+            )
+
         let html = CComp.container(
             "div",
+            article_title + 
             CComp.element("div", text_demo, {"font-size":"16px", "word-break":"keep-all"}, "")
         );
 
@@ -304,7 +337,7 @@ class TeacherInfo extends DomController{
         install_target = install_target == undefined ? this.install_target.teacher_facility : install_target;
 
         let html = 
-        CComp.text("레슨 시설", {"font-size":"16px", "font-weight":"bold", "display":"block", "margin-bottom":"10px"}) +
+        CComp.text("레슨 시설", {"font-size":"13px", "font-weight":"bold", "display":"block", "margin-bottom":"10px"}) +
         CComp.container( //시설 wrapper
             "div",
             CComp.element("div", //사진 wrapper
