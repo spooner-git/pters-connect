@@ -24,21 +24,23 @@ nav{
     z-index: 10;
 }
 
-input, textarea{
+input, textarea, select{
     -webkit-appearance: none;
     font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', sans-serif;
-    
 }
 
 :focus{
     outline: none;
 }
-
+:disabled{
+    background-color: var(--bg-inactive);
+}
 input{
     border-radius: 10px;
     height: 50px;
     padding: 10px;
     border: var(--border-article);
+    background-color: var(--bg-main);
 }
 .content_editable{
     border-radius: 10px;
@@ -46,6 +48,14 @@ input{
     min-height: 50px;
     padding: 10px;
     border: var(--border-article);
+    background-color: var(--bg-main);
+}
+select{
+    border-radius: 10px;
+    height: 50px;
+    padding: 10px;
+    border: var(--border-article);
+    background-color: var(--bg-main);
 }
 
 textarea{

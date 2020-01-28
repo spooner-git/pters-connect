@@ -102,8 +102,11 @@ class GolfProMypage extends DomController{
                 CComp.element("div", CImg.arrow_right([""], {"margin-bottom":"3px"}), {"flex-basis":"24px"}),
                 {"display":"flex", "height":"45px", "line-height":"45px", "font-size":"14px"},
                 {id:"golf_pro_mypage_id_info"},
-                ()=>{
-                    alert("ID 가입 정보 페이지로 이동");
+                {
+                    "type":"click",
+                    "exe":()=>{
+                        alert("ID 가입 정보 페이지로 이동");
+                    }
                 }
             );
         let phone_row = 
@@ -114,8 +117,15 @@ class GolfProMypage extends DomController{
                 CComp.element("div", CImg.arrow_right([""], {"margin-bottom":"3px"}), {"flex-basis":"24px"}),
                 {"display":"flex", "height":"45px", "line-height":"45px", "font-size":"14px"},
                 {id:"golf_pro_mypage_phone_info"},
-                ()=>{
-                    alert("휴대폰 인증 페이지로 이동");
+                {
+                    "type":"click",
+                    "exe":()=>{
+                        layer_popup.open_layer_popup(POPUP_BASIC, 'golf_pro_phone_number_change_popup', 100, POPUP_FROM_BOTTOM, null, ()=>{ 
+                            let phone_info = new GolfProPhoneInfo();
+                            phone_info.draw_layout(".golf_pro_phone_number_change_popup");
+                            phone_info.draw_children();
+                        });
+                    }
                 }
             );
         let verification_row = 
@@ -126,8 +136,11 @@ class GolfProMypage extends DomController{
                 CComp.element("div", CImg.arrow_right([""], {"margin-bottom":"3px"}), {"flex-basis":"24px"}),
                 {"display":"flex", "height":"45px", "line-height":"45px", "font-size":"14px"},
                 {id:"golf_pro_mypage_verification_info"},
-                ()=>{
-                    alert("자격 서류 업로드 페이지로 이동");
+                {
+                    "type":"click",
+                    "exe":()=>{
+                        location.href = "/golf_pro/cert_info/";
+                    }
                 }
             );
 
@@ -149,3 +162,155 @@ class GolfProMypage extends DomController{
     }
 }
 
+
+class GolfProPhoneInfo extends DomController{
+    constructor(){
+        super();
+        this.install_target = {
+            phone_info_top_title:"#golf_pro_phone_info_top_title",
+            phone_info_input_wrap:"#golf_pro_phone_info_input_wrap"
+        };
+        this.$_forms = [];
+    }
+
+    draw_layout(install_target){
+
+        let phone_info_top_title = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
+                                            /*attr*/ {id:this.install_target.phone_info_top_title.replace(/#/, ''), class:"article_padding"});
+        let phone_info_input_wrap = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
+                                                /*attr*/ {id:this.install_target.phone_info_input_wrap.replace(/#/, ''), class:"article_padding"});
+        
+        let html = phone_info_top_title + phone_info_input_wrap;
+
+        this.render(install_target, html);
+    }
+
+    draw_children(){
+        this.draw_top_title();
+        this.draw_input_wrap();
+    }
+
+    draw_top_title(install_target){
+        install_target = install_target == undefined ? this.install_target.phone_info_top_title : install_target;
+        let el_main_title = CComp.text("휴대 전화", {"font-size":"20px", "font-weight":"bold", "display":"block"});
+        let el_sub_title = CComp.text(`휴대전화 변경 시 재인증이 필요합니다.`, {"font-size":"14px", "font-weight":"500", "display":"block"});
+        let el_close_button = 
+            CComp.button(
+                "close_golf_pro_phone_info_popup",
+                CImg.x(),
+                {"position":"absolute", "top":0, "right":0, "padding-right":0},
+                null,
+                ()=>{
+                    layer_popup.close_layer_popup();
+                }
+            );
+
+        let html = 
+            CComp.container(
+                "div",
+                el_main_title + el_sub_title + el_close_button,
+                {"position":"relative"}
+            );
+
+        this.render(install_target, html);
+    }
+
+    draw_input_wrap(install_target){
+        install_target = install_target == undefined ? this.install_target.phone_info_input_wrap : install_target;
+        
+        let phone_number = 
+            CComp.container(
+                "div",
+                CComp.element(
+                    "div",
+                    CComp.element(
+                        "input", "", {"width":"100%"}, {"id":"golf_pro_phone_number", "placeholder":"00022221111"}
+                    ),
+                    {"flex":"1 1 0"}
+                )+
+                CComp.element(
+                    "div",
+                    CComp.button(
+                        "golf_pro_phone_change_button",
+                        "변경",
+                        null,
+                        null,
+                        ()=>{
+                            this.$_forms = ["#golf_pro_phone_number"];
+                            let valid_check = this.check_data_before_send();
+                            if(valid_check){
+                                $('#auth_input_wrap').css('display', 'flex');
+                                alert("인증 번호가 발송 되었습니다.");
+                            }
+                        }
+                    ),
+                    {"flex-basis":"60px"},
+                ),
+                {"display":"flex", "line-height":"50px"}
+            );
+        
+        let phone_number_change_auth_input = 
+            CComp.container(
+                "div",
+                CComp.element(
+                    "div",
+                    CComp.element(
+                        "input", "", {"width":"100%"}, {"id":"golf_pro_phone_number_change_auth_number", "placeholder":"인증 번호 입력"}
+                    ),
+                    {"flex":"1 1 0"}
+                )+
+                CComp.element(
+                    "div",
+                    CComp.button(
+                        "golf_pro_phone_change_auth_button",
+                        "인증",
+                        null,
+                        null,
+                        ()=>{
+                            this.$_forms = ["#golf_pro_phone_number_change_auth_number"];
+                            let valid_check = this.check_data_before_send();
+                            if(valid_check){
+                                alert("변경이 완료되었습니다");
+                                layer_popup.close_layer_popup();
+                                setTimeout(()=>{
+                                    location.reload();
+                                }, 300);
+                            }
+                        }
+                    ),
+                    {"flex-basis":"60px"}
+                )
+                ,
+                {"display":"none", "line-height":"50px"},
+                {"id":"auth_input_wrap"}
+            );
+        
+        
+        let html = 
+            CComp.container(
+                "div",
+                phone_number + phone_number_change_auth_input
+            );
+
+
+        this.render(install_target, html);
+    }
+
+    check_data_before_send(){
+        let problems = 0;
+        this.$_forms.forEach((el)=>{
+            if($(el).val() == null || $(el).val().length == 0){
+                $(el).addClass('border_red');
+                Anim.vibrate(el);
+                problems++;
+            }else{
+                $(el).removeClass('border_red anim_spark');
+            }
+        });
+        if(problems > 0){
+            return false;
+        }
+        return true;
+    }
+
+}

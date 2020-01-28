@@ -72,8 +72,11 @@ class ProfileEditpage extends DomController{
                     "background-repeat":"no-repeat"
                 }, 
                 {"id":"profile_top_full_image_change"},
-                ()=>{
-                    alert("배경 이미지 변경");
+                {
+                    "type":"click",
+                    "exe":()=>{
+                        alert("배경 이미지 변경");
+                    }
                 }
             );
 
@@ -104,8 +107,11 @@ class ProfileEditpage extends DomController{
                         "position":"relative"
                     },
                     {"id":"profile_image_change"},
-                    ()=>{
-                        alert("프로필 이미지 변경");
+                    {
+                        "type":"click",
+                        "exe":()=>{
+                            alert("프로필 이미지 변경");
+                        }
                     }
                 ) + 
                 CComp.container(
@@ -164,7 +170,7 @@ class ProfileEditpage extends DomController{
             CComp.container(
                 "div",
                 CComp.text("이름", {"display":"block", "font-size":"13px", "font-weight":"bold", "padding":"5px 0"})+
-                CComp.element("input", "", {"font-size":"16px"}, {"placeholder":"입력", "value":"홍길동"})
+                CComp.element("input", "", {"font-size":"16px", "width":"100%"}, {"placeholder":"입력", "value":"홍길동"})
                 ,{"padding":"5px 0"}
             );
         // let phone_row = 
@@ -178,7 +184,7 @@ class ProfileEditpage extends DomController{
             CComp.container(
                 "div",
                 CComp.text("홈페이지", {"display":"block", "font-size":"13px", "font-weight":"bold", "padding":"5px 0"})+
-                CComp.element("input", "", {"font-size":"16px"}, {"placeholder":"주소 입력", "value":"www.pters.co.kr"})
+                CComp.element("input", "", {"font-size":"16px", "width":"100%"}, {"placeholder":"주소 입력", "value":"www.pters.co.kr"})
                 ,{"padding":"5px 0"}
             );
         let introduce_text_row = 
@@ -188,8 +194,7 @@ class ProfileEditpage extends DomController{
                 CComp.element("div", text_demo, {"font-size":"16px"}, {placeholder:"소개글을 입력해주세요.", contenteditable:"true", class:"content_editable"})
                 ,{"padding":"5px 0"}
             );
-
-
+            
         let html = 
             CComp.container(
                 "div",
@@ -222,13 +227,16 @@ class ProfileEditpage extends DomController{
                 CComp.container("div", CComp.text("시설 추가", {"font-size":"14px"}), {"flex":"1 1 0"}),
                 {"display":"flex", "line-height":"45px"},
                 {id:"add_new_my_facility"},
-                ()=>{
-                    layer_popup.open_layer_popup(POPUP_BASIC, 'golf_pro_facility_searching', 100, POPUP_FROM_BOTTOM, null, ()=>{ 
-                        let facility_search = new FacilitySearching();
-                        facility_search.draw_layout(".golf_pro_facility_searching");
-                        facility_search.draw_children();
-                        
-                    });
+                {
+                    "type":"click",
+                    "exe":()=>{
+                        layer_popup.open_layer_popup(POPUP_BASIC, 'golf_pro_facility_searching', 100, POPUP_FROM_BOTTOM, null, ()=>{ 
+                            let facility_search = new FacilitySearching();
+                            facility_search.draw_layout(".golf_pro_facility_searching");
+                            facility_search.draw_children();
+                            
+                        });
+                    }
                 }
             );
         
@@ -266,11 +274,14 @@ class ProfileEditpage extends DomController{
             CComp.text(address, {"font-size":"12px", "display":"block"}),
             {"padding":"10px 5px"},
             {id:`element_facility_${id}`},
-            ()=>{
-                let result = confirm(`시설 ${id} ${name} 삭제할까요?`);
-                if(result){
-                    alert("시설 삭제");
-                }else{
+            {
+                "type":"click",
+                "exe":()=>{
+                    let result = confirm(`시설 ${id} ${name} 삭제할까요?`);
+                    if(result){
+                        alert("시설 삭제");
+                    }else{
+                    }
                 }
             }
         )
@@ -467,12 +478,15 @@ class FacilitySearching extends DomController{
                 ),
                 {"padding":"10px 0"},
                 {id:`search_result_element_${kakao_map_id}`},
-                ()=>{
-                    let result = confirm(`추가: ${place_name} / 위치: (${x},${y}) / 주소: ${address} \n 추가할까요?`);
-                    if(result){
-                        layer_popup.close_layer_popup();
-                    }else{
-
+                {
+                    "type":"click",
+                    "exe":()=>{
+                        let result = confirm(`추가: ${place_name} / 위치: (${x},${y}) / 주소: ${address} \n 추가할까요?`);
+                        if(result){
+                            layer_popup.close_layer_popup();
+                        }else{
+    
+                        }
                     }
                 }
             );

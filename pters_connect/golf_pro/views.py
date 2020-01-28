@@ -31,3 +31,17 @@ class GolfProProfileEditView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(GolfProProfileEditView, self).get_context_data(**kwargs)
         return context
+
+class GolfProMessageBoxView(TemplateView):
+    template_name = 'golf_pro_message_box.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(GolfProMessageBoxView, self).get_context_data(**kwargs)
+        return context
+
+class GolfProCertInfoView(TemplateView):
+    template_name = 'golf_pro_cert_info.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(GolfProCertInfoView, self).get_context_data(**kwargs)
+        return context

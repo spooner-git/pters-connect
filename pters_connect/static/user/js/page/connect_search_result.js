@@ -293,7 +293,7 @@ class TeacherInfo extends DomController{
     draw_teacher_certifications(install_target){
         install_target = install_target == undefined ? this.install_target.teacher_cetifications : install_target;
         let certifications_demo = [
-            "KLPGA 프로", "생활체육 지도사 2급"
+            "USGTF 프로", "생활체육 지도사 2급"
         ];
         let article_title = 
             CComp.text(
@@ -348,12 +348,15 @@ class TeacherInfo extends DomController{
             CComp.text("서울특별시 동작구 흑석동 중앙하이츠빌 아파트 1001-1808", {"font-size":"10px", "display":"block"}),
             null,
             {id:`teacher_facility_${"1"}`},
-            ()=>{
-                layer_popup.open_layer_popup(POPUP_BASIC, 'facility_info_popup', 100, POPUP_FROM_BOTTOM, null, ()=>{ 
-                    let facility_info = new FacilityInfo();
-                    facility_info.draw_layout(".facility_info_popup");
-                    facility_info.draw_all();
-                });
+            {
+                "type":"click",
+                "exe":()=>{
+                    layer_popup.open_layer_popup(POPUP_BASIC, 'facility_info_popup', 100, POPUP_FROM_BOTTOM, null, ()=>{ 
+                        let facility_info = new FacilityInfo();
+                        facility_info.draw_layout(".facility_info_popup");
+                        facility_info.draw_all();
+                    });
+                }
             }
         );
 
@@ -619,7 +622,7 @@ class SendMessageToTeacher extends DomController{
         let el_phone = CComp.element(/*type*/ "input", 
                                         /*title*/ "", 
                                         /*style*/ {"width":"100%", "height":"50px", "font-size":"16px", "margin-bottom":"15px"}, 
-                                        /*attr*/ {id:"send_message_to_teacher_input_phone", placeholder:"연락 받으실 번호", type:"tel"} );
+                                        /*attr*/ {id:"send_message_to_teacher_input_phone", placeholder:"연락 받으실 번호", type:"tel", "disabled":true} );
 
         let el_content = CComp.element(/*type*/ "input", 
                                         /*title*/ "", 

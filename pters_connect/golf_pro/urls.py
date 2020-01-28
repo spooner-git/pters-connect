@@ -21,5 +21,7 @@ from . import views
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^mypage/$', views.GolfProMypageView.as_view(), name='mypage'),
-    url(r'^profile_edit/$', views.GolfProProfileEditView.as_view(), name='profile_edit')
+    url(r'^profile_edit/$', views.GolfProProfileEditView.as_view(), name='profile_edit'),
+    url(r'^message_box/$', views.GolfProMessageBoxView.as_view(), name='message_box'),
+    url(r'^cert_info/$', views.GolfProCertInfoView.as_view(), name='cert_info')
 ]
