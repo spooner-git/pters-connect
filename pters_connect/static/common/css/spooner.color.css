@@ -45,6 +45,7 @@
     --border-article: 1px solid #f5f2f3;
     --border-article-dark: 1px solid #cccccc;
     --box-shadow-article: 0 0 16px 0 #e6e6e6;
+    --box-shadow-dark: 0 0 16px 0 #282828;
 
     /* image filter */
     --transform-invert:invert(1);
@@ -99,6 +100,7 @@
     --border-article: 1px solid #292727;
     --border-article-dark: 1px solid #5c5859;
     --box-shadow-article: 0 0 24px 0 rgba(10, 10, 10, 0.24);
+    --box-shadow-dark: 0 0 16px 0 #282828;
 
     /* image filter */
     --transform-invert:unset;

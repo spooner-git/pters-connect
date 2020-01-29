@@ -122,28 +122,37 @@ class ConnectSearchResult extends DomController{
 
     draw_result_list(install_target){
         install_target = install_target == undefined ? this.install_target.result_list : install_target;
-        let html_to_join = [];
-        for(let i=0; i<5; i++){
-            html_to_join.push(
-                this.dom_profile_box()
-            );
-        }
+        let result_demo = [
+            {"teacher_name":"홍길동", "teacher_db_id":"123123", "teacher_id":"hohoho123123", "teacher_address":"서울시 동작구 흑석동", "photo_url":"/static/user/res/demo/profile.jpg"},
+            {"teacher_name":"김행복", "teacher_db_id":"123123", "teacher_id":"hohoho123123", "teacher_address":"서울시 동작구 상도동", "photo_url":"/static/user/res/demo/profile.jpg"},
+            {"teacher_name":"최피터", "teacher_db_id":"123123", "teacher_id":"hohoho123123", "teacher_address":"서울시 동작구 상도1동", "photo_url":"/static/user/res/demo/profile.jpg"},
+            {"teacher_name":"다니엘", "teacher_db_id":"123123", "teacher_id":"hohoho123123", "teacher_address":"서울시 동작구 신대방동", "photo_url":"/static/user/res/demo/profile.jpg"},
+            {"teacher_name":"조안나", "teacher_db_id":"123123", "teacher_id":"hohoho123123", "teacher_address":"서울시 동작구 신대방동", "photo_url":"/static/user/res/demo/profile.jpg"},
+            {"teacher_name":"김산수", "teacher_db_id":"123123", "teacher_id":"hohoho123123", "teacher_address":"서울시 동작구 사당3동", "photo_url":"/static/user/res/demo/profile.jpg"},
+            {"teacher_name":"이민호", "teacher_db_id":"123123", "teacher_id":"hohoho123123", "teacher_address":"서울시 동작구 사당동", "photo_url":"/static/user/res/demo/profile.jpg"}
+        ];
+
+        let list = result_demo.map((el)=>{return this.dom_profile_box(el)}).join("");
 
         let html = 
             CComp.container(
                 "div",
-                html_to_join.join(""),
+                list,
                 {"max-width":"1024px", "margin":"0 auto"}
             );
 
         this.render(install_target, html);
     }
 
-    dom_profile_box(){
-        let db_id = "1";
-        let photo_box = CComp.button(`profile_photo_${db_id}`, 
+    dom_profile_box(data){
+        let teacher_name = data.teacher_name;
+        let teacher_db_id = data.teacher_db_id;
+        let teacher_id = data.teacher_id;
+        let teacher_address = data.teacher_address;
+        let teacher_photo = data.photo_url
+        let photo_box = CComp.button(`profile_photo_${teacher_db_id}`, 
                                         "",
-                                        {"width":"100%", "border-radius":"5px", "background-image":"url('/static/user/res/demo/profile.jpg')", "background-size":"cover", "background-repeat":"no-repeat", "background-position":"top", "position":"absolute", "top":0, "left":0, "height":"calc(100% - 45px)"}, 
+                                        {"width":"100%", "border-radius":"5px", "background-image":`url('${teacher_photo}')`, "background-size":"cover", "background-repeat":"no-repeat", "background-position":"top", "position":"absolute", "top":0, "left":0, "height":"calc(100% - 45px)"}, 
                                         null,
                                         ()=>{
                                             show_page_popup("popup_teacher_info", POPUP_FROM_RIGHT, 100, ()=>{
@@ -156,9 +165,9 @@ class ConnectSearchResult extends DomController{
                                                 teacher_info.draw_teacher_facility();
                                             });
                                         });
-        let name_box = CComp.button(`profile_${db_id}`, 
-                                        CComp.text("홍길동", {"font-size":"13px", "font-weight":"bold", "text-align":"center", "display":"block"}, null) + 
-                                        CComp.text("서울 동작구 흑석동", {"font-size":"10px", "font-weight":"normal", "text-align":"center", "display":"block"}, null), 
+        let name_box = CComp.button(`profile_${teacher_db_id}`, 
+                                        CComp.text(teacher_name, {"font-size":"1em", "font-weight":"500", "text-align":"center", "display":"block"}, null) + 
+                                        CComp.text(teacher_address, {"font-size":"0.7em", "font-weight":"normal", "text-align":"center", "display":"block"}, null), 
                                         null, 
                                         null, 
                                         ()=>{
@@ -171,8 +180,8 @@ class ConnectSearchResult extends DomController{
                 CComp.element("div", "", {"padding-top":"130%"}) + //더미
                 photo_box + name_box
                 , 
-                {"position":"relative", "display":"inline-block", "width":"46%", "margin":"2%", "max-width":"200px"}, 
-                {class:"anim_fade_in anim_scale_up"}
+                /*{"position":"relative", "display":"inline-block", "width":"46%", "margin":"2%", "max-width":"200px"}*/null, 
+                {class:"profile_brick anim_fade_in anim_scale_up"}
             );
         return wrapper;
     }
@@ -232,7 +241,8 @@ class TeacherInfo extends DomController{
                                         "height":"30vh",
                                         "background-image":"url('/static/user/res/background/golf_background.jpg')",
                                         "background-size":"cover",
-                                        "background-repeat":"no-repeat"
+                                        "background-repeat":"no-repeat",
+                                        "background-position":"center"
                                     }, 
                                     null);
 
@@ -272,7 +282,11 @@ class TeacherInfo extends DomController{
                                         {"border":"2px solid var(--bg-highlight)", "border-radius":"10px", "padding":"5px 10px", "display":"inline-block", "color":"var(--font-highlight)", "font-weight":"bold"},
                                         null, 
                                         ()=>{
-                                            layer_popup.open_layer_popup(POPUP_BASIC, 'send_message_to_teacher', 100, POPUP_FROM_BOTTOM, null, ()=>{ 
+                                            let animation = POPUP_FROM_BOTTOM;
+                                            if(window.innerWidth > MAX_WIDTH){
+                                                animation = POPUP_FROM_RIGHT;
+                                            }
+                                            layer_popup.open_layer_popup(POPUP_BASIC, 'send_message_to_teacher', 100, animation, null, ()=>{ 
                                                 let sm = new SendMessageToTeacher();
                                                 sm.draw_layout(".send_message_to_teacher");
                                                 sm.draw_send_message_top_title();
@@ -351,7 +365,11 @@ class TeacherInfo extends DomController{
             {
                 "type":"click",
                 "exe":()=>{
-                    layer_popup.open_layer_popup(POPUP_BASIC, 'facility_info_popup', 100, POPUP_FROM_BOTTOM, null, ()=>{ 
+                    let animation = POPUP_FROM_BOTTOM;
+                    if(window.innerWidth > MAX_WIDTH){
+                        animation = POPUP_FROM_RIGHT;
+                    }
+                    layer_popup.open_layer_popup(POPUP_BASIC, 'facility_info_popup', 100, animation, null, ()=>{ 
                         let facility_info = new FacilityInfo();
                         facility_info.draw_layout(".facility_info_popup");
                         facility_info.draw_all();

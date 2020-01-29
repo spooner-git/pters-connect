@@ -1,4 +1,4 @@
-/* .profile_brick{
+.profile_brick{
     position: relative;
     display: inline-block;
     width: 46%;
@@ -6,8 +6,9 @@
     max-width: 250px;
 }
 
-.profile_brick:before{
-    content: "";
-    display: block;
-    padding-top: 130%;
-} */
+@media(min-width:600px){
+    .profile_brick{
+        width: 23%;
+        margin: 1%;
+    }
+}

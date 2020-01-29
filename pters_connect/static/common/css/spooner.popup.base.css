@@ -24,12 +24,15 @@
         /* overflow: hidden; */
         overflow-y: auto;
     }
-    @media(min-width:650px){
+    @media(min-width:800px){
         /* .popup_mobile{
             position: absolute;
             box-shadow: 0 0 24px 0 #28282870;
             border-radius: 10px;
         } */
+        .popup_mobile{
+            box-shadow: var(--box-shadow-dark);
+        }
     }
         .popup_mobile .wrapper_top{
             line-height: 20px;

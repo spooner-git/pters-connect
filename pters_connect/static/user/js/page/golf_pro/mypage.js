@@ -120,7 +120,11 @@ class GolfProMypage extends DomController{
                 {
                     "type":"click",
                     "exe":()=>{
-                        layer_popup.open_layer_popup(POPUP_BASIC, 'golf_pro_phone_number_change_popup', 100, POPUP_FROM_BOTTOM, null, ()=>{ 
+                        let animation = POPUP_FROM_BOTTOM;
+                        if(window.innerWidth > MAX_WIDTH){
+                            animation = POPUP_FROM_RIGHT;
+                        }
+                        layer_popup.open_layer_popup(POPUP_BASIC, 'golf_pro_phone_number_change_popup', 100, animation, null, ()=>{ 
                             let phone_info = new GolfProPhoneInfo();
                             phone_info.draw_layout(".golf_pro_phone_number_change_popup");
                             phone_info.draw_children();

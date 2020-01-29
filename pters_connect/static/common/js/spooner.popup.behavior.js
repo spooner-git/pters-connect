@@ -276,7 +276,8 @@ function func_set_popup_position ($popup_selector, animation_type, popup_size){
             width = popup_size;
             if(windowWidth > MAX_WIDTH) {
                 // left = MAX_WIDTH - (windowWidth - popup_size * windowWidth / 100);
-                left = (windowWidth - MAX_WIDTH*(popup_size/100))/2;
+                // left = (windowWidth - MAX_WIDTH*(popup_size/100))/2;
+                left = 0;
                 width = MAX_WIDTH * width / windowWidth;
             }
             break;
@@ -288,7 +289,8 @@ function func_set_popup_position ($popup_selector, animation_type, popup_size){
 
                 /* 계산식 : 왼쪽 공백 크기 + (content 화면 크기 - 팝업 크기) - (animation translate 크기) */
                 // left = (windowWidth - MAX_WIDTH)/2 + (MAX_WIDTH - MAX_WIDTH*width/100) - (windowWidth - popup_size * windowWidth / 100);
-                left = (windowWidth - MAX_WIDTH*(popup_size/100))/2;
+                // left = (windowWidth - MAX_WIDTH*(popup_size/100))/2;
+                left = windowWidth - MAX_WIDTH;
                 width = MAX_WIDTH * width / windowWidth;
             }
             break;
@@ -318,7 +320,8 @@ function func_set_popup_position ($popup_selector, animation_type, popup_size){
         "transform": `translate(${translate_x}px, ${translate_y}px)`,
         "width": `${width}%`,
         "height": `${height}%`,
-        "left": `${left}px`
+        // "left": `${left}px`
+        "left":`${100*left/windowWidth}%`
     });
 
 }

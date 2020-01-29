@@ -153,7 +153,8 @@ class GolfProCertInfo extends DomController{
         let html = 
             CComp.container(
                 "div",
-                article_title + add_inputs
+                article_title + add_inputs,
+                {"max-width":"800px", "margin":"0 auto"}
             );
 
         this.render(install_target, html);

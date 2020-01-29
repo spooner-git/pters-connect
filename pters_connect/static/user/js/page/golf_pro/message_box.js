@@ -50,7 +50,8 @@ class GolfProMessageBox extends DomController{
         let html = 
             CComp.container(
                 "div",
-                article_title + message_box
+                article_title + message_box,
+                {"max-width":"800px", "margin":"0 auto"}
             );
 
         this.render(install_target, html);
@@ -84,7 +85,8 @@ class GolfProMessageBox extends DomController{
         let html = 
             CComp.container(
                 "div",
-                article_title + message_box
+                article_title + message_box,
+                {"max-width":"800px", "margin":"0 auto"}
             );
 
         this.render(install_target, html);
@@ -114,7 +116,11 @@ class GolfProMessageBox extends DomController{
                 {
                     "type":"click", 
                     "exe":()=>{
-                        layer_popup.open_layer_popup(POPUP_BASIC, 'send_message_to_guest', 100, POPUP_FROM_BOTTOM, null, ()=>{ 
+                        let animation = POPUP_FROM_BOTTOM;
+                        if(window.innerWidth > MAX_WIDTH){
+                            animation = POPUP_FROM_RIGHT;
+                        }
+                        layer_popup.open_layer_popup(POPUP_BASIC, 'send_message_to_guest', 100, animation, null, ()=>{ 
                             let sm = new SendMessageToGuest();
                             sm.draw_layout(".send_message_to_guest");
                             sm.draw_children();
