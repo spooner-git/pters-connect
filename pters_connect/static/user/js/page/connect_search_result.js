@@ -49,13 +49,16 @@ class ConnectSearchResult extends DomController{
             let bounds = new kakao.maps.LatLngBounds();
             this.kakao_removeMarkers();
             for (var i=0; i<data.length; i++) {
-
                 // context.kakao_displayMarker(data[i]);
-                
                 bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-            }   
+            }
             // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+            
             context.map.setBounds(bounds);
+            this.map.setLevel(4);
+            bounds = this.map.getBounds();
+            
+            this.demo_db_data(bounds)
         }
     }
 
@@ -79,6 +82,30 @@ class ConnectSearchResult extends DomController{
     kakao_removeMarkers(){
         this.map_markers.forEach((el)=>{el.setMap(null);});
         this.map_markers = [];
+    }
+
+    demo_db_data(bounds){
+        let x1 = bounds.da;
+        let x2 = bounds.ia;
+        let y1 = bounds.ka;
+        let y2 = bounds.ja;
+
+        let datas = [];
+        for(let i=0; i<10; i++){
+            datas.push(
+                    {   
+                        place_name:`데모 ${i}`,
+                        x:Math.random()*( x2 - x1) + x1,
+                        y:Math.random()*( y2 - y1) + y1
+                    }
+                );
+        }
+
+        datas.forEach((el)=>{
+            this.kakao_displayMarker(el);
+            console.log(el)
+        });
+        
     }
 
     draw_search_input(install_target){
