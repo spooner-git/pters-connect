@@ -53,12 +53,14 @@ class ConnectSearchResult extends DomController{
                 bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
             }
             // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-            
             context.map.setBounds(bounds);
+            // 지도를 4레벨 크기로 보도록 (너무 확대되거나 축소되지 않도록)
             this.map.setLevel(4);
+            // 4레벨로 했을때 보여지는 영역
             bounds = this.map.getBounds();
-            
+            // 데모 랜덤 데이터 만들기
             this.demo_db_data(bounds)
+            this.draw_result_list();
         }
     }
 
@@ -103,7 +105,6 @@ class ConnectSearchResult extends DomController{
 
         datas.forEach((el)=>{
             this.kakao_displayMarker(el);
-            console.log(el)
         });
         
     }
