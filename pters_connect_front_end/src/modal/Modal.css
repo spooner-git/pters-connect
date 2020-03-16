@@ -1,0 +1,22 @@
+.modal{
+    position: fixed;
+    bottom: 0;
+    max-height: 100vh;
+    width:100vw;
+    /* max-width:600px; */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    /* border-radius: 8px 8px 0 0; */
+    box-shadow: 0 0 4px 0 #e8e8e8;
+    overflow-y: auto;
+}
+
+@media(min-width:600px){
+    .modal{
+        position: absolute;
+        bottom: unset;
+        left: unset;
+        transform: unset;
+    }
+}
