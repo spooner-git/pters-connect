@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import './ConnectTeacher.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faShower, faTshirt, faClone, faLock, faParking, faAddressBook, faMap } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faShower, faTshirt, faClone, faLock, faParking, faMap, faTimes, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import Button from '../component/Buttons/Button';
 import { demo_info } from '../demo_db';
 import Footer from '../component/Footer';
+import Modal from '../modal/Modal';
+import Input from '../component/Inputs/Input';
+import Title from '../component/Title';
+import TextButton from '../component/Buttons/TextButton';
+import TextArea from '../component/Inputs/TextArea';
 
 class PAGEConnectTeacher extends Component {
     constructor(props){
@@ -32,7 +37,8 @@ class PAGEConnectTeacher extends Component {
                 star:null,
                 reviewer:null,
             }
-        }
+        },
+        inquiry_modal_open:0
     }
 
     componentDidMount = ()=>{
@@ -43,6 +49,18 @@ class PAGEConnectTeacher extends Component {
 
     get_info_from_server(){
 
+    }
+
+    open_inquiry_modal = ()=>{
+        this.setState({
+            inquiry_modal_open:1
+        });
+    }
+
+    close_inquiry_modal = ()=>{
+        this.setState({
+            inquiry_modal_open:0
+        })
     }
 
     render(){
@@ -74,7 +92,14 @@ class PAGEConnectTeacher extends Component {
                             </p>
 
                             <div style={{height:"40px"}}>
-                                <Button style={{float:"right", borderRadius:"4px", height:"40px", lineHeight:"40px", padding:"0 15px", color:"#fe4e65", fontWeight:"bold", borderColor:"#fe4e65"}}>상담 보내기</Button>
+                                <Button style={{float:"right", borderRadius:"4px", height:"40px", lineHeight:"40px", padding:"0 15px", color:"#fe4e65", fontWeight:"bold", borderColor:"#fe4e65"}} onClick={()=>{this.open_inquiry_modal();}}>상담 보내기</Button>
+                                {
+                                    this.state.inquiry_modal_open === 1
+                                    ?<Modal style={{height:""}} className="inquiry_modal" event_close={()=>{this.close_inquiry_modal()}}>
+                                        <InquiryWriter name={this.state.data.name} id={this.state.data.id} event_close={()=>{this.close_inquiry_modal()}}></InquiryWriter>
+                                    </Modal>
+                                    :""
+                                }
                             </div>
                         </section>
 
@@ -132,7 +157,43 @@ class PAGEConnectTeacher extends Component {
             </div>
         );
     }
-    
 };
+
+
+class InquiryWriter extends Component {
+    render(){
+        return (
+            <div style={{padding:"10px 10px"}}>
+                <div style={{maxWidth:"600px", margin:"0 auto", backgroundColor:"#f5f2f3", padding:"0 20px 20px"}}>
+                    <div style={{height:"60px", display:"flex", padding:"10px 0"}}>
+                        <div style={{flex:"1 1 0"}}>
+                            <Title><span style={{fontSize:"20px", fontWeight:"900"}}>상담 요청</span> ({this.props.name})</Title>
+                        </div>
+                        <div style={{flexBasis:"70px", textAlign:"right"}}>
+                            <TextButton onClick={()=>{this.props.event_close()}} style={{fontSize:"16px"}}>
+                                <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon> 취소
+                            </TextButton>
+                        </div>
+                    </div>
+                    <div style={{padding:"10px 0"}}>
+                        <Title>레슨 목표</Title>
+                        <TextArea placeHolder="100자 이내" maxLength="100" style={{width:"100%", minHeight:"65px", maxHeight:"65px", overflowY:"auto"}}></TextArea>
+                    </div>
+                    <div style={{padding:"10px 0"}}>
+                        <Title>궁금한 점</Title>
+                        <TextArea placeHolder="300자 이내" maxLength="300" style={{width:"100%", minHeight:"65px", maxHeight:"90px", overflowY:"auto"}}></TextArea>
+                    </div>
+                    <div>
+                        <p style={{fontSize:"14px", color:"#fe4e65", wordBreak:"keep-all"}}> <FontAwesomeIcon icon={faExclamationTriangle}></FontAwesomeIcon><br></br> 답변이 도착할 때 까지 같은 강사님께 요청을 반복해서 보낼 수 없으니, 신중히 작성해주세요.</p>
+                    </div>
+                    <div>
+                        <Button highlight={true} style={{borderRadius:"3px", width:"100%", height:"50px", lineHeight:"50px", border:"0"}} onClick={()=>{alert("컨펌 팝업")}}>보내기</Button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+};
+
 
 export default PAGEConnectTeacher;

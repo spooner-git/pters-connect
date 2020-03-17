@@ -1,0 +1,16 @@
+.textarea_general{
+    border: 1px solid #e7e7e7;
+    border-radius: 3px;
+    padding: 11px 8px 8px;
+    background-color: #ffffff;
+    color: #333;
+}
+
+[contenteditable=true]:empty:before{
+    content: attr(placeholder);
+    display:block;
+}
+
+.textarea_general[contenteditable=true]:empty{
+    color: #9f9f9f;
+}

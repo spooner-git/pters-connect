@@ -55,3 +55,17 @@
     padding: 10px 20px;
     text-align: center;
 }
+
+.inquiry_modal{
+
+}
+
+@media(min-width:600px){
+    .inquiry_modal{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        box-shadow: unset;
+        background-color: transparent;
+    }
+}

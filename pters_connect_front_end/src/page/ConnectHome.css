@@ -1,7 +1,7 @@
 .topbanner_description_at_home{
     /* style={{textAlign:"center", fontSize:"3.5rem", color:"#ffffff", fontWeight:"900", margin:0}} */
     text-align: center;
-    font-size: 2.2rem;
+    font-size: 3rem;
     color: #ffffff;
     font-weight: 900;
     margin: 0;
@@ -60,5 +60,16 @@
 @media(min-width:750px){
     .home_flex_parent{
         flex-direction: row;
+    }
+}
+
+.section_introduce{
+    padding-bottom: 30px;
+    max-width: unset;
+}
+
+@media(min-width:750px){
+    .section_introduce{
+        padding: 60px 0;
     }
 }

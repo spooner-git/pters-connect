@@ -48,11 +48,11 @@ class PAGEConnectHome extends Component {
                 <section className="section_at_home" style={{maxWidth:"unset"}}>
                     <TopBanner>
                         <h1 style={{textAlign:"center", fontSize:"20px", color:"#ffffff", fontWeight:"bold"}}>PTERS 커넥트</h1>
-                        <p className="topbanner_description_at_home">내 주변 레슨 바로 검색</p>
+                        <p className="topbanner_description_at_home">레슨, 쉽게 찾자</p>
                     </TopBanner>
                 </section>
 
-                <section>
+                <section style={{display:"none"}}>
                     <h2 style={{textAlign:"center", fontSize:"16px", fontWeight:"normal", maxWidth:"540px", margin:"auto", padding:"20px", wordBreak:"keep-all"}}>
                         배우고 싶은게 있는데,<br></br> 어떻게 시작해야할 지 고민인가요?<br></br><br></br>
                         피터스 커넥트에서<br></br> 내 주변 레슨 강사님을 검색하고 상담을 요청해보세요!<br></br>
@@ -99,7 +99,7 @@ class PAGEConnectHome extends Component {
                     </div>
                 </section>
                 
-                <section className="section_at_home" style={{padding:"30px 0", maxWidth:"unset", backgroundColor:"#f5f2f3"}}>
+                <section className="section_at_home section_introduce" style={{backgroundColor:"#f5f2f3"}}>
                     <div className="home_flex_parent flex_reverse">
                         <div>
                             <img src="/images/front_page/pters_connect3.png" style={{width:"100%"}} className="front_image"></img>
@@ -117,7 +117,7 @@ class PAGEConnectHome extends Component {
                         </div>
                     </div>
                 </section>
-                <section className="section_at_home" style={{padding:"30px 0", maxWidth:"unset", backgroundColor:"#fff"}}>
+                <section className="section_at_home section_introduce" style={{backgroundColor:"#fff"}}>
                     <div className="home_flex_parent">
                         <div style={{textAlign:"left"}}>
                             <div style={{position:"absolute", top:"50%", transform:"translateY(-50%)"}}>

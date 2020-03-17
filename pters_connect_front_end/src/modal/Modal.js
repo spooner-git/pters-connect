@@ -2,10 +2,11 @@ import React, { Fragment } from 'react';
 import "./Modal.css";
 import { OFF } from "../const";
 
-const Modal = ({children, style, event_close, shade}) => {
+const Modal = ({children, style, event_close, shade, className}) => {
+    var classes = `modal ${className}`
     return (
         <Fragment>
-            <div style={{...style, zIndex:"50"}} className="modal">
+            <div style={{...style, zIndex:"50"}} className={classes}>
                 {children}
             </div>
             {

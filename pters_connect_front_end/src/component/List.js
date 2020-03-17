@@ -90,7 +90,7 @@ class List extends Component {
         return (
             <div className="list_wrapper" style={this.props.style}>
                 {this.state.list.map((el)=>{
-                    return <ListArticle category={el.category} name={el.name} address={el.address} id={el.id} review_star={el.review.star} review_number={el.review.reviewer} key={el.place_name}></ListArticle>
+                    return <ListArticle category={el.category} name={el.name} address={el.address} id={el.id} review_star={el.review.star} review_number={el.review.reviewer} key={el.id}></ListArticle>
                 })}
             </div>
         );
