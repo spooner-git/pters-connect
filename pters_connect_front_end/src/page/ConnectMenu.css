@@ -1,0 +1,9 @@
+.menu_item_wrap{
+    padding: 20px;
+    font-size: 18px;
+    text-align: left;
+}
+.menu_item{
+    padding: 15px 15px;
+    border-bottom: 1px solid #e9e9e9;
+}

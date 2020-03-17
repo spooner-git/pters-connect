@@ -1,0 +1,14 @@
+.top_banner{
+    height: 250px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 32px 0;
+}
+
+@media(min-width:600px){
+    .top_banner{
+
+    }
+}

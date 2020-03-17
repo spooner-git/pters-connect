@@ -1,0 +1,33 @@
+.topbanner_description_at_home{
+    /* style={{textAlign:"center", fontSize:"3.5rem", color:"#ffffff", fontWeight:"900", margin:0}} */
+    text-align: center;
+    font-size: 2.2rem;
+    color: #ffffff;
+    font-weight: 900;
+    margin: 0;
+}
+@media(min-width:600px){
+    .topbanner_description_at_home{
+        font-size: 3.5rem;
+    }
+}
+
+.section_at_home{
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.home_category1_wrap{
+    padding: 10px 20px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.home_category2_wrap{
+    padding: 20px;
+    padding-top: 0;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
