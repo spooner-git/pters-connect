@@ -3,11 +3,11 @@ import "./ConnectHome.css";
 import ButtonToggle from '../component/Buttons/ButtonToggle';
 import { PROGRAM_CATEGORY } from '../const';
 import { NavLink } from 'react-router-dom';
-import SectionTitle from '../component/SectionTitle';
 import TopBanner from '../component/TopBanner/TopBanner';
 import ImageButton from '../component/Buttons/ImageButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRunning, faMusic } from '@fortawesome/free-solid-svg-icons';
+import Footer from '../component/Footer';
 
 class PAGEConnectHome extends Component {
     constructor(props){
@@ -51,15 +51,18 @@ class PAGEConnectHome extends Component {
                 </section>
 
                 <section>
-                    <h2 style={{textAlign:"center", fontSize:"16px", fontWeight:"normal", maxWidth:"540px", margin:"auto", padding:"20px"}}>
-                        배우고 싶은게 있는데, 어떻게 시작해야할 지 고민인가요?<br></br>
-                        피터스 커넥트에서 내 주변 레슨 강사님을 검색하고 상담을 요청해보세요!<br></br>
+                    <h2 style={{textAlign:"center", fontSize:"16px", fontWeight:"normal", maxWidth:"540px", margin:"auto", padding:"20px", wordBreak:"keep-all"}}>
+                        배우고 싶은게 있는데,<br></br> 어떻게 시작해야할 지 고민인가요?<br></br><br></br>
+                        피터스 커넥트에서<br></br> 내 주변 레슨 강사님을 검색하고 상담을 요청해보세요!<br></br>
                         더 쉽고 간편하게 레슨이 연결되는 새로운 세상!
                     </h2>
                 </section>
 
                 <section className="section_at_home" style={{padding:"20px 0"}}>
-                    {/* <SectionTitle style={{padding:"0 20px", fontWeight:"500"}}>주 분류</SectionTitle> */}
+                    <h2 style={{textAlign:"center", fontSize:"30px", fontWeight:"900", margin:0}}>
+                        원하는 레슨을 선택해보세요!
+                    </h2>
+                    <h3 style={{textAlign:"center", fontWeight:"normal", marginTop:0}}>간편하게 검색하고, 상담요청을 보내세요.</h3>
                     <div className="home_category1_wrap">
                         {        
                             Object.keys(PROGRAM_CATEGORY).map((el)=>{
@@ -94,6 +97,7 @@ class PAGEConnectHome extends Component {
                         }
                     </div>
                 </section>
+                <Footer></Footer>
             </div>
         ); 
     }

@@ -10,6 +10,8 @@ import PAGEConnectHome from './page/ConnectHome';
 import PAGEConnectMenu from './page/ConnectMenu';
 import PAGEConnectTeacher from './page/ConnectTeacher';
 import RootContent from './component/RootContent';
+import PAGEConnectLogin from './page/ConnectLogin';
+import Footer from './component/Footer';
 
 class App extends Component{
   constructor(){
@@ -44,7 +46,9 @@ class App extends Component{
               <PAGEConnectMenu classes={this.state.menu_open === 0 ? "hide_page" : ""} event_menu_close={this.handle_close_menu} />
               <Route path="/list" render={() => <PageConnectList classes={this.state.menu_open === 1 ? "hide_page" : ""} />}></Route>
               <Route path="/teacher" render={() => <PAGEConnectTeacher classes={this.state.menu_open === 1 ? "hide_page" : ""} />}></Route>
+              <Route path="/login" render={() => <PAGEConnectLogin classes={this.state.menu_open === 1 ? "hide_page" : ""} />}></Route>
           </RootContent>
+          
         </Router>
       </div>
       

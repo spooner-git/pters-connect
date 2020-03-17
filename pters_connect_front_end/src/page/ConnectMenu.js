@@ -18,7 +18,7 @@ const PAGEConnectMenu = ({classes, event_menu_close}) => {
                 <NavLink to="/list" onClick={event_menu_close}>
                     <div className="menu_item">리스트</div>
                 </NavLink>
-                <NavLink to="/list" onClick={event_menu_close}>
+                <NavLink to="/login" onClick={event_menu_close}>
                     <div className="menu_item">Login</div>
                 </NavLink>
             </div>

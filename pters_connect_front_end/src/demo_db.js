@@ -177,8 +177,11 @@ const demo_info = {
     address:"서울시 동작구 보라매로 5가길 7, 우성 캐릭터그린빌 오피스텔 820호",
     x:"",
     y:"",
+    // amenities:[
+    //     "shower", "locker", "towel", "cloth", "parking"
+    // ],
     amenities:[
-        "shower", "locker", "towel", "cloth", "parking"
+        "shower", "parking"
     ],
     review:{
         star:"4.5",

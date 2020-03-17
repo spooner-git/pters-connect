@@ -5,6 +5,7 @@ import { faStar, faShower, faTshirt, faClone, faLock, faParking, faAddressBook, 
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import Button from '../component/Buttons/Button';
 import { demo_info } from '../demo_db';
+import Footer from '../component/Footer';
 
 class PAGEConnectTeacher extends Component {
     constructor(props){
@@ -97,26 +98,26 @@ class PAGEConnectTeacher extends Component {
                         */}
 
                         <section className="teacher_amenities_wrap teacher_section">
-                            <div className="amenity_element">
-                                <div style={{fontSize:"20px", color:"#7f7f7f"}}><FontAwesomeIcon icon={faShower}></FontAwesomeIcon>
-                                </div><div>샤워실</div>
-                            </div>
-                            <div className="amenity_element">
-                                <div style={{fontSize:"20px", color:"#7f7f7f"}}><FontAwesomeIcon icon={faLock}></FontAwesomeIcon>
-                                </div><div>라커</div>
-                            </div>
-                            <div className="amenity_element">
-                                <div style={{fontSize:"20px", color:"#7f7f7f"}}><FontAwesomeIcon icon={faClone}></FontAwesomeIcon>
-                                </div><div>타월</div>
-                            </div>
-                            <div className="amenity_element">
-                                <div style={{fontSize:"20px", color:"#7f7f7f"}}><FontAwesomeIcon icon={faTshirt}></FontAwesomeIcon>
-                                </div><div>운동복</div>
-                            </div>
-                            <div className="amenity_element">
-                                <div style={{fontSize:"20px", color:"#7f7f7f"}}><FontAwesomeIcon icon={faParking}></FontAwesomeIcon>
-                                </div><div>주차</div>
-                            </div>
+                                <div className="amenity_element">
+                                    <div style={{fontSize:"20px", color: this.state.data.amenities.indexOf("shower") !== -1 ? "#fe4e65" : "#cccccc"}}><FontAwesomeIcon icon={faShower}></FontAwesomeIcon>
+                                    </div><div>샤워실</div>
+                                </div>
+                                <div className="amenity_element">
+                                    <div style={{fontSize:"20px", color:this.state.data.amenities.indexOf("locker") !== -1 ? "#fe4e65" : "#cccccc"}}><FontAwesomeIcon icon={faLock}></FontAwesomeIcon>
+                                    </div><div>라커</div>
+                                </div>
+                                <div className="amenity_element">
+                                    <div style={{fontSize:"20px", color:this.state.data.amenities.indexOf("towel") !== -1 ? "#fe4e65" : "#cccccc"}}><FontAwesomeIcon icon={faClone}></FontAwesomeIcon>
+                                    </div><div>타월</div>
+                                </div>
+                                <div className="amenity_element">
+                                    <div style={{fontSize:"20px", color:this.state.data.amenities.indexOf("cloth") !== -1 ? "#fe4e65" : "#cccccc"}}><FontAwesomeIcon icon={faTshirt}></FontAwesomeIcon>
+                                    </div><div>운동복</div>
+                                </div>
+                                <div className="amenity_element">
+                                    <div style={{fontSize:"20px", color:this.state.data.amenities.indexOf("parking") !== -1 ? "#fe4e65" : "#cccccc"}}><FontAwesomeIcon icon={faParking}></FontAwesomeIcon>
+                                    </div><div>주차</div>
+                                </div>
                         </section>
 
                         <section className="teacher_review_from_users_wrap teacher_section">
@@ -127,6 +128,7 @@ class PAGEConnectTeacher extends Component {
                         
                     </div>
                 </div>
+                <Footer></Footer>
             </div>
         );
     }
