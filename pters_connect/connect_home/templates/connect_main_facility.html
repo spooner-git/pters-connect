@@ -1,0 +1,62 @@
+{% extends "connect_base.html" %}
+
+{% load static_url %}
+{% block local_css %}
+    
+{% endblock %}
+
+{% block top_right %}
+
+{% endblock %} 
+
+{% block content %}
+<!-- <section id="connect_main_facility">
+</section> -->
+
+<button style="width:100px;height:50px;font-size:16px;font-weight:bold;margin-top:100px" id="testtest">
+    테스트
+</button>
+<div>
+    <input type="text" placeholder="장소명" id="place_name">
+    <input type="text" placeholder="반경" id="radius">
+</div>
+<div id="search_list">
+
+</div>
+
+
+{% endblock %}
+
+{% block local_js_footer %}
+    <link rel="stylesheet" href={% static_url "user/css/page/connect_main_facility.css" %}>    
+    <script type="text/javascript" src={% static_url "user/js/page/connect_main_facility.js" %}></script>
+    <script>
+
+        let connect_search_result_facility = new ConnectSearchResultFacility();
+        connect_search_result_facility.draw_layout("#connect_main_facility");
+        connect_search_result_facility.draw_children();
+
+        $(document).on("click", '#testtest',()=>{
+            let place_name = $('#place_name').val() == "" ? null : $('#place_name').val();
+            let radius = $('#radius').val() == "" ? null : $('#radius').val();
+            MapApi.get_places(place_name, null, null, radius, (result)=>{
+                let doms = 
+                    result.map((el)=>{
+                        let place_name = el.place_name;
+                        let road_address = el.road_address_name;
+                        if(road_address == ""){
+                            road_address = el.address_name;
+                        }
+                        return `<div style="padding:10px;">
+                                    <div style="font-size:16px;font-weight:bold">${place_name}</div>
+                                    <div style="font-size:13px;">${road_address}</div>
+                                </div>
+                                `;
+                    });
+                    console.log(doms, result)
+                $("#search_list").html(doms.join(""));
+            });
+        });
+
+    </script>
+{% endblock %}

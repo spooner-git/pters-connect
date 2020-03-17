@@ -1,4 +1,17 @@
 class DomController{
+
+    draw_layout(install_target){
+        let html_to_join = [];
+        for(let article in this.install_target){
+            let target = this.install_target[article];
+            html_to_join.push(
+                CComp.container("article", "", null, {id:target.replace(/[.# ]/gi, '')})
+            );
+        }
+        let html = html_to_join.join("");
+        this.render(install_target, html);
+    }
+
     render(install_target, html){
         document.querySelector(install_target).innerHTML = html;
     }
@@ -96,15 +109,81 @@ class ConnectBase{
         let menu3_style = {"padding":"15px 0", "color":"var(--fundamental-white)", "font-size":"20px", "font-weight":"bold", "animation-delay":"0.1s", "animation-duration":"1.5s"};
         let close_style = {"padding":"15px", "color":"var(--fundamental-white)", "position":"absolute", "top":"15px", "right":"15px", "animation-delay":"0.2s", "animation-duration":"1s"};
         let menu1 = CComp.button("menu_search", "찾아 보기", menu1_style, {class:"anim_fade_in"}, ()=>{location.href = "/"});
-        let menu2 = CComp.button("menu_mypage", "내 정보", menu2_style, {class:"anim_fade_in"}, ()=>{location.href="/golf_pro/mypage";});
-        let menu3 = CComp.button("menu_messages", "상담 내역", menu2_style, {class:"anim_fade_in"}, ()=>{location.href="/golf_pro/message_box";});
-        let menu4 = CComp.button("menu_about", "About PTERS", menu3_style, {class:"anim_fade_in"}, ()=>{});
+        let menu2 = CComp.button("menu_facility", "연습장 찾기", menu1_style, {class:"anim_fade_in"}, ()=>{location.href = "/connect_home/facility"});
+        let menu3 = CComp.button("menu_mypage", "내 정보", menu2_style, {class:"anim_fade_in"}, ()=>{location.href="/golf_pro/mypage";});
+        let menu4 = CComp.button("menu_messages", "상담 내역", menu2_style, {class:"anim_fade_in"}, ()=>{location.href="/golf_pro/message_box";});
+        let menu5 = CComp.button("menu_about", "About PTERS", menu3_style, {class:"anim_fade_in"}, ()=>{});
         let close = CComp.button("menu_about", CImg.x(["var(--fundamental-white)"]), close_style, {class:"anim_fade_in"}, ()=>{layer_popup.close_layer_popup()});
 
-        let menu_wrapper = CComp.container("div", menu1 + menu2 + menu3 + menu4, {"position":"absolute", "top":"50%", "left":"50%", "transform":"translate(-50%, -50%)"}, null);
+        let menu_wrapper = CComp.container("div", menu1 + menu2 + menu3 + menu4 + menu5, {"position":"absolute", "top":"50%", "left":"50%", "transform":"translate(-50%, -50%)"}, null);
         let box = CComp.container("div", menu_wrapper + close, {"background-color":"var(--fundamental-black)", "width":"100%", "height":"100%", "position":"relative"}, null);
         
         return box;
     }
 
+}
+
+class MapApi{
+    static get_places(place_name, x, y, radius, user_callback){
+        let get_data = [];
+
+        let PLACE = place_name == null ? "지하철" : place_name;
+        let X = x == null ? 127.06283102249932 : x;
+        let Y = y == null ? 37.514322572335935 : y;
+        let RADIUS = radius == null ? 1000 : radius;
+        let DATA_PER_PAGE = 15;
+        CFunc.ajax(
+            {
+                url:"https://dapi.kakao.com/v2/local/search/keyword.json",
+                data:{"y":Y, "x":X, "radius":RADIUS, "query":PLACE, "page":1, "size":DATA_PER_PAGE},
+                type:"GET",
+                header:{"Authorization": kakao_ak}
+            },
+            {
+                callback:(data)=>{
+                    data.documents.forEach((el)=>{
+                        get_data.push(el);
+                    });
+                    let total_count = Number(data.meta.total_count);
+                    let _page = 1;
+                    let total_page_number = Math.ceil(total_count/DATA_PER_PAGE);
+
+                    if(data.meta.is_end){
+                        console.log("PAGE 1 끝", get_data);
+                        if(user_callback != undefined){
+                            user_callback(get_data);
+                        }
+                        return get_data;
+                    }
+
+                    for(let i=2; i<=total_page_number; i++){
+                        CFunc.ajax(
+                            {
+                                url:"https://dapi.kakao.com/v2/local/search/keyword.json",
+                                data:{"y":Y, "x":X, "radius":RADIUS, "query":PLACE, "page":_page, "size":DATA_PER_PAGE},
+                                type:"GET",
+                                header:{"Authorization": kakao_ak}
+                            },
+                            {
+                                callback:(data)=>{
+                                    data.documents.forEach((el)=>{
+                                        get_data.push(el);
+                                        if(get_data.length == total_count){
+                                            console.log(`PAGE ${i} 끝`,get_data);
+                                            if(user_callback != undefined){
+                                                user_callback(get_data);
+                                            }
+                                            return get_data;
+                                        }
+                                    });
+                                }
+                            }
+                        )
+                    }
+
+
+                }
+            }
+        );
+    }
 }

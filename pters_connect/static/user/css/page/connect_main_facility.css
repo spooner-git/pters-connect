@@ -1,0 +1,14 @@
+.profile_brick{
+    position: relative;
+    display: inline-block;
+    width: 46%;
+    margin: 2%;
+    max-width: 250px;
+}
+
+@media(min-width:600px){
+    .profile_brick{
+        width: 23%;
+        margin: 1%;
+    }
+}

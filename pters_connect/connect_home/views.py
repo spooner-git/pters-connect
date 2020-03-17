@@ -24,3 +24,10 @@ class SearchResultView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(SearchResultView, self).get_context_data(**kwargs)
         return context
+
+class SearchFacilityView(TemplateView):
+    template_name = 'connect_main_facility.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(SearchFacilityView, self).get_context_data(**kwargs)
+        return context

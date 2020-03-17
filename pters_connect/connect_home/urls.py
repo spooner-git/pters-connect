@@ -21,4 +21,5 @@ from . import views
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^search_result/$', views.SearchResultView.as_view(), name='search_result'),
+    url(r'^facility/$', views.SearchFacilityView.as_view(), name='facility'),
 ]

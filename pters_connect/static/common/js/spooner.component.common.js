@@ -828,3 +828,66 @@ class Anim{
         }, 500);
     }
 }
+
+const kakao_ak = "KakaoAK 2223d3c0765e40d0ff687f4df91f5bde";
+class CFunc{
+    static ajax(essential_data, option_data){
+        let essential = {
+            data:null,
+            type:null,
+            url:null,
+            header:null
+        };
+
+        let option = {
+            callback:null,
+            error_callback:null
+        };
+
+        for(let data in essential_data){
+            essential[data] = essential_data[data];
+        }
+        for(let data in essential){
+            if(essential[data] == null){
+                return false;
+            }
+        }
+        for(let data in option_data){
+            option[data] = option_data[data];
+        }
+
+        $.ajax({
+            url: essential.url,
+            type: essential.type, // GET POST
+            data: essential.data,
+            headers:essential.header != null ? essential.header : "",
+            dataType : 'JSON',
+    
+            beforeSend:function(xhr, settings){
+                // if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                //     xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                // }
+            },
+    
+            //보내기후 팝업창 닫기
+            complete:function(){
+                
+            },
+    
+            //통신성공시 처리
+            success:function(data){
+                if(option.callback != null){
+                    option.callback(data);
+                }
+            },
+    
+            //통신 실패시 처리
+            error:function(){
+                if(option.error_callback != null){
+                    option.error_callback();
+                }
+                // show_error_message({title:'통신 오류 발생', comment:'새로 고침 후 다시 시도해주세요.'});
+            }
+        });
+    }
+}

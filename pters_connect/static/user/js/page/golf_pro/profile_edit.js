@@ -307,6 +307,7 @@ class FacilitySearching extends DomController{
         this.map_markers = [];
     }
 
+
     draw_layout(install_target){
         let top_title = CComp.container(/*type*/ "article", /*title*/ "", /*style*/ null, 
                                             /*attr*/ {id:this.install_target.top_title.replace(/#/, ''), class:"article_padding"});
