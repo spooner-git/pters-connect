@@ -40,7 +40,7 @@ class RootTop extends Component {
                             <li className="root_top_pc_menu_item"><NavLink to="/map"><TextButton>지도 탐색</TextButton></NavLink></li>
                             <li className="root_top_pc_menu_item"><NavLink to="/list"><TextButton>리스트 검색</TextButton></NavLink></li>
                             <li className="root_top_pc_menu_item"><NavLink to="/"><TextButton>이용 방법</TextButton></NavLink></li>
-                            <li className="root_top_pc_menu_item"><NavLink to="/login"><Button highlight={true} style={{borderRadius:"3px", border:0, padding:"0 15px"}}>사용해보기</Button></NavLink></li>
+                            <li className="root_top_pc_menu_item"><NavLink to="/login"><Button highlight={true} style={{borderRadius:"3px", border:0, padding:"0 15px"}}>로그인/가입</Button></NavLink></li>
                         </ul>
                         
                     </div>

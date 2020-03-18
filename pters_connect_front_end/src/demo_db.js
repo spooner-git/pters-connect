@@ -162,7 +162,25 @@ const demo_weight_trainning = [
 
 const demo_list = {
     WT:demo_weight_trainning,
-    PI:demo_pilates
+    PI:demo_pilates,
+    YG:demo_pilates,
+    BL:demo_pilates,
+    GOLF:demo_pilates,
+    TENNIS:demo_pilates,
+    BILLIARD:demo_pilates,
+    SPINNING:demo_pilates,
+    MARTIALARTS:demo_pilates,
+    RUNNING:demo_pilates,
+    BOXING:demo_pilates,
+    SPORTSRECOVERY:demo_pilates,
+    MEDITATION:demo_pilates,
+    BOOTCAMP:demo_pilates,
+    ROWING:demo_pilates,
+    CYCLING:demo_pilates,
+    DANCE:demo_pilates,
+    OUTDOOR:demo_pilates,
+    ENTRANCEEXAMINATION:demo_pilates,
+    SPORTS:demo_pilates
 }
 
 const demo_info = {

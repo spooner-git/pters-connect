@@ -1,10 +1,14 @@
 .topbanner_description_at_home{
     /* style={{textAlign:"center", fontSize:"3.5rem", color:"#ffffff", fontWeight:"900", margin:0}} */
-    text-align: center;
-    font-size: 3rem;
-    color: #ffffff;
+    /* text-align: center; */
+    /* font-size: 3rem; */
+    /* color: #ffffff; */
+    font-size: 3.5rem;
     font-weight: 900;
     margin: 0;
+    padding: 0 20px;
+    margin-top: 100px;
+    word-break: keep-all;
 }
 @media(min-width:600px){
     .topbanner_description_at_home{
@@ -71,5 +75,14 @@
 @media(min-width:750px){
     .section_introduce{
         padding: 60px 0;
+    }
+}
+
+.lesson_brick_image_button{
+    width: 50%;
+}
+@media(min-width:750px){
+    .lesson_brick_image_button{
+        width: 25%;
     }
 }

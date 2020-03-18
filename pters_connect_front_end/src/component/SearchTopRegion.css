@@ -1,0 +1,24 @@
+.category_tool{
+    width: 100%;
+    overflow-x: auto;
+    padding: 5px 15px;
+}
+
+.search_top_region_region_input{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 16px;
+    text-align: left;
+}
+
+.region_selector_modal{
+    height: 60vh;
+}
+
+@media(min-width:600px){
+    .region_selector_modal{
+        height: 500px;
+        /* max-height: 100vh; */
+    }
+}

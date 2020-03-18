@@ -1,0 +1,43 @@
+.topbanner_description_at_aboutus{
+    max-width: 900px;
+    text-align: center;
+    color: #fff;
+    font-size: 3.2rem;
+    font-weight: 900;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 0 20px;
+    word-break: keep-all;
+}
+
+.topbanner_subdescription_at_aboutus{
+    max-width: 900;
+    text-align: center;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin: 0 auto;
+    padding: 0 20px;
+    word-break: keep-all;
+}
+
+.section_at_aboutus{
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.section_title_at_aboutus{
+    font-weight: 900;
+    font-size: 1.6rem;
+    text-align: center;
+    margin: 10px 0px;
+}
+
+.section_content_at_aboutus{
+    font-size: 16px;
+    text-align: center;
+    padding: 0 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    word-break: keep-all;
+}

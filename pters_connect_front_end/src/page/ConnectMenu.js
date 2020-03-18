@@ -9,7 +9,7 @@ const PAGEConnectMenu = ({classes, event_menu_close}) => {
                 <NavLink to="/" onClick={event_menu_close}>
                     <div className="menu_item">Home</div>
                 </NavLink>
-                <NavLink to="/" onClick={event_menu_close}>
+                <NavLink to="/aboutus" onClick={event_menu_close}>
                     <div className="menu_item">About</div>
                 </NavLink>
                 <NavLink to="/map" onClick={event_menu_close}>

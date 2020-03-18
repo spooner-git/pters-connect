@@ -184,7 +184,7 @@ class InquiryWriter extends Component {
                         <TextArea placeHolder="300자 이내" maxLength="300" style={{width:"100%", minHeight:"65px", maxHeight:"90px", overflowY:"auto"}}></TextArea>
                     </div>
                     <div>
-                        <p style={{fontSize:"14px", color:"#fe4e65", wordBreak:"keep-all"}}> <FontAwesomeIcon icon={faExclamationTriangle}></FontAwesomeIcon><br></br> 답변이 도착할 때 까지 같은 강사님께 요청을 반복해서 보낼 수 없으니, 신중히 작성해주세요.</p>
+                        <p style={{fontSize:"14px", color:"#fe4e65", wordBreak:"keep-all"}}> <FontAwesomeIcon icon={faExclamationTriangle}></FontAwesomeIcon><br></br> 요청 발송 후 5일간 같은 강사님께 요청을 반복해서 보낼 수 없으니, 신중히 작성해주세요.</p>
                     </div>
                     <div>
                         <Button highlight={true} style={{borderRadius:"3px", width:"100%", height:"50px", lineHeight:"50px", border:"0"}} onClick={()=>{alert("컨펌 팝업")}}>보내기</Button>

@@ -51,11 +51,11 @@ class SearchTopCategory extends Component {
     }
 
     event_category2_select = (item)=>{
-        this.setState({
-            category2_selected:item
-        });
-        document.location.href = `/list/?${this.state.category1_selected}/?${item}`;
-        this.handle_close_category2();
+        // this.setState({
+        //     category2_selected:item
+        // });
+        document.location.href = `/${this.props.current_page}?main_category=${this.state.category1_selected}&sub_category=${item}&city=${this.props.city === null ? "SEOUL" : this.props.city}&gu=${this.props.gu === null ? "동작구" : this.props.gu}`;
+        // this.handle_close_category2();
     }
 
     render(){
@@ -80,12 +80,16 @@ class SearchTopCategory extends Component {
                 
                 {
                     this.state.category1 === OPEN
-                    ?<Modal style={{maxWidth:"600px"}} event_close={this.handle_close_category1}><MainCategory event={this.event_category1_select} selected={this.state.category1_selected}></MainCategory></Modal>
+                    ?<Modal style={{maxWidth:"600px", maxHeight:"60vh"}} event_close={this.handle_close_category1}>
+                        <MainCategory event={this.event_category1_select} selected={this.state.category1_selected}></MainCategory>
+                    </Modal>
                     :"" 
                 }
                 {
                     this.state.category2 === OPEN && this.state.category1_selected != null
-                    ?<Modal style={{maxWidth:"600px"}} event_close={this.handle_close_category2}><SubCategory category={this.state.category1_selected} event={this.event_category2_select} selected={this.state.category2_selected}></SubCategory></Modal>
+                    ?<Modal style={{maxWidth:"600px", maxHeight:"60vh"}} event_close={this.handle_close_category2}>
+                        <SubCategory category={this.state.category1_selected} event={this.event_category2_select} selected={this.state.category2_selected}></SubCategory>
+                    </Modal>
                     :"" 
                 }
             </div>

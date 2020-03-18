@@ -1,16 +1,14 @@
 import React from 'react';
 import './ListTop.css';
 import SearchTopCategory from './SearchTopCategory';
+import SearchTopRegion from './SearchTopRegion';
+import { CLOSE } from '../const';
 
-const ListTop = ({category1_selected, category2_selected}) => {
+const ListTop = ({category1_selected, category2_selected, city, gu}) => {
     return (
         <div className="root_content_top">
-            <div className="search_tool">
-                <div className="search_input_wrap">
-                    <input className="search_input" placeholder="지역 검색"></input>
-                </div>
-            </div>
-            <SearchTopCategory category1={category1_selected} category2={category2_selected}></SearchTopCategory>
+            <SearchTopRegion current_page="list" toggle_button={CLOSE} category1={category1_selected} category2={category2_selected} city={city} gu={gu}></SearchTopRegion>
+            <SearchTopCategory current_page="list" category1={category1_selected} category2={category2_selected} city={city} gu={gu}></SearchTopCategory>
         </div>
     );
 };

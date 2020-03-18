@@ -11,6 +11,7 @@ import PAGEConnectMenu from './page/ConnectMenu';
 import PAGEConnectTeacher from './page/ConnectTeacher';
 import RootContent from './component/RootContent';
 import PAGEConnectLogin from './page/ConnectLogin';
+import PAGEConnectAboutUs from './page/ConnectAboutUs';
 import Footer from './component/Footer';
 
 class App extends Component{
@@ -39,14 +40,15 @@ class App extends Component{
         <Router>
           <RootTop open={this.state.menu_open} event_open={this.handle_open_menu} event_close={this.handle_close_menu}></RootTop>
           <RootContent>
-              <Route exact path="/map" render={() => <PageConnectMap classes={this.state.menu_open === 1 ? "hide_page" : ""} />}></Route>
+              <Route path="/map" render={(location) => <PageConnectMap classes={this.state.menu_open === 1 ? "hide_page" : ""} location={location} />}></Route>
               <Route exact path="/setting" render={() => <PAGEConnectSetting classes={this.state.menu_open === 1 ? "hide_page" : ""} />}></Route>
               <Route exact path="/" render={() => <PAGEConnectHome classes={this.state.menu_open === 1 ? "hide_page" : ""} />}></Route>
               {/* <Route exact path="/menu" render={() => <PAGEConnectMenu classes={this.state.menu_open === 0 ? "hide_page" : ""} event_menu_close={this.handle_close_menu} />}></Route> */}
               <PAGEConnectMenu classes={this.state.menu_open === 0 ? "hide_page" : ""} event_menu_close={this.handle_close_menu} />
-              <Route path="/list" render={() => <PageConnectList classes={this.state.menu_open === 1 ? "hide_page" : ""} />}></Route>
+              <Route path="/list" render={(location) => <PageConnectList classes={this.state.menu_open === 1 ? "hide_page" : ""} location={location} />}></Route>
               <Route path="/teacher" render={() => <PAGEConnectTeacher classes={this.state.menu_open === 1 ? "hide_page" : ""} />}></Route>
               <Route path="/login" render={() => <PAGEConnectLogin classes={this.state.menu_open === 1 ? "hide_page" : ""} />}></Route>
+              <Route path="/aboutus" render={() => <PAGEConnectAboutUs classes={this.state.menu_open === 1 ? "hide_page" : ""} />}></Route>
           </RootContent>
           
         </Router>

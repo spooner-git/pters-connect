@@ -8,7 +8,7 @@ const Footer = () => {
             <div className="footer_content">
                 <section id="footer_company" className="footer_category_wrap">
                     <div className="footer_category">회사 소개</div>
-                    <div className="footer_category_item">About us</div>
+                    <div className="footer_category_item"><NavLink to="/aboutus">About Us</NavLink></div>
                     <div className="footer_category_item">피터스 커넥트?</div>
                 </section>
 

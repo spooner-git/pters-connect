@@ -45,10 +45,11 @@ class PAGEConnectHome extends Component {
     render(){
        return (
             <div className={this.props.classes}>
-                <section className="section_at_home" style={{maxWidth:"unset"}}>
+                <section className="section_at_home">
                     <TopBanner>
-                        <h1 style={{textAlign:"center", fontSize:"20px", color:"#ffffff", fontWeight:"bold"}}>PTERS 커넥트</h1>
-                        <p className="topbanner_description_at_home">레슨, 쉽게 찾자</p>
+                        {/* <h1 style={{textAlign:"center", fontSize:"20px", color:"#ffffff", fontWeight:"bold"}}>PTERS 커넥트</h1> */}
+                        {/* <p className="topbanner_description_at_home">레슨, 쉽게 찾자</p> */}
+                        <h1 className="topbanner_description_at_home">레슨, 쉽게 찾자</h1>
                     </TopBanner>
                 </section>
 
@@ -61,11 +62,11 @@ class PAGEConnectHome extends Component {
                 </section>
 
                 <section className="section_at_home" style={{padding:"20px 0", paddingBottom:"0"}}>
-                    <h2 style={{textAlign:"center", fontSize:"30px", fontWeight:"900", margin:0}}>
-                        원하는 레슨을 선택해보세요!
+                    <h2 style={{textAlign:"left", fontSize:"30px", fontWeight:"900", margin:0, padding:"0 20px", wordBreak:"keep-all"}}>
+                        원하는 레슨을 선택하세요
                     </h2>
-                    <h3 style={{textAlign:"center", fontWeight:"normal", marginTop:0}}>간편하게 검색하고, 상담요청을 보내세요</h3>
-                    <div className="home_category1_wrap">
+                    <h3 style={{textAlign:"left", fontWeight:"normal", marginTop:0, padding:"0 20px"}}>간편하게 검색하고, 상담요청을 보내세요</h3>
+                    <div className="home_category1_wrap" hidden>
                         {        
                             Object.keys(PROGRAM_CATEGORY).map((el)=>{
                                 let name = PROGRAM_CATEGORY[el].name;
@@ -91,8 +92,13 @@ class PAGEConnectHome extends Component {
                             Object.keys(PROGRAM_CATEGORY[this.state.category1].sub_category).map((el)=>{
                                 let name = PROGRAM_CATEGORY[this.state.category1].sub_category[el].name;
                                 let code = el;
-                                return  <ImageButton key={code} onClick={()=>{this.handle_category2_set(code);this.go_url(`/list/?${this.state.category1}/?${code}`)}} image_url={`/images/category/category_image_${code}.jpg`} style={{display:"inline-block", width:"50%", height:"80px", border:"1px solid black", padding:"10px 20px"}}>
-                                        <h3 style={{fontSize:"18px", fontWeight:"bold", color:"#ffffff", margin:"0"}}>{name}</h3>
+                                return  <ImageButton key={code} 
+                                                    onClick={()=>{this.handle_category2_set(code);this.go_url(`/list/?${this.state.category1}/?${code}`)}} 
+                                                    image_url={`/images/category/category_image_${code}.jpg`} 
+                                                    style={{display:"inline-block", height:"80px", border:"1px solid black", padding:"10px 20px", verticalAlign:"top", backgroundColor:"#282828"}}
+                                                    className="lesson_brick_image_button"
+                                                    >
+                                        <h3 style={{fontSize:"18px", fontWeight:"bold", color:"#ffffff", margin:"0", wordBreak:"keep-all"}}>{name}</h3>
                                     </ImageButton>
                             })
                         }
