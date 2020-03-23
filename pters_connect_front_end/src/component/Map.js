@@ -11,19 +11,24 @@ class Map extends Component{
 
   constructor(){
     super();
-    this.state = {
-      place:null,
-      touching:false,
-    }
     this.map = null;
     this.place = null;
     this.infowindow = null;
     this.map_markers = [];
   }
-  
-  componentDidMount(){
+
+  state = {
+    place:null,
+    touching:false,
+  }
+
+  componentWillUpdate = ()=>{
     this.draw_kakao_map("#map");
   }
+
+  // componentDidMount(){
+  //   this.draw_kakao_map("#map");
+  // }
 
   draw_kakao_map = (install_target)=>{
     
@@ -33,9 +38,10 @@ class Map extends Component{
       let $map_container = document.querySelector(install_target);
       let X = this.props.locX == null ? data.coords.longitude : this.props.locX;
       let Y = this.props.locY == null ? data.coords.latitude : this.props.locY;
+
       let map_options = {
           center: new kakao.maps.LatLng(Y, X), //지도 중심 좌표
-          level: 4 //지도 레벨 (확대 축소)
+          level: 6 //지도 레벨 (확대 축소)
       };
       this.map = new kakao.maps.Map($map_container, map_options);
       this.place = new kakao.maps.services.Places();

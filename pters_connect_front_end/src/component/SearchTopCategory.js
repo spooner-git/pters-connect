@@ -54,7 +54,7 @@ class SearchTopCategory extends Component {
         // this.setState({
         //     category2_selected:item
         // });
-        document.location.href = `/${this.props.current_page}?main_category=${this.state.category1_selected}&sub_category=${item}&city=${this.props.city === null ? "SEOUL" : this.props.city}&gu=${this.props.gu === null ? "동작구" : this.props.gu}`;
+        document.location.href = `/${this.props.current_page}?main_category=${this.state.category1_selected}&sub_category=${item}&city=${this.props.city === null ? "서울특별시" : this.props.city}&gu=${this.props.gu === null ? "동작구" : this.props.gu}`;
         // this.handle_close_category2();
     }
 
