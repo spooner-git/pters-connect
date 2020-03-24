@@ -1,4 +1,4 @@
-const kakao_ak = "KakaoAK 2223d3c0765e40d0ff687f4df91f5bde";
+const kakao_ak = "KakaoAK 04fb48319de8bad7ea41f4182def18dd";
 const CLOSE = 0;
 const OPEN = 1;
 const OFF = 0;
