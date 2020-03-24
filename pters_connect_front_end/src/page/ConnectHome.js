@@ -49,7 +49,7 @@ class PAGEConnectHome extends Component {
                     <TopBanner>
                         {/* <h1 style={{textAlign:"center", fontSize:"20px", color:"#ffffff", fontWeight:"bold"}}>PTERS 커넥트</h1> */}
                         {/* <p className="topbanner_description_at_home">레슨, 쉽게 찾자</p> */}
-                        <h1 className="topbanner_description_at_home">레슨 쉽게 찾자</h1>
+                        <h1 className="topbanner_description_at_home">레슨,, 쉽게 찾자</h1>
                     </TopBanner>
                 </section>
 
