@@ -109,7 +109,7 @@ class ConnectBase{
         let menu3_style = {"padding":"15px 0", "color":"var(--fundamental-white)", "font-size":"20px", "font-weight":"bold", "animation-delay":"0.1s", "animation-duration":"1.5s"};
         let close_style = {"padding":"15px", "color":"var(--fundamental-white)", "position":"absolute", "top":"15px", "right":"15px", "animation-delay":"0.2s", "animation-duration":"1s"};
         let menu1 = CComp.button("menu_search", "찾아 보기", menu1_style, {class:"anim_fade_in"}, ()=>{location.href = "/"});
-        let menu2 = CComp.button("menu_facility", "연습장 찾기", menu1_style, {class:"anim_fade_in"}, ()=>{location.href = "/connect_home/facility"});
+        let menu2 = CComp.button("menu_facility", "연습장 찾기", menu1_style, {class:"anim_fade_in"}, ()=>{location.href = "/api/facility"});
         let menu3 = CComp.button("menu_mypage", "내 정보", menu2_style, {class:"anim_fade_in"}, ()=>{location.href="/golf_pro/mypage";});
         let menu4 = CComp.button("menu_messages", "상담 내역", menu2_style, {class:"anim_fade_in"}, ()=>{location.href="/golf_pro/message_box";});
         let menu5 = CComp.button("menu_about", "About PTERS", menu3_style, {class:"anim_fade_in"}, ()=>{});

@@ -41,7 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'debug_toolbar',
+    'rest_framework',
+    # 'apps.account',
+    # 'apps.facility',
+    # 'facility.apps.FacilityConfig',
+    # 'debug_toolbar',
     'golf_pro',
     'connect_home'
 ]
@@ -54,7 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 INTERNAL_IPS = ('127.0.0.1', 'localhost',)
@@ -94,13 +98,14 @@ WSGI_APPLICATION = 'configs.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'skill_abc',
-        'USER': os.environ.get("SKILL_ABC_DB_USER", ''),
-        'PASSWORD': os.environ.get("SKILL_ABC_DB_PASSWORD", ''),
-        'HOST': os.environ.get("SKILL_ABC_DB_HOST", ''),
+        'NAME': 'pters',
+        'USER': os.environ.get("PTERS_DB_USER", ''),
+        'PASSWORD': os.environ.get("PTERS_DB_PASSWORD", ''),
+        'HOST': os.environ.get("PTERS_DB_HOST", ''),
         'PORT': '3306',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -124,7 +129,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'ko-kr'
+LANGUAGE_CODE = 'ko'
 
 TIME_ZONE = 'Asia/Seoul'
 
@@ -152,6 +157,11 @@ STATICFILES_DIRS = (
 # LOGIN URL
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/check_index/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 
 # AWS S3 Upload
 SKILL_ABC_AWS_ACCESS_KEY_ID = os.environ.get("SKILL_ABC_AWS_ACCESS_KEY_ID", '')

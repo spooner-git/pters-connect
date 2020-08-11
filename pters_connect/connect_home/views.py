@@ -1,33 +1,24 @@
-# Create your views here.
-import collections
+# Create your views here.=
+from django.contrib.auth.models import User, Group
+from rest_framework import viewsets
+from rest_framework import permissions
 
-import requests
-from django.core.exceptions import ValidationError, ObjectDoesNotExist
-from django.db import IntegrityError
-from django.http import JsonResponse
-from django.shortcuts import redirect
-from django.views import View
-from django.views.generic import TemplateView
+from connect_home.serializers import UserSerializer, GroupSerializer
 
-from configs.const import USE
 
-class IndexView(TemplateView):
-    template_name = 'connect_main.html'
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
-    def get_context_data(self, **kwargs):
-        context = super(IndexView, self).get_context_data(**kwargs)
-        return context
 
-class SearchResultView(TemplateView):
-    template_name = 'connect_search_result.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(SearchResultView, self).get_context_data(**kwargs)
-        return context
-
-class SearchFacilityView(TemplateView):
-    template_name = 'connect_main_facility.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(SearchFacilityView, self).get_context_data(**kwargs)
-        return context
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]
