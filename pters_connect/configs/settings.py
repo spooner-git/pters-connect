@@ -42,7 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'rest_framework',
-    # 'apps.account',
+    'rest_framework.authtoken',
+    'drf_yasg',
+    # 'contact_verification',
+    'apps.account',
     # 'apps.facility',
     # 'facility.apps.FacilityConfig',
     # 'debug_toolbar',
@@ -98,7 +101,7 @@ WSGI_APPLICATION = 'configs.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pters',
+        'NAME': 'pters-test',
         'USER': os.environ.get("PTERS_DB_USER", ''),
         'PASSWORD': os.environ.get("PTERS_DB_PASSWORD", ''),
         'HOST': os.environ.get("PTERS_DB_HOST", ''),
@@ -155,12 +158,22 @@ STATICFILES_DIRS = (
 )
 
 # LOGIN URL
-LOGIN_URL = '/'
-LOGIN_REDIRECT_URL = '/check_index/'
+LOGIN_URL = 'rest_framework:login'
+LOGOUT_URL = 'rest_framework:logout'
+# LOGIN_REDIRECT_URL = '/'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        # 'rest_framework.authentication.BasicAuthentication',  # enables simple command line authentication
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
 }
 
 # AWS S3 Upload

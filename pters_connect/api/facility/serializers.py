@@ -27,6 +27,7 @@ class SnippetSerializer(serializers.Serializer):
         instance.save()
         return instance
 
+
 class FacilityTb(TimeStampedModel):
     facility_id = models.AutoField(db_column='ID', primary_key=True, null=False)
     member = models.ForeignKey(MemberTb, on_delete=models.CASCADE)  # Field name made lowercase.

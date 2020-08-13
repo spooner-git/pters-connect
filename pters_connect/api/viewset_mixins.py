@@ -7,7 +7,6 @@ class DynamicSerializerMixin:
     def get_serializer_class(self):
         if self.serializer_classes:
             action = self.action
-
             serializer_class = self.serializer_classes.get(action)
 
             if serializer_class is None and action == 'partial_update':
