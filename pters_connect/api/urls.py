@@ -35,6 +35,6 @@ router.register('members', MemberViewSet, basename='member')
 # router.register('devices', FCMDeviceViewSet)
 
 urlpatterns += [
-    path('members/', include('api.account.urls')),
+    # path('members/', include('api.account.urls')),
     path('', include(router.urls)),
 ]
