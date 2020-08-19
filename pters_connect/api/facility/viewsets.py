@@ -1,50 +1,28 @@
-from django.contrib.auth import get_user_model
-from rest_framework import viewsets, mixins
-from rest_framework.decorators import action
-from rest_framework.response import Response
+from rest_framework.filters import SearchFilter
+from rest_framework.viewsets import ModelViewSet
 
-from api.account.permissions import UserPermission
-from api.account.serializers import UserCreateSerializer, UserUpdateSerializer, MemberReadSerializer
+from api.facility.permissions import IsFacilityUpdateOrReadOnly
+from api.facility.serializers import FacilityReadSerializer, FacilityCreateSerializer, FacilityUpdateSerializer
 from api.viewset_mixins import DynamicSerializerMixin
-from apps.account.models import MemberTb
+from apps.facility.models import FacilityTb
+from configs.const import USE
 
-# User = get_user_model()
 
-
-class MemberViewSet(DynamicSerializerMixin,
-                    mixins.CreateModelMixin,
-                    mixins.RetrieveModelMixin,
-                    mixins.ListModelMixin,
-                    mixins.UpdateModelMixin,
-                    viewsets.GenericViewSet):
+class FacilityViewSet(DynamicSerializerMixin,
+                      ModelViewSet):
     """
-    회원 정보 관련 기능
+    시설 정보 관련 기능
 
     """
-    permission_classes = [UserPermission]
-    queryset = MemberTb.objects.filter().order_by('member_id')
+    permission_classes = [IsFacilityUpdateOrReadOnly]
+    queryset = FacilityTb.objects.filter(use=USE).order_by('-facility_id')
     serializer_classes = {
-        'read':  MemberReadSerializer,
-        'create': UserCreateSerializer,
-        'update': UserUpdateSerializer,
-        # 'change_password': PasswordChangeSerializer,
-        # 'inactivate': UserInactivateSerializer,
-        # 'find_email': EmailFindSerializer,
-        # 'find_password': PasswordFindSerializer,
+        'read':  FacilityReadSerializer,
+        'create': FacilityCreateSerializer,
+        'update': FacilityUpdateSerializer,
     }
-    search_fields = ['username', 'email', 'first_name']
+    filter_backends = [SearchFilter]
+    search_fields = ['name', 'address', 'facility_type_cd']
 
-    def get_object(self):
-        if self.kwargs.get('pk') == 'me':
-            return super().get_queryset().get(member_id=self.request.user.id)
-        return super().get_object()
-
-    @action(methods=['post'], detail=True)
-    def change_password(self, request, pk):
-        return self.update(request)
-
-    @action(methods=['post'], detail=False)
-    def find_password(self, request):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        return Response(serializer.data)
+    def perform_create(self, serializer):
+        serializer.save(member_id=self.request.user.id)

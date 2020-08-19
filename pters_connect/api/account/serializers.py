@@ -110,7 +110,7 @@ class UserUpdateSerializer(serializers.ModelSerializer):
 
 
 class MemberReadSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
-    user = serializers.SerializerMethodField()
+    user = UserReadSerializer()
 
     class Meta:
         model = MemberTb
@@ -129,6 +129,4 @@ class MemberReadSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
             'user'
         ]
 
-    def get_user(self, obj):
-        return UserReadSerializer(instance=obj.user, context=self.context).data
 

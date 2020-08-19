@@ -30,7 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,16 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'oauth2_provider',
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
     'drf_yasg',
-    # 'contact_verification',
     'apps.account',
-    # 'apps.facility',
-    # 'facility.apps.FacilityConfig',
-    # 'debug_toolbar',
-    'golf_pro',
-    'connect_home'
+    'apps.facility',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
     # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
@@ -162,6 +160,12 @@ LOGIN_URL = 'rest_framework:login'
 LOGOUT_URL = 'rest_framework:logout'
 # LOGIN_REDIRECT_URL = '/'
 
+OAUTH2_PROVIDER = {
+    # this is the list of available scopes
+    'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'groups': 'Access to your groups'},
+    'ACCESS_TOKEN_EXPIRE_SECONDS': 3*24*60*60
+}
+
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
@@ -169,20 +173,21 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         # 'rest_framework.authentication.BasicAuthentication',  # enables simple command line authentication
         'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
 }
 
-# AWS S3 Upload
-SKILL_ABC_AWS_ACCESS_KEY_ID = os.environ.get("SKILL_ABC_AWS_ACCESS_KEY_ID", '')
-SKILL_ABC_AWS_SECRET_ACCESS_KEY = os.environ.get("SKILL_ABC_AWS_SECRET_ACCESS_KEY", '')
-SKILL_ABC_AWS_S3_BUCKET_NAME = os.environ.get("SKILL_ABC_AWS_S3_BUCKET_NAME", '')
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
-
-SKILL_ABC_BLIZZARD_CLIENT_ID = os.environ.get('SKILL_ABC_BLIZZARD_CLIENT_ID', '')
-SKILL_ABC_BLIZZARD_CLIENT_SECRET = os.environ.get('SKILL_ABC_BLIZZARD_CLIENT_SECRET', '')
+# # AWS S3 Upload
+# SKILL_ABC_AWS_ACCESS_KEY_ID = os.environ.get("SKILL_ABC_AWS_ACCESS_KEY_ID", '')
+# SKILL_ABC_AWS_SECRET_ACCESS_KEY = os.environ.get("SKILL_ABC_AWS_SECRET_ACCESS_KEY", '')
+# SKILL_ABC_AWS_S3_BUCKET_NAME = os.environ.get("SKILL_ABC_AWS_S3_BUCKET_NAME", '')
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl': 'max-age=86400',
+# }
+#
+# SKILL_ABC_BLIZZARD_CLIENT_ID = os.environ.get('SKILL_ABC_BLIZZARD_CLIENT_ID', '')
+# SKILL_ABC_BLIZZARD_CLIENT_SECRET = os.environ.get('SKILL_ABC_BLIZZARD_CLIENT_SECRET', '')

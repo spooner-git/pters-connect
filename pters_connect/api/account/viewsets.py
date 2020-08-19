@@ -1,23 +1,14 @@
-from django.contrib.auth import get_user_model
-from rest_framework import viewsets, mixins
-from rest_framework.authtoken.models import Token
-from rest_framework.decorators import action
-from rest_framework.response import Response
+from rest_framework.filters import SearchFilter
+from rest_framework.viewsets import ModelViewSet
 
 from api.account.permissions import UserPermission
 from api.account.serializers import UserCreateSerializer, UserUpdateSerializer, MemberReadSerializer
 from api.viewset_mixins import DynamicSerializerMixin
 from apps.account.models import MemberTb
 
-# User = get_user_model()
-
 
 class MemberViewSet(DynamicSerializerMixin,
-                    mixins.CreateModelMixin,
-                    mixins.RetrieveModelMixin,
-                    mixins.ListModelMixin,
-                    mixins.UpdateModelMixin,
-                    viewsets.GenericViewSet):
+                    ModelViewSet):
     """
     회원 정보 관련 기능
 
@@ -33,28 +24,21 @@ class MemberViewSet(DynamicSerializerMixin,
         # 'find_email': EmailFindSerializer,
         # 'find_password': PasswordFindSerializer,
     }
-    search_fields = ['username', 'email', 'first_name']
+    filter_backends = [SearchFilter]
+    search_fields = ['user__username', 'user__email', 'name']
 
     def get_object(self):
         if self.kwargs.get('pk') == 'me':
             return super().get_queryset().get(member_id=self.request.user.id)
         return super().get_object()
 
-    @action(methods=['post'], detail=True)
-    def change_password(self, request, pk):
-        return self.update(request)
-
-    @action(methods=['post'], detail=False)
-    def find_password(self, request):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        return Response(serializer.data)
-
-    @action(methods=['post'], detail=False)
-    def login(self, request):
-        serializer = self.serializer_class(data=request.data, context={'request': request})
-        serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data['user']
-        token, created = Token.objects.get_or_create(user=user)
-        return Response({'token': token.key})
+    # @action(methods=['post'], detail=True)
+    # def change_password(self, request, pk):
+    #     return self.update(request)
+    #
+    # @action(methods=['post'], detail=False)
+    # def find_password(self, request):
+    #     serializer = self.get_serializer(data=request.data)
+    #     serializer.is_valid(raise_exception=True)
+    #     return Response(serializer.data)
 
