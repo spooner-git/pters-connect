@@ -10,8 +10,8 @@ app_name = 'api'
 
 router = DefaultRouter()
 
-router.register('members', MemberViewSet, basename='members')
-router.register('facilities', FacilityViewSet, basename='facilities')
+router.register('member', MemberViewSet, basename='member')
+router.register('facility', FacilityViewSet, basename='facility')
 # router.register('devices', FCMDeviceViewSet)
 
 urlpatterns = [

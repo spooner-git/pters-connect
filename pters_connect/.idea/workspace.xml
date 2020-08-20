@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="37d2705e-e653-4ab0-9a06-347ac84378a3" name="Default" comment="" />
+    <list default="true" id="37d2705e-e653-4ab0-9a06-347ac84378a3" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/urls.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -159,7 +162,7 @@
       <workItem from="1597309828076" duration="17210000" />
       <workItem from="1597490941111" duration="2087000" />
       <workItem from="1597830548419" duration="16691000" />
-      <workItem from="1597910319711" duration="15085000" />
+      <workItem from="1597910319711" duration="17280000" />
     </task>
     <servers />
   </component>
@@ -228,11 +231,12 @@
       <screen x="0" y="0" width="1855" height="1080" />
     </state>
     <state x="522" y="146" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1855.1080/-1858.-104.1858.1080@0.0.1855.1080" timestamp="1597922359694" />
-    <state x="619" y="271" width="618" height="538" key="find.popup" timestamp="1597916571412">
-      <screen x="0" y="0" width="1855" height="1080" />
+    <state x="-1238" y="167" width="619" height="538" key="find.popup" timestamp="1597935112680">
+      <screen x="-1858" y="-104" width="1858" height="1080" />
     </state>
     <state x="-1238" y="167" width="618" height="538" key="find.popup/0.0.1844.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1597491730245" />
     <state x="615" y="271" width="613" height="538" key="find.popup/0.0.1844.1080/-1858.-104.1858.1080@0.0.1844.1080" timestamp="1597491294316" />
+    <state x="-1238" y="167" width="619" height="538" key="find.popup/0.0.1855.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1597935112680" />
     <state x="619" y="271" width="618" height="538" key="find.popup/0.0.1855.1080/-1858.-104.1858.1080@0.0.1855.1080" timestamp="1597916571412" />
   </component>
 </project>
