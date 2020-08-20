@@ -11,7 +11,7 @@ class FacilityCreateSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
     class Meta:
         model = FacilityTb
         fields = [
-            'name', 'address', 'member_id'
+            'name', 'address', 'facility_type_cd', 'main_img_url', 'member_id'
         ]
         extra_kwargs = {
             'name': {
@@ -25,6 +25,12 @@ class FacilityCreateSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
                 },
                 'required': False
             },
+            'facility_type_cd': {
+                'style': {
+                    'placeholder': '시설 종류를 입력해주세요'
+                },
+                'required': False
+            }
         }
 
 
@@ -33,7 +39,7 @@ class FacilityUpdateSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
     class Meta:
         model = FacilityTb
         fields = [
-            'name', 'address'
+            'name', 'address', 'facility_type_cd', 'main_img_url'
         ]
 
 
@@ -46,5 +52,7 @@ class FacilityReadSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
             'facility_id',
             'name',
             'address',
+            'facility_type_cd',
+            'main_img_url',
             'member'
         ]

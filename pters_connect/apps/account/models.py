@@ -10,14 +10,14 @@ class MemberTb(TimeStampedModel):
     name = models.CharField('이름', db_column='NAME', max_length=20, blank=True, default='')  # Field name made lowercase.
     phone = models.CharField('휴대폰', db_column='PHONE', max_length=20, blank=True, default='')  # Field name made lowercase.
     sex = models.CharField('성별', db_column='SEX', max_length=2, blank=True, default='')  # Field name made lowercase.
-    birthday_dt = models.DateField('생년월일', db_column='BIRTHDAY_DT', blank=True, null=True)  # Field name made lowercase.
-    profile_url = models.CharField('프로필 사진 URL', db_column='PROFILE_URL', max_length=255, blank=True, null=True,
+    birthday_dt = models.DateField('생년월일', db_column='BIRTHDAY_DT', blank=True)  # Field name made lowercase.
+    profile_url = models.CharField('프로필 사진 URL', db_column='PROFILE_URL', max_length=255, blank=True,
                                    default='/static/common/icon/icon_account.png')
-    phone_is_active = models.IntegerField('휴대폰 인증 여부', db_column='PHONE_IS_ACTIVE', blank=True, null=True, default=0)
+    phone_is_active = models.IntegerField('휴대폰 인증 여부', db_column='PHONE_IS_ACTIVE', blank=True,default=0)
     reg_info = models.CharField('생성자 회원 ID', db_column='REG_INFO', max_length=20, blank=True, default='')
-    user = models.ForeignKey(User, verbose_name='회원', on_delete=models.SET_NULL, blank=True, null=True)
+    user = models.ForeignKey(User, verbose_name='회원', on_delete=models.SET_NULL, null=True)
 
-    age = models.IntegerField('나이', db_column='AGE', blank=True, null=True)  # Field name made lowercase.
+    age = models.IntegerField('나이', db_column='AGE', blank=True)  # Field name made lowercase.
     country = models.CharField('국가', db_column='COUNTRY', max_length=255, blank=True, default='')
     address = models.CharField('지역', db_column='ADDRESS', max_length=255, blank=True, default='')
     job = models.CharField('직업', db_column='JOB', max_length=20, blank=True, default='')  # Field name made lowercase.

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'apps.account',
     'apps.facility',
+    'apps.trainer',
 ]
 
 MIDDLEWARE = [
@@ -104,6 +105,10 @@ DATABASES = {
         'PASSWORD': os.environ.get("PTERS_DB_PASSWORD", ''),
         'HOST': os.environ.get("PTERS_DB_HOST", ''),
         'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES', innodb_strict_mode=1",
+            # 'sql_mode': 'traditional',
+        }
     }
 }
 

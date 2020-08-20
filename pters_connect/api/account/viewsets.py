@@ -2,7 +2,7 @@ from rest_framework.filters import SearchFilter
 from rest_framework.viewsets import ModelViewSet
 
 from api.account.permissions import UserPermission
-from api.account.serializers import UserCreateSerializer, UserUpdateSerializer, MemberReadSerializer
+from api.account.serializers import MemberReadSerializer, MemberCreateSerializer, MemberUpdateSerializer
 from api.viewset_mixins import DynamicSerializerMixin
 from apps.account.models import MemberTb
 
@@ -17,8 +17,8 @@ class MemberViewSet(DynamicSerializerMixin,
     queryset = MemberTb.objects.filter().order_by('member_id')
     serializer_classes = {
         'read':  MemberReadSerializer,
-        'create': UserCreateSerializer,
-        'update': UserUpdateSerializer,
+        'create': MemberCreateSerializer,
+        'update': MemberUpdateSerializer,
         # 'change_password': PasswordChangeSerializer,
         # 'inactivate': UserInactivateSerializer,
         # 'find_email': EmailFindSerializer,
