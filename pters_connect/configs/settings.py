@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get("SKILL_ABC_DJANGO_SECRET", '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False 
 
 ALLOWED_HOSTS = ['*']
 
@@ -159,6 +159,7 @@ STATICFILES_DIRS = (
   os.path.join(BASE_DIR, "static"),
   'static/',
 )
+#STATIC_ROOT = 'static/'
 
 # LOGIN URL
 LOGIN_URL = 'rest_framework:login'

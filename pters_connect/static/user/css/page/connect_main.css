@@ -1,7 +1,0 @@
-.search_box_bg_image{
-    background-image: url('/static/user/res/background/golf_background.jpg'), linear-gradient(135deg, rgba(98,187,70,0.36) 0%,rgba(0,157,221,0.67) 87%,rgba(0,157,221,0.72) 100%);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-blend-mode: exclusion;
-}
