@@ -41,11 +41,7 @@ class FacilityTb(TimeStampedModel):
         verbose_name_plural = '지점'
 
     def __str__(self):
-        facility_name = self.subject_cd.__str__()
-        facility_detail_name = self.subject_detail_nm.__str__()
-        if facility_detail_name is not None and facility_detail_name != '':
-            facility_name = facility_detail_name
-        return self.member.__str__()+'/'+facility_name+'(지점)'
+        return self.name.__str__()
 
 
 # 강사 <-> 강사 지점 연결 정보

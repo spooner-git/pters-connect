@@ -1,0 +1,22 @@
+.chipbutton_general{
+    height: 35px;
+    line-height: 35px;
+    padding: 0px 10px;
+    text-align: center;
+    border: 1px solid #f5f2f3;
+    border-radius: 20px;
+    /* border-radius: 2px; */
+    display: inline-block;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.chipbutton_highlighted{
+    /* color: #fe4e65;
+    font-weight: bold; */
+    color: #ffffff;
+    font-weight: bold;
+    background-image: linear-gradient(45deg, #fe4e65, #ff6579);
+    /* background-image: linear-gradient(45deg, #fe4e65, #ff8595); */
+    border-color: transparent;
+}

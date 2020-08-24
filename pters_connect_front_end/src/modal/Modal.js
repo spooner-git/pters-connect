@@ -3,7 +3,7 @@ import "./Modal.css";
 import { OFF } from "../const";
 
 const Modal = ({children, style, event_close, shade, className}) => {
-    var classes = `modal ${className}`
+    var classes = `modal ${className == undefined ? "" : className}`;
     return (
         <Fragment>
             <div style={{...style, zIndex:"50"}} className={classes}>
@@ -12,7 +12,7 @@ const Modal = ({children, style, event_close, shade, className}) => {
             {
                 shade === OFF 
                 ? ""
-                : <div style={{position:"fixed", width:"100%", height:"100%", backgroundColor:"#282828", opacity:"0.7", top:"0", left:"0", zIndex:"49"}} id="modal_shade" onClick={event_close}></div>
+                : <div id="modal_shade" className="modal_shade" onClick={event_close}></div>
             }
         </Fragment>
     );

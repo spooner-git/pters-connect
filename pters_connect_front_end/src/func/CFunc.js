@@ -17,19 +17,19 @@ class CFunc{
         for(let data in essential_data){
             essential[data] = essential_data[data];
         }
-        for(let data in essential){
-            if(essential[data] == null){
-                return false;
-            }
-        }
+        // for(let data in essential){
+        //     if(essential[data] == null){
+        //         return false;
+        //     }
+        // }
         for(let data in option_data){
             option[data] = option_data[data];
         }
-
+        
         axios({
           method:essential.type,
           url:essential.url,
-          params:essential.data,
+          params:essential.data != null ? essential.data : {},
           headers:essential.header != null ? essential.header : "",
           // dataType:"JSON"
         }).then((resp)=>{

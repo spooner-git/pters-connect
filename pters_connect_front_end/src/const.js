@@ -1,71 +1,82 @@
-const kakao_ak = "KakaoAK 04fb48319de8bad7ea41f4182def18dd";
+const kakao_ak = "KakaoAK 2223d3c0765e40d0ff687f4df91f5bde";
 const CLOSE = 0;
 const OPEN = 1;
 const OFF = 0;
 const ON = 1;
 //프로그램 리스트
+// const PROGRAM_CATEGORY = {
+//     TR:{name:"스포츠",
+//         sub_category:{
+//             WT:{name:"웨이트 트레이닝"},
+//             PI:{name:"필라테스"},
+//             YG:{name:"요가"},
+//             BL:{name:"발레"},
+//             GOLF:{name:"골프"},
+//             TENNIS:{name:"테니스"},
+//             BILLIARD:{name:"당구"},
+//             SPINNING:{name:"스피닝"},
+//             MARTIALARTS:{name:"격투기"},
+//             RUNNING:{name:"런닝/마라톤"},
+//             BOXING:{name:"복싱"},
+//             SPORTSRECOVERY:{name:"스포츠 재활"},
+//             MEDITATION:{name:"명상"},
+//             BOOTCAMP:{name:"고강도 트레이닝"},
+//             ROWING:{name:"로잉"},
+//             CYCLING:{name:"싸이클"},
+//             DANCE:{name:"댄스"},
+//             OUTDOOR:{name:"아웃도어"},
+//             // CUPPING:{name:"부황"},
+//             // FACIAL:{name:"얼굴 마사지"},
+//             // MASSAGE:{name:"마사지"},
+//             // CRYOTHERAPY:{name:"냉동/한랭요법"},
+//             // ACUPUNCTURE:{name:"침술"},
+//             // BEAUTY:{name:"beauty"},
+//             SPORTS:{name:"스포츠"},
+//             ENTRANCEEXAMINATION:{name:"입시"},
+//         }
+//     },
+//     // MU:{name:"음악", 
+//     //     sub_category:{
+//     //         PIANO:{name:"피아노"},
+//     //         FLUTE:{name:"플룻"},
+//     //         VIOLIN:{name:"바이올린"},
+//     //         CELLO:{name:"첼로"},
+//     //         // VOCAL_MUSIC:{name:"성악"},
+//     //         // CLARINET:{name:"클라리넷"},
+//     //         GUITAR:{name:"기타"},
+//     //         DRUM:{name:"드럼"},
+//     //         VOCAL:{name:"보컬"},
+//     //         COMPOSITION:{name:"작곡"}
+//     //     }
+//     // },
+//     // PL:{name:"과외", 
+//     //     sub_category:{
+//     //         KO:{name:"국어"},
+//     //         EG:{name:"영어"},
+//     //         EG_CM:{name:"영어회화"},
+//     //         MA:{name:"수학"},
+//     //         CH:{name:"중국어"},
+//     //         CH_CM:{name:"중국어 회화"},
+//     //         JP:{name:"일본어"},
+//     //         JP_CM:{name:"일본어 회화"},
+//     //         SCIENCE:{name:"과학"}
+//     //     }
+//     // },
+//     // ETC:{name:"기타",
+//     //     sub_category:{
+//     //         ETC:{name:"기타"}
+//     //     }},
+// };
+
 const PROGRAM_CATEGORY = {
-    TR:{name:"스포츠",
+    GOLF:{name:"골프",
         sub_category:{
-            WT:{name:"웨이트 트레이닝"},
-            PI:{name:"필라테스"},
-            YG:{name:"요가"},
-            BL:{name:"발레"},
-            GOLF:{name:"골프"},
-            TENNIS:{name:"테니스"},
-            BILLIARD:{name:"당구"},
-            SPINNING:{name:"스피닝"},
-            MARTIALARTS:{name:"격투기"},
-            RUNNING:{name:"런닝/마라톤"},
-            BOXING:{name:"복싱"},
-            SPORTSRECOVERY:{name:"스포츠 재활"},
-            MEDITATION:{name:"명상"},
-            BOOTCAMP:{name:"고강도 트레이닝"},
-            ROWING:{name:"로잉"},
-            CYCLING:{name:"싸이클"},
-            DANCE:{name:"댄스"},
-            OUTDOOR:{name:"아웃도어"},
-            // CUPPING:{name:"부황"},
-            // FACIAL:{name:"얼굴 마사지"},
-            // MASSAGE:{name:"마사지"},
-            // CRYOTHERAPY:{name:"냉동/한랭요법"},
-            // ACUPUNCTURE:{name:"침술"},
-            // BEAUTY:{name:"beauty"},
-            SPORTS:{name:"스포츠"},
-            ENTRANCEEXAMINATION:{name:"입시"},
+            OUTDOOR:{name:"실외 연습장"},
+            INDOOR:{name:"실내 연습장"},
+            STUDIO:{name:"전문 스튜디오"},
+            SCREEN:{name:"스크린골프"}
         }
-    },
-    // MU:{name:"음악", 
-    //     sub_category:{
-    //         PIANO:{name:"피아노"},
-    //         FLUTE:{name:"플룻"},
-    //         VIOLIN:{name:"바이올린"},
-    //         CELLO:{name:"첼로"},
-    //         // VOCAL_MUSIC:{name:"성악"},
-    //         // CLARINET:{name:"클라리넷"},
-    //         GUITAR:{name:"기타"},
-    //         DRUM:{name:"드럼"},
-    //         VOCAL:{name:"보컬"},
-    //         COMPOSITION:{name:"작곡"}
-    //     }
-    // },
-    // PL:{name:"과외", 
-    //     sub_category:{
-    //         KO:{name:"국어"},
-    //         EG:{name:"영어"},
-    //         EG_CM:{name:"영어회화"},
-    //         MA:{name:"수학"},
-    //         CH:{name:"중국어"},
-    //         CH_CM:{name:"중국어 회화"},
-    //         JP:{name:"일본어"},
-    //         JP_CM:{name:"일본어 회화"},
-    //         SCIENCE:{name:"과학"}
-    //     }
-    // },
-    // ETC:{name:"기타",
-    //     sub_category:{
-    //         ETC:{name:"기타"}
-    //     }},
+    }
 };
 
 const REGION_KR = {

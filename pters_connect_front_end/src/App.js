@@ -2,17 +2,19 @@ import React from 'react';
 import { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import RootTop from './component/RootTop';
+import RootTop from './layout/RootTop/RootTop';
+import RootContent from './layout/RootContent/RootContent';
 import PageConnectMap from './page/ConnectMap';
 import PageConnectList from './page/ConnectList';
 import PAGEConnectSetting from './page/ConnectSetting';
 import PAGEConnectHome from './page/ConnectHome';
 import PAGEConnectMenu from './page/ConnectMenu';
-import PAGEConnectTeacher from './page/ConnectTeacher';
-import RootContent from './component/RootContent';
+import PAGEConnectPlace from './page/ConnectPlace';
 import PAGEConnectLogin from './page/ConnectLogin';
 import PAGEConnectAboutUs from './page/ConnectAboutUs';
-import Footer from './component/Footer';
+import PAGEConnectCenterManage from './page/ConnectCenterManage';
+import EDITCenterBasicInfo from './editpage/EditCenterBasicInfo';
+import PAGEConnectSignUp from './page/ConnectSignUp';
 
 class App extends Component{
   constructor(){
@@ -40,17 +42,20 @@ class App extends Component{
         <Router>
           <RootTop open={this.state.menu_open} event_open={this.handle_open_menu} event_close={this.handle_close_menu}></RootTop>
           <RootContent>
+              {/* <Route exact path="/menu" render={() => <PAGEConnectMenu classes={this.state.menu_open === 0 ? "hide_page" : ""} event_menu_close={this.handle_close_menu} />}></Route> */}
+              <PAGEConnectMenu classes={this.state.menu_open === 0 ? "hide_page" : ""} event_menu_close={this.handle_close_menu} />
               <Route path="/map" render={(location) => <PageConnectMap classes={this.state.menu_open === 1 ? "hide_page" : ""} location={location} />}></Route>
               <Route exact path="/setting" render={() => <PAGEConnectSetting classes={this.state.menu_open === 1 ? "hide_page" : ""} />}></Route>
               <Route exact path="/" render={() => <PAGEConnectHome classes={this.state.menu_open === 1 ? "hide_page" : ""} />}></Route>
-              {/* <Route exact path="/menu" render={() => <PAGEConnectMenu classes={this.state.menu_open === 0 ? "hide_page" : ""} event_menu_close={this.handle_close_menu} />}></Route> */}
-              <PAGEConnectMenu classes={this.state.menu_open === 0 ? "hide_page" : ""} event_menu_close={this.handle_close_menu} />
               <Route path="/list" render={(location) => <PageConnectList classes={this.state.menu_open === 1 ? "hide_page" : ""} location={location} />}></Route>
-              <Route path="/teacher" render={() => <PAGEConnectTeacher classes={this.state.menu_open === 1 ? "hide_page" : ""} />}></Route>
+              <Route path="/place" render={() => <PAGEConnectPlace classes={this.state.menu_open === 1 ? "hide_page" : ""} />}></Route>
               <Route path="/login" render={() => <PAGEConnectLogin classes={this.state.menu_open === 1 ? "hide_page" : ""} />}></Route>
+              <Route path="/signup" render={() => <PAGEConnectSignUp classes={this.state.menu_open === 1 ? "hide_page" : ""} />}></Route>
               <Route path="/aboutus" render={() => <PAGEConnectAboutUs classes={this.state.menu_open === 1 ? "hide_page" : ""} />}></Route>
+              <Route exact path="/center_manage" render={() => <PAGEConnectCenterManage classes={this.state.menu_open === 1 ? "hide_page" : ""} />}></Route>
+
+              <Route path="/center_basic_info_edit" render={(location) =><EDITCenterBasicInfo class={this.state.menu_open === 1 ? "hide_page" : ""} location={location}></EDITCenterBasicInfo>}></Route>
           </RootContent>
-          
         </Router>
       </div>
       

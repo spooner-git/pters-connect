@@ -1,13 +1,17 @@
 import React, { Component, Fragment } from 'react';
-import Map from '../component/Map';
-import SearchTop from '../component/SearchTop';
-import ListSide from '../component/ListSide';
-import List from '../component/List';
+import Map from '../component/Map/Map';
+import SearchTop from '../assembly/SearchTop/SearchTop';
+import ListSide from '../assembly/ListSide/ListSide';
 import queryString from 'query-string';
 import CFunc from '../func/CFunc';
 import { kakao_ak } from '../const';
 
+import { observable, action } from 'mobx';
+import { observer } from 'mobx-react';
+
+
 var kakao = window.kakao;
+@observer
 class PageConnectMap extends Component {
   constructor(props){
       super(props)
@@ -18,60 +22,52 @@ class PageConnectMap extends Component {
       this.gu = query.gu !== undefined ? query.gu : null;
   }
 
-  state = {
-    list_view : 0,
-    locX:null,
-    locY:null
-  }
+  @observable list_view = 0;
+  @observable locX = null;
+  @observable locY = null;
 
   componentDidMount = ()=>{
     let geocoder = new kakao.maps.services.Geocoder();
     let region = this.gu === null ? "동작구" : `${this.city} ${this.gu}`;
-    console.log(region)
     geocoder.addressSearch(region, (result, status)=>{
-      console.log(result[0]);
-      // Kakao_func.get_places("퍼스널 트레이닝", result[0].x, result[0].y, 5000, (data)=>{
-      //   console.log( JSON.stringify({"data":data}))
-      // })
       this.update_region(result[0].x, result[0].y)
     });
   }
 
+  @action
   handle_list_on = ()=>{
-    this.setState({
-      list_view : 1
-    })
+    this.list_view = 1;
   }
 
+  @action
   handle_list_off = ()=>{
-    this.setState({
-      list_view : 0
-    })
+    this.list_view = 0;
   }
 
+  @action
   update_region = (x, y)=>{
-    this.setState({
-      locX:x,
-      locY:y
-    });
-    console.log("??", x, y)
+    this.locX = x,
+    this.locY = y
   }
 
   render(){
-     return (
-          <div style={{display:"flex", flexDirection:"column", height:"calc(100vh - 60px)"}} className={this.props.classes}>
-            <SearchTop event_list_on={this.handle_list_on} event_list_off={this.handle_list_off} list_view={this.state.list_view} category1_selected={this.category1_selected} category2_selected={this.category2_selected} city={this.city} gu={this.gu}></SearchTop>
-            <Map locX={this.state.locX} locY={this.state.locY}></Map>
-            {
-              this.state.list_view === 1 
-              ? 
-              <ListSide category1_selected={this.category1_selected} category2_selected={this.category2_selected} city={this.city} gu={this.gu}></ListSide>
-              // <List category1_selected={this.category1_selected} category2_selected={this.category2_selected}></List>
-              : ""
-            }
-          </div>
-      );
-  }
+    return (
+        <Fragment>
+            <div className={this.props.classes} style={{display:"flex", flexDirection:"column", height:"calc(100vh - 60px)"}}>
+            <SearchTop event_list_on={this.handle_list_on} event_list_off={this.handle_list_off} list_view={this.list_view} category1_selected={this.category1_selected} category2_selected={this.category2_selected} city={this.city} gu={this.gu}></SearchTop>
+                <Map locX={this.locX} locY={this.locY}></Map>
+                {
+                  this.list_view === 1 
+                  ? 
+                  <ListSide category1_selected={this.category1_selected} category2_selected={this.category2_selected} city={this.city} gu={this.gu}></ListSide>
+                  : ""
+                }
+            </div>
+        </Fragment>
+    );
+}
+
+
 }
 
 class Kakao_func {
