@@ -25,7 +25,7 @@ class CFunc{
         for(let data in option_data){
             option[data] = option_data[data];
         }
-        
+
         axios({
           method:essential.type,
           url:essential.url,

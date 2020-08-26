@@ -6,7 +6,7 @@ from api.serializer_mixins import DynamicFieldsMixin
 from apps.facility.models import FacilityTb
 
 
-class FacilityCreateSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
+class TrainerCreateSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
 
     class Meta:
         model = FacilityTb

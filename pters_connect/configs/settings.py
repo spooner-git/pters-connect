@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get("SKILL_ABC_DJANGO_SECRET", '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False 
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -159,7 +159,7 @@ STATICFILES_DIRS = (
   os.path.join(BASE_DIR, "static"),
   'static/',
 )
-#STATIC_ROOT = 'static/'
+# STATIC_ROOT = 'static/'
 
 # LOGIN URL
 LOGIN_URL = 'rest_framework:login'
@@ -169,7 +169,8 @@ LOGOUT_URL = 'rest_framework:logout'
 OAUTH2_PROVIDER = {
     # this is the list of available scopes
     'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'groups': 'Access to your groups'},
-    'ACCESS_TOKEN_EXPIRE_SECONDS': 3*24*60*60
+    # 'ACCESS_TOKEN_EXPIRE_SECONDS': 3*24*60*60
+    'ACCESS_TOKEN_EXPIRE_SECONDS': 1*60
 }
 
 REST_FRAMEWORK = {
@@ -178,7 +179,7 @@ REST_FRAMEWORK = {
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
         # 'rest_framework.authentication.BasicAuthentication',  # enables simple command line authentication
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
         # 'rest_framework.authentication.TokenAuthentication',
         'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
     ),
