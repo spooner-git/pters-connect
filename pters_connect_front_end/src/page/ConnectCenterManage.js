@@ -17,39 +17,41 @@ class PAGEConnectCenterManage extends Component{
     @observable demoCenterInfo;
 
     componentDidMount(){
-        CFunc.ajax(
-            {
-                url:"https://httpbin.org/get",
-                type:"GET",
-                data:{"pters":this.props.centerID}
-            },
-            {
-                callback: (data)=>{
-                    this.academyDataSet();
-                    console.log("정상통신"+data);
-                },
-                error_callback:(data)=>{
-                    console.log("에러데이터");
-                }
-            }
-        )
-        CFunc.ajax(
-            {
-                url:"https://httpbin.org/get",
-                type:"GET",
-                data:{"pters":this.props.centerID}
-            },
-            {
-                callback: (data)=>{
-                    this.centerDataSet();
-                    console.log("정상통신"+data);
-                },
-                error_callback:(data)=>{
-                    console.log(data);
-                    console.log("에러데이터");
-                }
-            }
-        )
+        this.academyDataSet();
+        this.centerDataSet();
+        // CFunc.ajax(
+        //     {
+        //         url:"https://httpbin.org/get",
+        //         type:"GET",
+        //         data:{"pters":this.props.centerID}
+        //     },
+        //     {
+        //         callback: (data)=>{
+        //             this.academyDataSet();
+        //             console.log("정상통신"+data);
+        //         },
+        //         error_callback:(data)=>{
+        //             console.log("에러데이터");
+        //         }
+        //     }
+        // )
+        // CFunc.ajax(
+        //     {
+        //         url:"https://httpbin.org/get",
+        //         type:"GET",
+        //         data:{"pters":this.props.centerID}
+        //     },
+        //     {
+        //         callback: (data)=>{
+        //             this.centerDataSet();
+        //             console.log("정상통신"+data);
+        //         },
+        //         error_callback:(data)=>{
+        //             console.log(data);
+        //             console.log("에러데이터");
+        //         }
+        //     }
+        // )
     }
 
     @action
