@@ -2,7 +2,8 @@ from django.db import models
 
 # Create your models here.
 from apps.account.models import MemberTb
-from configs.const import OWN_TYPE_OWNER
+from configs.const import OWN_TYPE_OWNER, AUTH_TYPE_VIEW, AUTH_TYPE_WAIT, AUTH_TYPE_DELETE, OWN_TYPE_SHARE, \
+    OWN_TYPE_EMPLOYEE
 from configs.models import TimeStampedModel
 
 
@@ -116,4 +117,3 @@ class SubjectTb(TimeStampedModel):
 
     def __str__(self):
         return self.facility_tb.__str__()+'-'+self.name.__str__()
-

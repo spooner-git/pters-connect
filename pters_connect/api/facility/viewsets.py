@@ -1,4 +1,7 @@
+from rest_framework.decorators import action
 from rest_framework.filters import SearchFilter
+from rest_framework.response import Response
+from rest_framework.status import HTTP_201_CREATED
 from rest_framework.viewsets import ModelViewSet
 
 from api.facility.permissions import IsFacilityUpdateOrReadOnly, IsSubjectUpdateOrReadOnly
@@ -36,14 +39,23 @@ class SubjectViewSet(DynamicSerializerMixin,
 
     """
     permission_classes = [IsSubjectUpdateOrReadOnly]
-    queryset = SubjectTb.objects.filter(use=USE).order_by('-facility_id')
+    queryset = SubjectTb.objects.filter(use=USE).order_by('-subject_id')
     serializer_classes = {
         'read':  SubjectReadSerializer,
         'create': SubjectCreateSerializer,
         'update': SubjectUpdateSerializer,
     }
     filter_backends = [SearchFilter]
-    search_fields = ['name', 'facility_tb__name']
+    search_fields = ['name', 'subject_tb__name']
 
     def perform_create(self, serializer):
         serializer.save(member_id=self.request.user.id)
+
+    # @action(methods=['post'], detail=False)
+    # def set_subject_to_trainer(self, *args, **kwargs):
+    #     # serializer = self.get_serializer(data=request.data)
+    #     # serializer.is_valid(raise_exception=True)
+    #     kwargs = {'member', 'subject_tb', 'auth_cd', 'own_cd'}
+    #
+    #     return Response(status=HTTP_201_CREATED)
+

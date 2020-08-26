@@ -28,7 +28,8 @@ class MemberSubjectTb(TimeStampedModel):
     auth_cd = models.CharField('권한 코드', db_column='AUTH_CD', max_length=20, choices=AUTH_CD, blank=True,  default='')
     own_cd = models.CharField('소유 코드', db_column='OWN_CD', max_length=20, choices=OWN_CD,
                               blank=True, default=OWN_TYPE_OWNER)
-    mod_member_id = models.CharField('최종수정 회원 ID', db_column='MOD_MEMBER_ID', max_length=20, blank=True, default='')
+    mod_member = models.ForeignKey(MemberTb, verbose_name='최종수정 회원', on_delete=models.SET_NULL,
+                                   related_name='MOD_MEMBER_ID', null=True)
 
     class Meta:
         managed = True
