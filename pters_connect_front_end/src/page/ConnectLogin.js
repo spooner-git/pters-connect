@@ -19,41 +19,34 @@ class PAGEConnectLogin extends Component {
 
     _getToken = () => {
         const { storeOfLogin } = this.props;
-        var token = storeOfLogin.getToken();
-        console.log("토큰:"+token);
+        var token = storeOfLogin.getToken().AToken;
     }
 
-    _setToken = (token) => {
+    _setToken = (AToken, RToken, ExpireIn) => {
         const { storeOfLogin } = this.props;
-        storeOfLogin.setToken(token);
+        storeOfLogin.setToken(AToken, RToken, ExpireIn);
     }
 
     _signIn = () => {
-        let essential = {
+        let dataForAjaxPost = {
             data:{
-                'client_id':'F2uZBimau8peRE2uYCHYeHJnFQ86gWCa8REndPsk',
-                'client_secret':'PNyNkrY4MrfmRNN6Bg5radEUe9MfMEeEoo9VIVpXc6Z0XmGldzOdoOqUrPQx5wyfSBFedT9WQJv7oxQWpYXG7F4DUvrELUaH7IiVPPQwGZRNaRMICp4AvwculIjXzNeH',
-                'grant_type':'password',
-                'username':this.userID,
-                'password':this.userPW
+                client_id:'F2uZBimau8peRE2uYCHYeHJnFQ86gWCa8REndPsk',
+                client_secret:'PNyNkrY4MrfmRNN6Bg5radEUe9MfMEeEoo9VIVpXc6Z0XmGldzOdoOqUrPQx5wyfSBFedT9WQJv7oxQWpYXG7F4DUvrELUaH7IiVPPQwGZRNaRMICp4AvwculIjXzNeH',
+                grant_type:'password',
+                username:this.userID,
+                password:this.userPW
             },
-            type:"POST",
-            url:"https://api.pters.co.kr/oauth2/token/",
-            header:null
+            url:'https://api.pters.co.kr/oauth2/token/',
         }
 
-        let option_data = {
-            callback:(data)=>{
-                console.log("콜백"+data);
-            },
-            error_callback:(errorMsg)=>{
-                console.log("에러콜백"+errorMsg);
-            }
-        }
 
-        CFunc.ajax(
-            essential, option_data
-        )
+        CFunc.ajaxPost(dataForAjaxPost.url, null, dataForAjaxPost.data).then((data)=>{
+            console.log(JSON.stringify(data))
+            this._setToken(data.data.access_token, data.data.refresh_token, data.data.expires_in);
+            location.href = "/";
+        }).catch((errorMsg)=>{
+            console.log("에러콜백"+errorMsg);
+        })
     }
 
     @action

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -17,7 +17,7 @@ const Footer = () => {
                     <div className="footer_category_item">이용 안내</div>
                     <div className="footer_category_item">강사님이신가요?</div>
                     <div className="footer_category_item">레슨 찾고 계신가요?</div>
-                    <div className="footer_category_item"><NavLink to="/center_manage">센터 관리</NavLink></div>
+                    <div className="footer_category_item"><Link to="/center_manage">센터 관리</Link></div>
                 </section>
 
                 <section id="footer_sitemap" className="footer_category_wrap">

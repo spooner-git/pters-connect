@@ -9,9 +9,31 @@ import { OFF } from "../../const";
 import PAGEConnectMenu from '../../page/ConnectMenu';
 import Button from '../../component/Buttons/Button';
 import FlatButton from '../../component/Buttons/FlatButton';
+import { observer, inject } from 'mobx-react';
+import { observable, action } from 'mobx';
+import StoreOfLogin from '../../store/store_login';
 
+@inject("storeOfLogin")
+@observer
 class RootTop extends Component {
+    @observable user;
+
+    @action
+    _setUser = () => {
+        const { storeOfLogin } = this.props;
+        this.user = storeOfLogin.getCurrentUser();
+    }
+
+    @action
+    _signOut = () => {
+        const { storeOfLogin } = this.props;
+        storeOfLogin.clearToken();
+        this.user = storeOfLogin.getCurrentUser();
+        location.href = "/";
+    }
+
     render(){
+        this._setUser()
         return (
                 <header className="root_top">
                     <NavLink to="/" className="item" onClick={this.props.event_close}>
@@ -39,7 +61,17 @@ class RootTop extends Component {
                             <li className="root_top_pc_menu_item"><NavLink to="/map"><FlatButton>지도 탐색</FlatButton></NavLink></li>
                             <li className="root_top_pc_menu_item"><NavLink to="/list"><FlatButton>리스트 검색</FlatButton></NavLink></li>
                             <li className="root_top_pc_menu_item"><NavLink to="/"><FlatButton>이용 방법</FlatButton></NavLink></li>
-                            <li className="root_top_pc_menu_item"><NavLink to="/login"><Button highlight={true} style={{borderRadius:"3px", border:0, padding:"0 15px"}}>로그인/가입</Button></NavLink></li>
+                            <li className="root_top_pc_menu_item">
+                                {
+                                    this.user == null
+                                    ? 
+                                    <NavLink to="/login">
+                                        <Button highlight={true} style={{borderRadius:"3px", border:0, padding:"0 15px"}}>로그인/가입</Button>
+                                    </NavLink>
+                                    :
+                                    <Button highlight={false} style={{borderRadius:"3px", border:0, padding:"0 15px", color:"#fe4e65", fontWeight:"bold"}} onClick={this._signOut}>로그아웃</Button> 
+                                }
+                            </li>
                         </ul>
                         
                     </div>
