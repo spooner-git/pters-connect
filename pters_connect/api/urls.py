@@ -1,18 +1,22 @@
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
+from rest_framework.routers import DefaultRouter, SimpleRouter
 
-from api.account.viewsets import MemberViewSet
-
-from api.facility.viewsets import FacilityViewSet, SubjectViewSet
+from api.account.viewsets import MemberViewSet, FindMemberViewSet
+from api.facility.viewsets import FacilityViewSet
+from api.subject.viewsets import SubjectViewSet, SubjectTrainerViewSet
 
 app_name = 'api'
 
 
 router = DefaultRouter()
-
-router.register('member', MemberViewSet, basename='member')
-router.register('facility', FacilityViewSet, basename='facility')
-router.register('subject', SubjectViewSet, basename='subject')
+# super().__init__()
+# router = SimpleRouter(trailing_slash=True)
+router.register(r'member', MemberViewSet, basename='member')
+router.register(r'find_member', FindMemberViewSet, basename='find_member')
+router.register(r'facility', FacilityViewSet, basename='facility')
+router.register(r'subject', SubjectViewSet, basename='subject')
+# 권한 관련 내용 추가 필요
+router.register(r'subject_trainer', SubjectTrainerViewSet, basename='subject_trainer')
 # router.register('devices', FCMDeviceViewSet)
 
 urlpatterns = [

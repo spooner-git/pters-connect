@@ -48,6 +48,6 @@ urlpatterns += [
     path('oauth2/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('admin/', admin.site.urls),
 
-    path('api/', include('api.urls', namespace='api')),
+    path('', include('api.urls', namespace='api')),
     path('apps/', include('apps.urls')),
 ]
