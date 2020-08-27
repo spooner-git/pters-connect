@@ -75,6 +75,46 @@ class StoreOfLogin{
         });
     }
 
+    @action signIn = (id, password) => {
+        let dataForAjaxPost = {
+            data:{
+                client_id:'F2uZBimau8peRE2uYCHYeHJnFQ86gWCa8REndPsk',
+                client_secret:'PNyNkrY4MrfmRNN6Bg5radEUe9MfMEeEoo9VIVpXc6Z0XmGldzOdoOqUrPQx5wyfSBFedT9WQJv7oxQWpYXG7F4DUvrELUaH7IiVPPQwGZRNaRMICp4AvwculIjXzNeH',
+                grant_type:'password',
+                username:id,
+                password:password
+            },
+            url:'https://api.pters.co.kr/oauth2/token/',
+        }
+
+        CFunc.ajaxPost(dataForAjaxPost.url, null, dataForAjaxPost.data).then((data)=>{
+            this.setToken(data.data.access_token, data.data.refresh_token, data.data.expires_in);
+            location.href = "/";
+        }).catch((errorMsg)=>{
+            console.log("에러콜백"+errorMsg);
+        })
+    }
+
+    @action signOut = () => {
+        var tokenToRevoke = this.getCurrentUser();
+
+        let dataForAjaxPost = {
+            data:{
+                client_id:'F2uZBimau8peRE2uYCHYeHJnFQ86gWCa8REndPsk',
+                client_secret:'PNyNkrY4MrfmRNN6Bg5radEUe9MfMEeEoo9VIVpXc6Z0XmGldzOdoOqUrPQx5wyfSBFedT9WQJv7oxQWpYXG7F4DUvrELUaH7IiVPPQwGZRNaRMICp4AvwculIjXzNeH',
+                token:tokenToRevoke
+            },
+            url:'https://api.pters.co.kr/oauth2/revoke_token/',
+        }
+
+        CFunc.ajaxPost(dataForAjaxPost.url, null, dataForAjaxPost.data).then(()=>{
+            this.clearToken();
+            location.href = "/";
+        }).catch((errorMsg)=>{
+            console.log("에러콜백"+errorMsg);
+        })
+    }
+
 }
 
 export default StoreOfLogin;
