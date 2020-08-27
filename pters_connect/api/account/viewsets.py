@@ -1,3 +1,6 @@
+import json
+
+from django.core import serializers
 from rest_framework.filters import SearchFilter
 from rest_framework.viewsets import ModelViewSet
 
@@ -29,7 +32,9 @@ class MemberViewSet(DynamicSerializerMixin,
 
     def get_object(self):
         if self.kwargs.get('pk') == 'me':
-            return super().get_queryset().get(member_id=self.request.user.id)
+            member_instance = super().get_queryset().get(member_id=self.request.user.id)
+            self.request.session['member'] = serializers.serialize('json', [member_instance])
+            return member_instance
         return super().get_object()
 
     # @action(methods=['post'], detail=True)

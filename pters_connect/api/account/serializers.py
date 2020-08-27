@@ -127,5 +127,5 @@ class MemberReadSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
 
     class Meta:
         model = MemberTb
-        fields = '__all__'
+        fields = ['member_id', 'sex', 'birthday_dt', 'phone_is_active', 'user']
         extra_fields = ['user']
