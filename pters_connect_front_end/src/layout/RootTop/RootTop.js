@@ -27,9 +27,8 @@ class RootTop extends Component {
     @action
     _signOut = () => {
         const { storeOfLogin } = this.props;
-        storeOfLogin.clearToken();
+        storeOfLogin.signOut();
         this.user = storeOfLogin.getCurrentUser();
-        location.href = "/";
     }
 
     render(){

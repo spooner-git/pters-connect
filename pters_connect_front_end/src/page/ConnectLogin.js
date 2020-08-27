@@ -17,36 +17,38 @@ class PAGEConnectLogin extends Component {
     @observable userID;
     @observable userPW;
 
-    _getToken = () => {
-        const { storeOfLogin } = this.props;
-        var token = storeOfLogin.getToken().AToken;
-    }
+    // _getToken = () => {
+    //     const { storeOfLogin } = this.props;
+    //     var token = storeOfLogin.getToken().AToken;
+    // }
 
-    _setToken = (AToken, RToken, ExpireIn) => {
-        const { storeOfLogin } = this.props;
-        storeOfLogin.setToken(AToken, RToken, ExpireIn);
-    }
+    // _setToken = (AToken, RToken, ExpireIn) => {
+    //     const { storeOfLogin } = this.props;
+    //     storeOfLogin.setToken(AToken, RToken, ExpireIn);
+    // }
 
     _signIn = () => {
-        let dataForAjaxPost = {
-            data:{
-                client_id:'F2uZBimau8peRE2uYCHYeHJnFQ86gWCa8REndPsk',
-                client_secret:'PNyNkrY4MrfmRNN6Bg5radEUe9MfMEeEoo9VIVpXc6Z0XmGldzOdoOqUrPQx5wyfSBFedT9WQJv7oxQWpYXG7F4DUvrELUaH7IiVPPQwGZRNaRMICp4AvwculIjXzNeH',
-                grant_type:'password',
-                username:this.userID,
-                password:this.userPW
-            },
-            url:'https://api.pters.co.kr/oauth2/token/',
-        }
+        const { storeOfLogin } = this.props;
+        storeOfLogin.signIn(this.userID, this.userPW);
+        // let dataForAjaxPost = {
+        //     data:{
+        //         client_id:'F2uZBimau8peRE2uYCHYeHJnFQ86gWCa8REndPsk',
+        //         client_secret:'PNyNkrY4MrfmRNN6Bg5radEUe9MfMEeEoo9VIVpXc6Z0XmGldzOdoOqUrPQx5wyfSBFedT9WQJv7oxQWpYXG7F4DUvrELUaH7IiVPPQwGZRNaRMICp4AvwculIjXzNeH',
+        //         grant_type:'password',
+        //         username:this.userID,
+        //         password:this.userPW
+        //     },
+        //     url:'https://api.pters.co.kr/oauth2/token/',
+        // }
 
 
-        CFunc.ajaxPost(dataForAjaxPost.url, null, dataForAjaxPost.data).then((data)=>{
-            console.log(JSON.stringify(data))
-            this._setToken(data.data.access_token, data.data.refresh_token, data.data.expires_in);
-            location.href = "/";
-        }).catch((errorMsg)=>{
-            console.log("에러콜백"+errorMsg);
-        })
+        // CFunc.ajaxPost(dataForAjaxPost.url, null, dataForAjaxPost.data).then((data)=>{
+        //     console.log(JSON.stringify(data))
+        //     this._setToken(data.data.access_token, data.data.refresh_token, data.data.expires_in);
+        //     location.href = "/";
+        // }).catch((errorMsg)=>{
+        //     console.log("에러콜백"+errorMsg);
+        // })
     }
 
     @action
