@@ -1,4 +1,5 @@
 import json
+import logging
 
 from django.core import serializers
 from rest_framework import viewsets, mixins
@@ -9,6 +10,8 @@ from api.account.permissions import UserPermission
 from api.account.serializers import MemberReadSerializer, MemberCreateSerializer, MemberUpdateSerializer
 from api.viewset_mixins import DynamicSerializerMixin
 from apps.account.models import MemberTb
+
+logger = logging.getLogger(__name__)
 
 
 class MemberViewSet(DynamicSerializerMixin,

@@ -81,11 +81,10 @@ class SubjectTrainerCreateSerializer(DynamicFieldsMixin, serializers.ModelSerial
 
 
 class SubjectTrainerUpdateSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
-    member = MemberReadSerializer()
 
     class Meta:
         model = MemberSubjectTb
-        fields = ['member', 'member_subject_id', 'auth_cd', 'own_cd']
+        fields = ['subject_tb', 'auth_cd', 'own_cd']
 
 
 class SubjectTrainerReadSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
