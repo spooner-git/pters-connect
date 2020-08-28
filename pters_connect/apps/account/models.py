@@ -33,3 +33,16 @@ class MemberTb(TimeStampedModel):
 
     def __str__(self):
         return self.name
+
+
+class SmsAuthTb(TimeStampedModel):
+    id = models.AutoField(db_column='ID', primary_key=True, null=False)
+    phone_number = models.CharField(verbose_name='휴대폰 번호', db_column='PHONE_NUMBER', max_length=11)
+    auth_number = models.IntegerField(verbose_name='인증 번호', db_column='AUTH_NUMBER')
+    auth_check = models.BooleanField(verbose_name='인증 확인', db_column='AUTH_CHECK', default=False)
+
+    class Meta:
+        managed = True
+        db_table = 'SMS_AUTH_TB'
+        verbose_name = '휴대폰 인증'
+        verbose_name_plural = '휴대폰 인증'

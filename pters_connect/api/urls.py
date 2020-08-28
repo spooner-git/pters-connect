@@ -1,6 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter, SimpleRouter
 
+from api.account import views
 from api.account.viewsets import MemberViewSet, FindMemberViewSet
 from api.facility.viewsets import FacilityViewSet
 from api.subject.viewsets import SubjectViewSet, SubjectTrainerViewSet
@@ -20,5 +21,8 @@ router.register(r'subject_trainer', SubjectTrainerViewSet, basename='subject_tra
 # router.register('devices', FCMDeviceViewSet)
 
 urlpatterns = [
+    # FBV
+    path('sms_auth/', views.SmsAuthAPIView.as_view()),
+    path('sms_auth_check/', views.SmsAuthCheckAPIView.as_view()),
     path('', include(router.urls)),
 ]

@@ -6,7 +6,7 @@ from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
 from api.serializer_mixins import DynamicFieldsMixin
-from apps.account.models import MemberTb
+from apps.account.models import MemberTb, SmsAuthTb
 from configs.const import USE
 
 User = get_user_model()
@@ -25,6 +25,13 @@ class UserReadSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
 
 
 class MemberCreateSerializer(serializers.ModelSerializer):
+
+    MEMBER_TYPE_CHOICES = [
+        ('manager', '센터 관리자'),
+        ('trainer', '강사'),
+        ('trainee', '일반 회원'),
+    ]
+
     password1 = serializers.CharField(
         label='비밀번호', write_only=True,
         style={'input_type': 'password', 'placeholder': '비밀번호를 설정해주세요.'}
@@ -38,10 +45,14 @@ class MemberCreateSerializer(serializers.ModelSerializer):
         style={'placeholder': '휴대폰 번호를 입력해주세요.'}
     )
 
+    group = serializers.CharField(
+        label='회원 타입', read_only=True, allow_blank=False
+    )
+
     class Meta:
         model = User
         fields = [
-            'first_name', 'username', 'email', 'password1', 'password2', 'phone'
+            'first_name', 'username', 'email', 'password1', 'password2', 'phone', 'group'
         ]
         extra_kwargs = {
             'email': {
@@ -80,7 +91,7 @@ class MemberCreateSerializer(serializers.ModelSerializer):
         return data
 
     def create(self, validated_data):
-        group = Group.objects.get(name='manager')
+        group = Group.objects.get(name=validated_data['group'])
         user = User.objects.create(
             email=validated_data['email'],
             username=validated_data['username'],
@@ -129,3 +140,9 @@ class MemberReadSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
         model = MemberTb
         fields = ['member_id', 'sex', 'birthday_dt', 'phone_is_active', 'user']
         extra_fields = ['user']
+
+
+class SmsAuthSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SmsAuthTb
+        fields = '__all__'

@@ -1,3 +1,5 @@
+import logging
+
 from rest_framework import mixins, viewsets
 from rest_framework.decorators import action
 from rest_framework.filters import SearchFilter
@@ -12,6 +14,8 @@ from api.subject.serializers import SubjectReadSerializer, SubjectCreateSerializ
 from api.viewset_mixins import DynamicSerializerMixin
 from apps.subject.models import SubjectTb, MemberSubjectTb
 from configs.const import USE
+
+logger = logging.getLogger(__name__)
 
 
 class SubjectViewSet(DynamicSerializerMixin,
@@ -54,7 +58,6 @@ class SubjectTrainerViewSet(DynamicSerializerMixin,
     queryset = MemberSubjectTb.objects.filter(use=USE).order_by('-subject_id')
     serializer_classes = {
         'read': SubjectTrainerReadSerializer,
-        # 권한 관련 내용 추가 필요
         'create': SubjectTrainerCreateSerializer,
         'update': SubjectTrainerUpdateSerializer,
     }

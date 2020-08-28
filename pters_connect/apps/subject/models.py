@@ -31,9 +31,9 @@ class SubjectTb(TimeStampedModel):
 class MemberSubjectTb(TimeStampedModel):
 
     AUTH_CD = [
-        (AUTH_TYPE_VIEW, '골프'),
-        (AUTH_TYPE_WAIT, '필라테스'),
-        (AUTH_TYPE_DELETE, '웨이트 트레이닝'),
+        (AUTH_TYPE_VIEW, '연결 완료'),
+        (AUTH_TYPE_WAIT, '연결 대기'),
+        (AUTH_TYPE_DELETE, '연결 해제'),
     ]
     OWN_CD = [
         (OWN_TYPE_OWNER, '오너'),

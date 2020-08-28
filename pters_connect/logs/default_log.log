@@ -1,0 +1,359 @@
+[28/Aug/2020 21:42:41] ERROR [django.request:228] Internal Server Error: /subject_trainer/7/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 143, in _get_response
+    response = response.render()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\response.py", line 70, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\renderers.py", line 656, in get_context
+    raw_data_put_form = self.get_raw_data_form(data, view, 'PUT', request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\renderers.py", line 563, in get_raw_data_form
+    data = serializer.data.copy()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\serializers.py", line 562, in data
+    ret = super().data
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\serializers.py", line 514, in to_representation
+    for field in fields:
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\serializers.py", line 375, in _readable_fields
+    for field in self.fields.values():
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\utils\functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\serializers.py", line 1038, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\serializers.py", line 1139, in get_field_names
+    serializer_class=self.__class__.__name__
+AssertionError: The field 'member' was declared on serializer SubjectTrainerUpdateSerializer, but has not been included in the 'fields' option.
+[28/Aug/2020 21:42:41] ERROR [django.server:157] "GET /subject_trainer/7/ HTTP/1.1" 500 156103
+[28/Aug/2020 21:42:41] ERROR [django.server:157] "GET /subject_trainer/7/ HTTP/1.1" 500 156103
+[28/Aug/2020 22:56:50] ERROR [django.request:228] Internal Server Error: /sms_auth/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\account\views.py", line 21, in post
+    request.data['auth_check'] = False
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\http\request.py", line 467, in __setitem__
+    self._assert_mutable()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\http\request.py", line 464, in _assert_mutable
+    raise AttributeError("This QueryDict instance is immutable")
+AttributeError: This QueryDict instance is immutable
+[28/Aug/2020 22:56:50] ERROR [django.server:157] "POST /sms_auth/ HTTP/1.1" 500 25939
+[28/Aug/2020 22:56:50] ERROR [django.server:157] "POST /sms_auth/ HTTP/1.1" 500 25939
+[28/Aug/2020 22:57:33] ERROR [django.request:228] Internal Server Error: /sms_auth/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\account\views.py", line 23, in post
+    request.data['auth_check'] = False
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\http\request.py", line 467, in __setitem__
+    self._assert_mutable()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\http\request.py", line 464, in _assert_mutable
+    raise AttributeError("This QueryDict instance is immutable")
+AttributeError: This QueryDict instance is immutable
+[28/Aug/2020 22:57:33] ERROR [django.server:157] "POST /sms_auth/ HTTP/1.1" 500 25939
+[28/Aug/2020 22:57:33] ERROR [django.server:157] "POST /sms_auth/ HTTP/1.1" 500 25939
+[28/Aug/2020 22:58:10] ERROR [django.request:228] Internal Server Error: /sms_auth/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\account\views.py", line 23, in post
+    request.data['auth_check'] = False
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\http\request.py", line 467, in __setitem__
+    self._assert_mutable()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\http\request.py", line 464, in _assert_mutable
+    raise AttributeError("This QueryDict instance is immutable")
+AttributeError: This QueryDict instance is immutable
+[28/Aug/2020 22:58:10] ERROR [django.server:157] "POST /sms_auth/ HTTP/1.1" 500 25939
+[28/Aug/2020 22:58:10] ERROR [django.server:157] "POST /sms_auth/ HTTP/1.1" 500 25939
+[28/Aug/2020 22:58:27] ERROR [django.request:228] Internal Server Error: /sms_auth/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\account\views.py", line 23, in post
+    request.data['auth_check'] = False
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\http\request.py", line 467, in __setitem__
+    self._assert_mutable()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\http\request.py", line 464, in _assert_mutable
+    raise AttributeError("This QueryDict instance is immutable")
+AttributeError: This QueryDict instance is immutable
+[28/Aug/2020 22:58:27] ERROR [django.server:157] "POST /sms_auth/ HTTP/1.1" 500 25939
+[28/Aug/2020 22:58:27] ERROR [django.server:157] "POST /sms_auth/ HTTP/1.1" 500 25939
+[28/Aug/2020 23:01:47] ERROR [django.request:228] Internal Server Error: /sms_auth/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\backends\mysql\base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\pymysql\cursors.py", line 163, in execute
+    result = self._query(query)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\pymysql\cursors.py", line 321, in _query
+    conn.query(q)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\pymysql\connections.py", line 505, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\pymysql\connections.py", line 724, in _read_query_result
+    result.read()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\pymysql\connections.py", line 1069, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\pymysql\connections.py", line 676, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\pymysql\protocol.py", line 223, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'pters-test.SMS_AUTH_TB' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\account\views.py", line 31, in post
+    serializer.save()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\serializers.py", line 948, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\query.py", line 433, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\base.py", line 746, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\base.py", line 784, in save_base
+    force_update, using, update_fields,
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\base.py", line 886, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\base.py", line 925, in _do_insert
+    using=using, raw=raw,
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\query.py", line 1204, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\sql\compiler.py", line 1377, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\backends\mysql\base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\pymysql\cursors.py", line 163, in execute
+    result = self._query(query)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\pymysql\cursors.py", line 321, in _query
+    conn.query(q)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\pymysql\connections.py", line 505, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\pymysql\connections.py", line 724, in _read_query_result
+    result.read()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\pymysql\connections.py", line 1069, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\pymysql\connections.py", line 676, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\pymysql\protocol.py", line 223, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.ProgrammingError: (1146, "Table 'pters-test.SMS_AUTH_TB' doesn't exist")
+[28/Aug/2020 23:01:47] ERROR [django.server:157] "POST /sms_auth/ HTTP/1.1" 500 32288
+[28/Aug/2020 23:01:47] ERROR [django.server:157] "POST /sms_auth/ HTTP/1.1" 500 32288
+[28/Aug/2020 23:06:49] ERROR [django.request:228] Internal Server Error: /sms_auth_check/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\account\views.py", line 41, in post
+    sms_auth_info = self.get_object(phone_number=request.data['phone_number'])
+AttributeError: 'SmsAuthCheckAPIView' object has no attribute 'get_object'
+[28/Aug/2020 23:06:49] ERROR [django.server:157] "POST /sms_auth_check/ HTTP/1.1" 500 25640
+[28/Aug/2020 23:06:49] ERROR [django.server:157] "POST /sms_auth_check/ HTTP/1.1" 500 25640
+[28/Aug/2020 23:13:39] ERROR [django.request:228] Internal Server Error: /sms_auth_check/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\account\views.py", line 57, in post
+    if time_interval > settings.SMS_ACTIVATION_SECONDS:
+TypeError: '>' not supported between instances of 'datetime.timedelta' and 'int'
+[28/Aug/2020 23:13:39] ERROR [django.server:157] "POST /sms_auth_check/ HTTP/1.1" 500 25629
+[28/Aug/2020 23:13:39] ERROR [django.server:157] "POST /sms_auth_check/ HTTP/1.1" 500 25629
+[28/Aug/2020 23:14:19] ERROR [django.request:228] Internal Server Error: /sms_auth_check/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\account\views.py", line 57, in post
+    if time_interval > settings.SMS_ACTIVATION_SECONDS:
+TypeError: '>' not supported between instances of 'datetime.timedelta' and 'int'
+[28/Aug/2020 23:14:19] ERROR [django.server:157] "POST /sms_auth_check/ HTTP/1.1" 500 25629
+[28/Aug/2020 23:14:19] ERROR [django.server:157] "POST /sms_auth_check/ HTTP/1.1" 500 25629
+[28/Aug/2020 23:30:33] ERROR [django.request:228] Internal Server Error: /sms_auth_check/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\account\views.py", line 47, in post
+    sms_auth_info = SmsAuthTb.objects.filter(phone_number=request.data['phone_number']).latest()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\query.py", line 660, in latest
+    return self.reverse()._earliest(*fields)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\query.py", line 644, in _earliest
+    "earliest() and latest() require either fields as positional "
+ValueError: earliest() and latest() require either fields as positional arguments or 'get_latest_by' in the model's Meta.
+[28/Aug/2020 23:30:33] ERROR [django.server:157] "POST /sms_auth_check/ HTTP/1.1" 500 26135
+[28/Aug/2020 23:30:33] ERROR [django.server:157] "POST /sms_auth_check/ HTTP/1.1" 500 26135
