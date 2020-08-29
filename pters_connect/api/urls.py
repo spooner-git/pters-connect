@@ -22,7 +22,7 @@ router.register(r'subject_trainer', SubjectTrainerViewSet, basename='subject_tra
 
 urlpatterns = [
     # FBV
-    path('sms_auth/', views.SmsAuthAPIView.as_view()),
-    path('sms_auth_check/', views.SmsAuthCheckAPIView.as_view()),
+    # path('sms_auth/', views.SmsAuthAPIView.as_view()),
+    # path('sms_auth_check/', views.SmsAuthCheckAPIView.as_view()),
     path('', include(router.urls)),
 ]

@@ -1,7 +1,11 @@
 import logging
 import datetime
+import random
 
 from django.core import serializers
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import Http404
+from django.utils import timezone
 from rest_framework import viewsets, mixins
 from rest_framework.decorators import action
 from rest_framework.filters import SearchFilter
@@ -11,9 +15,10 @@ from rest_framework.viewsets import ModelViewSet
 
 from api.member.permissions import UserPermission
 from api.member.serializers import MemberReadSerializer, MemberCreateSerializer, MemberUpdateSerializer, \
-    SnsCreateSerializer
+    SnsCreateSerializer, SmsValidateSerializer, SmsAuthCreateSerializer
 from api.viewset_mixins import DynamicSerializerMixin
-from apps.member.models import MemberTb, SnsInfoTb
+from apps.member.models import MemberTb, SnsInfoTb, SmsAuthTb
+from configs import settings
 
 logger = logging.getLogger(__name__)
 
@@ -31,6 +36,8 @@ class MemberViewSet(DynamicSerializerMixin,
         'create': MemberCreateSerializer,
         'update': MemberUpdateSerializer,
         'add_social_info': SnsCreateSerializer,
+        'get_sms_auth_number': SmsAuthCreateSerializer,
+        'validate_sms_auth_number': SmsValidateSerializer
         # 'inactivate': UserInactivateSerializer,
         # 'find_email': EmailFindSerializer,
         # 'find_password': PasswordFindSerializer,
@@ -57,6 +64,42 @@ class MemberViewSet(DynamicSerializerMixin,
             serializer.save()
 
         return Response(serializer.data)
+
+    @action(methods=['post'], detail=False)
+    def get_sms_auth_number(self, request):
+        serializer = self.get_serializer(data=request.data)
+        error = None
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+
+        if error is not None:
+            return Response({"fail": error}, status=400)
+
+        return Response(serializer.data)
+
+    @action(methods=['post'], detail=False)
+    def validate_sms_auth_number(self, request):
+        error = None
+        try:
+            sms_auth_info = SmsAuthTb.objects.filter(phone_number=request.data['phone_number']).latest('id')
+        except ObjectDoesNotExist:
+            raise Http404
+
+        if str(sms_auth_info.auth_number) == str(request.data['auth_number']):
+            time_interval = (timezone.now() - sms_auth_info.reg_dt).total_seconds()
+
+            if int(time_interval) < int(settings.SMS_ACTIVATION_SECONDS):
+                sms_auth_info.auth_check = True
+                sms_auth_info.save()
+            else:
+                error = '입력 시한이 지났습니다.'
+        else:
+            error = '인증번호를 다시 확인해주세요.'
+
+        if error is None:
+            return Response({"success": "ok"}, status=201)
+
+        return Response({"fail": error}, status=400)
 
 
 class FindMemberViewSet(DynamicSerializerMixin,

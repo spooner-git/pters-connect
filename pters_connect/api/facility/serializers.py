@@ -69,6 +69,12 @@ class FacilityWithSubjectReadSerializer(DynamicFieldsMixin, serializers.ModelSer
         fields = ['name', 'address', 'main_type_cd', 'sub_type_cd', 'title', 'contents', 'main_img_url', 'sub_img_url',
                   'member', 'subjects', 'mod_dt', 'reg_dt', 'use']
 
+        extra_kwargs = {
+            'member': {
+                'required': False
+            },
+        }
+
     def get_subjects(self, obj):
         subject_data = SubjectTb.objects.filter(facility_tb=obj)
         return SubjectReadSerializer(instance=subject_data, many=True).data

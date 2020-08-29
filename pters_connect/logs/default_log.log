@@ -422,3 +422,422 @@ Traceback (most recent call last):
     raise AttributeError("This QueryDict instance is immutable")
 AttributeError: This QueryDict instance is immutable
 [30/Aug/2020 01:53:23] ERROR [django.server:157] "POST /member/5/add_social_info/ HTTP/1.1" 500 26442
+[30/Aug/2020 02:15:21] ERROR [django.request:228] Internal Server Error: /facility/2/with_subjects/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\facility\viewsets.py", line 46, in with_subjects
+    return Response(data=serializer.data)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\serializers.py", line 562, in data
+    ret = super().data
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\serializers.py", line 256, in data
+    raise AssertionError(msg)
+AssertionError: When a serializer is passed a `data` keyword argument you must call `.is_valid()` before attempting to access the serialized `.data` representation.
+You should either call `.is_valid()` first, or access `.initial_data` instead.
+[30/Aug/2020 02:15:21] ERROR [django.server:157] "GET /facility/2/with_subjects/ HTTP/1.1" 500 26948
+[30/Aug/2020 02:17:03] ERROR [django.request:228] Internal Server Error: /facility/2/with_subjects/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\facility\viewsets.py", line 45, in with_subjects
+    serializer.initial_data()
+TypeError: 'FacilityTb' object is not callable
+[30/Aug/2020 02:17:03] ERROR [django.server:157] "GET /facility/2/with_subjects/ HTTP/1.1" 500 26217
+[30/Aug/2020 02:17:45] ERROR [django.request:228] Internal Server Error: /facility/2/with_subjects/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\facility\viewsets.py", line 44, in with_subjects
+    serializer = self.get_serializer(data=facility_info.initial_data())
+AttributeError: 'FacilityTb' object has no attribute 'initial_data'
+[30/Aug/2020 02:17:45] ERROR [django.server:157] "GET /facility/2/with_subjects/ HTTP/1.1" 500 26301
+[30/Aug/2020 02:18:14] ERROR [django.request:228] Internal Server Error: /facility/2/with_subjects/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\facility\viewsets.py", line 46, in with_subjects
+    return Response(data=serializer.initial_data())
+TypeError: 'FacilityTb' object is not callable
+[30/Aug/2020 02:18:14] ERROR [django.server:157] "GET /facility/2/with_subjects/ HTTP/1.1" 500 26239
+[30/Aug/2020 02:18:30] ERROR [django.request:228] Internal Server Error: /facility/2/with_subjects/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\facility\viewsets.py", line 46, in with_subjects
+    return Response(data=serializer.initial_data())
+TypeError: 'FacilityTb' object is not callable
+[30/Aug/2020 02:18:30] ERROR [django.server:157] "GET /facility/2/with_subjects/ HTTP/1.1" 500 26239
+[30/Aug/2020 02:19:06] ERROR [django.request:228] Internal Server Error: /facility/2/with_subjects/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\facility\viewsets.py", line 46, in with_subjects
+    return Response(data=serializer.data)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\serializers.py", line 562, in data
+    ret = super().data
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\serializers.py", line 256, in data
+    raise AssertionError(msg)
+AssertionError: When a serializer is passed a `data` keyword argument you must call `.is_valid()` before attempting to access the serialized `.data` representation.
+You should either call `.is_valid()` first, or access `.initial_data` instead.
+[30/Aug/2020 02:19:06] ERROR [django.server:157] "GET /facility/2/with_subjects/ HTTP/1.1" 500 26948
+[30/Aug/2020 02:57:02] ERROR [django.request:228] Internal Server Error: /member/get_sms_auth_number/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\member\viewsets.py", line 74, in get_sms_auth_number
+    print(str(serializer.data))
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\serializers.py", line 562, in data
+    ret = super().data
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\serializers.py", line 256, in data
+    raise AssertionError(msg)
+AssertionError: When a serializer is passed a `data` keyword argument you must call `.is_valid()` before attempting to access the serialized `.data` representation.
+You should either call `.is_valid()` first, or access `.initial_data` instead.
+[30/Aug/2020 02:57:02] ERROR [django.server:157] "POST /member/get_sms_auth_number/ HTTP/1.1" 500 26998
+[30/Aug/2020 02:59:28] ERROR [django.request:228] Internal Server Error: /member/get_sms_auth_number/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\member\viewsets.py", line 76, in get_sms_auth_number
+    serializer.save()
+TypeError: save() missing 1 required positional argument: 'validated_data'
+[30/Aug/2020 02:59:28] ERROR [django.server:157] "POST /member/get_sms_auth_number/ HTTP/1.1" 500 26325
+[30/Aug/2020 03:00:41] ERROR [django.request:228] Internal Server Error: /member/get_sms_auth_number/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\member\viewsets.py", line 79, in get_sms_auth_number
+    error = func_send_sms_auth(serializer['phone_number'], serializer['auth_number'], 'PTERS-CONNECT')
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\serializers.py", line 548, in __getitem__
+    field = self.fields[key]
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\utils\serializer_helpers.py", line 148, in __getitem__
+    return self.fields[key]
+KeyError: 'auth_number'
+[30/Aug/2020 03:00:41] ERROR [django.server:157] "POST /member/get_sms_auth_number/ HTTP/1.1" 500 26660
+[30/Aug/2020 03:01:45] ERROR [django.request:228] Internal Server Error: /member/get_sms_auth_number/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\member\viewsets.py", line 79, in get_sms_auth_number
+    error = func_send_sms_auth(serializer['phone_number'], serializer['auth_number'], 'PTERS-CONNECT')
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\serializers.py", line 548, in __getitem__
+    field = self.fields[key]
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\utils\serializer_helpers.py", line 148, in __getitem__
+    return self.fields[key]
+KeyError: 'auth_number'
+[30/Aug/2020 03:01:45] ERROR [django.server:157] "POST /member/get_sms_auth_number/ HTTP/1.1" 500 26660
+[30/Aug/2020 03:06:21] ERROR [django.request:228] Internal Server Error: /member/get_sms_auth_number/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\member\viewsets.py", line 75, in get_sms_auth_number
+    serializer.save()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\member\serializers.py", line 158, in save
+    error = func_send_sms_auth(kwargs['phone_number'], kwargs['auth_number'], 'PTERS-CONNECT')
+KeyError: 'phone_number'
+[30/Aug/2020 03:06:21] ERROR [django.server:157] "POST /member/get_sms_auth_number/ HTTP/1.1" 500 26443
+[30/Aug/2020 03:07:14] ERROR [django.request:228] Internal Server Error: /member/get_sms_auth_number/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\member\viewsets.py", line 75, in get_sms_auth_number
+    serializer.save()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\member\serializers.py", line 158, in save
+    error = func_send_sms_auth(kwargs['phone_number'], kwargs['auth_number'], 'PTERS-CONNECT')
+KeyError: 'phone_number'
+[30/Aug/2020 03:07:14] ERROR [django.server:157] "POST /member/get_sms_auth_number/ HTTP/1.1" 500 26443
+[30/Aug/2020 03:07:30] ERROR [django.request:228] Internal Server Error: /member/get_sms_auth_number/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\member\viewsets.py", line 75, in get_sms_auth_number
+    serializer.save()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\member\serializers.py", line 159, in save
+    error = func_send_sms_auth(kwargs['phone_number'], kwargs['auth_number'], 'PTERS-CONNECT')
+KeyError: 'phone_number'
+[30/Aug/2020 03:07:30] ERROR [django.server:157] "POST /member/get_sms_auth_number/ HTTP/1.1" 500 26443
+[30/Aug/2020 03:08:09] ERROR [django.request:228] Internal Server Error: /member/get_sms_auth_number/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\member\viewsets.py", line 75, in get_sms_auth_number
+    serializer.save()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\member\serializers.py", line 159, in save
+    error = func_send_sms_auth(kwargs['phone_number'], kwargs['auth_number'], 'PTERS-CONNECT')
+KeyError: 'phone_number'
+[30/Aug/2020 03:08:09] ERROR [django.server:157] "POST /member/get_sms_auth_number/ HTTP/1.1" 500 26443
+[30/Aug/2020 03:09:12] ERROR [django.request:228] Internal Server Error: /member/get_sms_auth_number/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\member\viewsets.py", line 75, in get_sms_auth_number
+    serializer.save()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\member\serializers.py", line 155, in save
+    print(self.request)
+AttributeError: 'SmsAuthCreateSerializer' object has no attribute 'request'
+[30/Aug/2020 03:09:12] ERROR [django.server:157] "POST /member/get_sms_auth_number/ HTTP/1.1" 500 26474
+[30/Aug/2020 03:09:53] ERROR [django.request:228] Internal Server Error: /member/get_sms_auth_number/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\member\viewsets.py", line 75, in get_sms_auth_number
+    serializer.save()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\member\serializers.py", line 159, in save
+    error = func_send_sms_auth(kwargs['phone_number'], kwargs['auth_number'], 'PTERS-CONNECT')
+KeyError: 'phone_number'
+[30/Aug/2020 03:09:53] ERROR [django.server:157] "POST /member/get_sms_auth_number/ HTTP/1.1" 500 26443

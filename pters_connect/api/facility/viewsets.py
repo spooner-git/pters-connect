@@ -29,6 +29,7 @@ class FacilityViewSet(DynamicSerializerMixin,
         'read':  FacilityReadSerializer,
         'create': FacilityCreateSerializer,
         'update': FacilityUpdateSerializer,
+        'with_subjects': FacilityWithSubjectReadSerializer,
     }
     filter_backends = [SearchFilter]
     search_fields = ['facility_id', 'name', 'address', 'facility_type_cd']
@@ -40,7 +41,7 @@ class FacilityViewSet(DynamicSerializerMixin,
     @action(detail=True, methods=['get'])
     def with_subjects(self, request, pk):
         facility_info = get_object_or_404(self.get_queryset(), pk=pk)
-        serializer = FacilityWithSubjectReadSerializer(facility_info)
+        serializer = self.get_serializer(facility_info)
         return Response(data=serializer.data)
 
 
