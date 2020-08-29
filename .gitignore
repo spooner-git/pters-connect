@@ -1,8 +1,8 @@
 .idea/*
 pters_connect/configs/__pycache__/
 pters_connect/apps/__pycache__/
-pters_connect/apps/account/__pycache__/
-pters_connect/apps/account/migrations/__pycache__/
+pters_connect/apps/member/__pycache__/
+pters_connect/apps/member/migrations/__pycache__/
 pters_connect/apps/facility/__pycache__/
 pters_connect/apps/facility/migrations/__pycache__/
 pters_connect/apps/trainer/__pycache__/
@@ -10,7 +10,7 @@ pters_connect/apps/trainer/migrations/__pycache__/
 pters_connect/apps/subject/__pycache__/
 pters_connect/apps/subject/migrations/__pycache__/
 pters_connect/api/__pycache__/
-pters_connect/api/account/__pycache__/
+pters_connect/api/member/__pycache__/
 pters_connect/api/facility/__pycache__/
 pters_connect/api/trainer/__pycache__/
 pters_connect/api/subject/__pycache__/

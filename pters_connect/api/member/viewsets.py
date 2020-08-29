@@ -30,7 +30,7 @@ class MemberViewSet(DynamicSerializerMixin,
         'read':  MemberReadSerializer,
         'create': MemberCreateSerializer,
         'update': MemberUpdateSerializer,
-        # 'change_password': PasswordChangeSerializer,
+        'add_social_info': SnsCreateSerializer,
         # 'inactivate': UserInactivateSerializer,
         # 'find_email': EmailFindSerializer,
         # 'find_password': PasswordFindSerializer,
@@ -51,12 +51,10 @@ class MemberViewSet(DynamicSerializerMixin,
         request_data = request.data.copy()
         request_data['member'] = member_info.member_id
         request_data['sns_connect_date'] = datetime.date.today()
-        serializer = SnsCreateSerializer(data=request_data)
+        serializer = self.get_serializer(data=request_data)
 
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
-        else:
-            return Response({"fail": serializer.errors}, status=400)
 
         return Response(serializer.data)
 
