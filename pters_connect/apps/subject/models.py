@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-from apps.account.models import MemberTb
+from apps.member.models import MemberTb
 from apps.facility.models import FacilityTb
 from configs.models import TimeStampedModel
 from configs.const import OWN_TYPE_OWNER, AUTH_TYPE_VIEW, AUTH_TYPE_WAIT, AUTH_TYPE_DELETE, OWN_TYPE_SHARE, \

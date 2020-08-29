@@ -1,15 +1,19 @@
-import json
 import logging
+import datetime
 
 from django.core import serializers
 from rest_framework import viewsets, mixins
+from rest_framework.decorators import action
 from rest_framework.filters import SearchFilter
+from rest_framework.generics import get_object_or_404
+from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
-from api.account.permissions import UserPermission
-from api.account.serializers import MemberReadSerializer, MemberCreateSerializer, MemberUpdateSerializer
+from api.member.permissions import UserPermission
+from api.member.serializers import MemberReadSerializer, MemberCreateSerializer, MemberUpdateSerializer, \
+    SnsCreateSerializer
 from api.viewset_mixins import DynamicSerializerMixin
-from apps.account.models import MemberTb
+from apps.member.models import MemberTb, SnsInfoTb
 
 logger = logging.getLogger(__name__)
 
@@ -40,6 +44,21 @@ class MemberViewSet(DynamicSerializerMixin,
             self.request.session['member'] = serializers.serialize('json', [member_instance])
             return member_instance
         return super().get_object()
+
+    @action(methods=['post'], detail=True)
+    def add_social_info(self, request, pk):
+        member_info = get_object_or_404(self.get_queryset(), pk=pk)
+        request_data = request.data.copy()
+        request_data['member'] = member_info.member_id
+        request_data['sns_connect_date'] = datetime.date.today()
+        serializer = SnsCreateSerializer(data=request_data)
+
+        if serializer.is_valid():
+            serializer.save()
+        else:
+            return Response({"fail": serializer.errors}, status=400)
+
+        return Response(serializer.data)
 
 
 class FindMemberViewSet(DynamicSerializerMixin,

@@ -1,8 +1,8 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter, SimpleRouter
 
-from api.account import views
-from api.account.viewsets import MemberViewSet, FindMemberViewSet
+from api.member import views
+from api.member.viewsets import MemberViewSet, FindMemberViewSet
 from api.facility.viewsets import FacilityViewSet
 from api.subject.viewsets import SubjectViewSet, SubjectTrainerViewSet
 

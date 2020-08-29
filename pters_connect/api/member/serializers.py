@@ -1,12 +1,11 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.contrib.auth.password_validation import validate_password
-from django.forms import PasswordInput
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
 from api.serializer_mixins import DynamicFieldsMixin
-from apps.account.models import MemberTb, SmsAuthTb
+from apps.member.models import MemberTb, SmsAuthTb, SnsInfoTb
 from configs.const import USE
 
 User = get_user_model()
@@ -145,4 +144,10 @@ class MemberReadSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
 class SmsAuthSerializer(serializers.ModelSerializer):
     class Meta:
         model = SmsAuthTb
+        fields = '__all__'
+
+
+class SnsCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SnsInfoTb
         fields = '__all__'

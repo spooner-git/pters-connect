@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.account.serializers import MemberReadSerializer
+from api.member.serializers import MemberReadSerializer
 from api.serializer_mixins import DynamicFieldsMixin
 from api.subject.serializers import SubjectReadSerializer
 from apps.facility.models import FacilityTb, MemberFacilityTb

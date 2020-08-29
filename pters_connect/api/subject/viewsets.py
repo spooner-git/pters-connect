@@ -37,12 +37,6 @@ class SubjectViewSet(DynamicSerializerMixin,
     def perform_create(self, serializer):
         serializer.save(member_id=self.request.user.id)
 
-    @action(detail=True, methods=['get'])
-    def with_sub_trainer(self, request, pk):
-        subject_info = get_object_or_404(self.get_queryset(), pk=pk)
-        serializer = SubjectWithSubTrainerReadSerializer(subject_info)
-        return Response(data=serializer.data)
-
 
 class SubjectTrainerViewSet(DynamicSerializerMixin,
                             mixins.CreateModelMixin,

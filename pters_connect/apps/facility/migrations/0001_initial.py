@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('account', '__first__'),
+        ('member', '__first__'),
     ]
 
     operations = [
@@ -50,7 +50,7 @@ class Migration(migrations.Migration):
                 ('start_date', models.DateField(blank=True, db_column='START_DATE', null=True, verbose_name='시작일')),
                 ('end_date', models.DateField(blank=True, db_column='END_DATE', null=True, verbose_name='종료일')),
                 ('state_cd', models.CharField(blank=True, db_column='STATE_CD', default='', max_length=10, verbose_name='상태')),
-                ('member', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='account.MemberTb', verbose_name='회원')),
+                ('member', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='member.MemberTb', verbose_name='회원')),
             ],
             options={
                 'verbose_name': '지점',
@@ -69,7 +69,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(blank=True, db_column='NAME', default='', max_length=255, verbose_name='수업명')),
                 ('note', models.CharField(blank=True, db_column='NOTE', default='', max_length=1000, verbose_name='설명')),
                 ('facility_tb', models.ForeignKey(blank=True, on_delete=django.db.models.deletion.CASCADE, to='facility.FacilityTb', verbose_name='지점')),
-                ('main_trainer', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='MAIN_TRAINER_ID', to='account.MemberTb', verbose_name='메인 담당 강사')),
+                ('main_trainer', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='MAIN_TRAINER_ID', to='member.MemberTb', verbose_name='메인 담당 강사')),
             ],
             options={
                 'verbose_name': '수업',
@@ -89,7 +89,7 @@ class Migration(migrations.Migration):
                 ('own_cd', models.CharField(blank=True, db_column='OWN_CD', default='OWNER', max_length=20, verbose_name='소유 코드')),
                 ('mod_member_id', models.CharField(blank=True, db_column='MOD_MEMBER_ID', default='', max_length=20, verbose_name='최종수정 회원 ID')),
                 ('facility_tb', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='facility.FacilityTb', verbose_name='지점')),
-                ('member', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='account.MemberTb', verbose_name='회원')),
+                ('member', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='member.MemberTb', verbose_name='회원')),
             ],
             options={
                 'verbose_name': '강사->지점 연결 정보',
@@ -109,7 +109,7 @@ class Migration(migrations.Migration):
                 ('enable_flag', models.IntegerField(db_column='ENABLE_FLAG', default=1, verbose_name='가능 유무')),
                 ('facility_tb', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='facility.FacilityTb', verbose_name='지점')),
                 ('function_auth_tb', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='facility.FunctionAuthTb', verbose_name='기능')),
-                ('member', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='account.MemberTb', verbose_name='회원')),
+                ('member', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='member.MemberTb', verbose_name='회원')),
             ],
             options={
                 'verbose_name': '공유 지점 권한',

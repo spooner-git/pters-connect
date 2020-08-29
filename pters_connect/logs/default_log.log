@@ -357,3 +357,68 @@ Traceback (most recent call last):
 ValueError: earliest() and latest() require either fields as positional arguments or 'get_latest_by' in the model's Meta.
 [28/Aug/2020 23:30:33] ERROR [django.server:157] "POST /sms_auth_check/ HTTP/1.1" 500 26135
 [28/Aug/2020 23:30:33] ERROR [django.server:157] "POST /sms_auth_check/ HTTP/1.1" 500 26135
+[30/Aug/2020 01:50:39] ERROR [django.request:228] Internal Server Error: /member/5/add_social_info
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\utils\deprecation.py", line 93, in __call__
+    response = self.process_request(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\middleware\common.py", line 54, in process_request
+    path = self.get_full_path_with_slash(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\middleware\common.py", line 94, in get_full_path_with_slash
+    'url': request.get_host() + new_path,
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8080/member/5/add_social_info/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+[30/Aug/2020 01:50:39] ERROR [django.server:157] "POST /member/5/add_social_info HTTP/1.1" 500 87719
+[30/Aug/2020 01:50:39] ERROR [django.server:157] "POST /member/5/add_social_info HTTP/1.1" 500 87719
+[30/Aug/2020 01:51:27] ERROR [django.request:228] Internal Server Error: /member/5/add_social_info
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\utils\deprecation.py", line 93, in __call__
+    response = self.process_request(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\middleware\common.py", line 54, in process_request
+    path = self.get_full_path_with_slash(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\middleware\common.py", line 94, in get_full_path_with_slash
+    'url': request.get_host() + new_path,
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8080/member/5/add_social_info/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+[30/Aug/2020 01:51:27] ERROR [django.server:157] "POST /member/5/add_social_info HTTP/1.1" 500 87757
+[30/Aug/2020 01:52:05] ERROR [django.request:228] Internal Server Error: /member/5/add_social_info
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\utils\deprecation.py", line 93, in __call__
+    response = self.process_request(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\middleware\common.py", line 54, in process_request
+    path = self.get_full_path_with_slash(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\middleware\common.py", line 94, in get_full_path_with_slash
+    'url': request.get_host() + new_path,
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8080/member/5/add_social_info/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+[30/Aug/2020 01:52:05] ERROR [django.server:157] "POST /member/5/add_social_info HTTP/1.1" 500 87757
+[30/Aug/2020 01:53:23] ERROR [django.request:228] Internal Server Error: /member/5/add_social_info/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\member\viewsets.py", line 52, in add_social_info
+    request_data['member_id'] = member_info.member_id
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\http\request.py", line 467, in __setitem__
+    self._assert_mutable()
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\http\request.py", line 464, in _assert_mutable
+    raise AttributeError("This QueryDict instance is immutable")
+AttributeError: This QueryDict instance is immutable
+[30/Aug/2020 01:53:23] ERROR [django.server:157] "POST /member/5/add_social_info/ HTTP/1.1" 500 26442

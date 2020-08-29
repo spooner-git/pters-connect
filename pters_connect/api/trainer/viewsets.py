@@ -1,6 +1,6 @@
 import logging
 
-from api.account.permissions import UserPermission
+from api.member.permissions import UserPermission
 
 logger = logging.getLogger(__name__)
 

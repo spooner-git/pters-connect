@@ -41,12 +41,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django.contrib.sites',
     'oauth2_provider',
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
     'drf_yasg',
-    'apps.account',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.kakao',
+    'allauth.socialaccount.providers.naver',
+    'apps.member',
     'apps.facility',
     'apps.subject',
     'apps.trainer',
@@ -73,7 +80,7 @@ AUTHENTICATION_BACKENDS = (
     # If is_active is 0, login will be ok
     'django.contrib.auth.backends.AllowAllUsersModelBackend'
     # `allauth` specific authentication methods, such as login by e-mail
-    # "allauth.account.auth_backends.AuthenticationBackend",
+    # "allauth.member.auth_backends.AuthenticationBackend",
 )
 
 TEMPLATES = [
@@ -189,6 +196,8 @@ REST_FRAMEWORK = {
     ),
 }
 
+SITE_ID = 1
+
 PTERS_reCAPTCHA_SECRET_KEY = os.environ.get("PTERS_reCAPTCHA_SECRET_KEY", '')
 PTERS_SMS_ACTIVATION_MAX_COUNT = 10
 
@@ -215,7 +224,7 @@ PTERS_NAVER_ID_LOGIN_CLIENT_SECRET = os.environ.get("PTERS_NAVER_ID_LOGIN_CLIENT
 # SKILL_ABC_BLIZZARD_CLIENT_SECRET = os.environ.get('SKILL_ABC_BLIZZARD_CLIENT_SECRET', '')
 
 LOG_FILE = os.path.join(os.path.dirname(__file__), '..', 'logs/default_log.log')
-LOG_FILE_ACCOUNT = os.path.join(os.path.dirname(__file__), '..', 'logs/account_log.log')
+LOG_FILE_MEMBER = os.path.join(os.path.dirname(__file__), '..', 'logs/member_log.log')
 LOG_FILE_FACILITY = os.path.join(os.path.dirname(__file__), '..', 'logs/facility_log.log')
 LOG_FILE_SUBJECT = os.path.join(os.path.dirname(__file__), '..', 'logs/subject_log.log')
 LOG_FILE_TRAINER = os.path.join(os.path.dirname(__file__), '..', 'logs/trainer_log.log')
@@ -242,11 +251,11 @@ LOGGING = {
             'formatter': 'verbose',
             'backupCount': 5,
         },
-        'account_file': {
+        'member_file': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
             'formatter': 'verbose',
-            'filename': LOG_FILE_ACCOUNT,
+            'filename': LOG_FILE_MEMBER,
             'maxBytes': 1024*1024*10,
             'backupCount': 5,
         },
@@ -286,12 +295,12 @@ LOGGING = {
     'loggers': {
         '': {
             'handlers': ['default'],
-            'propagate': True,
+            'propagate': False,
             'level': 'ERROR',
         },
         'django': {
             'handlers': ['default'],
-            'propagate': True,
+            'propagate': False,
             'level': 'ERROR',
         },
         'django.request': {
@@ -299,8 +308,8 @@ LOGGING = {
             'propagate': False,
             'level': 'ERROR',
         },
-        'account': {
-            'handlers': ['account_file'],
+        'member': {
+            'handlers': ['member_file'],
             'level': 'DEBUG',
         },
         'facility': {

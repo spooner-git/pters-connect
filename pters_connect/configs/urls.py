@@ -47,6 +47,7 @@ urlpatterns += [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('oauth2/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
 
     path('', include('api.urls', namespace='api')),
     path('apps/', include('apps.urls')),

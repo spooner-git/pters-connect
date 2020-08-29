@@ -4,7 +4,7 @@ from rest_framework import permissions
 class UserPermission(permissions.BasePermission):
 
     def has_permission(self, request, view):
-        if view.action in ['create', 'activate_confirm', 'reset_password', 'find_email', 'metadata']:
+        if view.action in ['create', 'add_social_info', 'metadata']:
             return True
         return request.user.is_authenticated
 
