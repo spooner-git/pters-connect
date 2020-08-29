@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from api.account.serializers import MemberReadSerializer
+from api.member.serializers import MemberReadSerializer
 from api.serializer_mixins import DynamicFieldsMixin
 from apps.subject.models import SubjectTb, MemberSubjectTb
 from configs.const import OWN_TYPE_OWNER, AUTH_TYPE_VIEW

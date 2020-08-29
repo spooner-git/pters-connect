@@ -1,12 +1,14 @@
+import random
+
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.contrib.auth.password_validation import validate_password
-from django.forms import PasswordInput
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
+from api.member.views import func_send_sms_auth
 from api.serializer_mixins import DynamicFieldsMixin
-from apps.account.models import MemberTb, SmsAuthTb
+from apps.member.models import MemberTb, SmsAuthTb, SnsInfoTb
 from configs.const import USE
 
 User = get_user_model()
@@ -142,7 +144,31 @@ class MemberReadSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
         extra_fields = ['user']
 
 
-class SmsAuthSerializer(serializers.ModelSerializer):
+class SmsAuthCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = SmsAuthTb
+        fields = ['phone_number']
+
+    def save(self, **kwargs):
+        max_range = 99999
+        auth_number = str(random.randrange(0, max_range)).zfill(len(str(max_range)))
+        self.validated_data['auth_check'] = False
+        self.validated_data['auth_number'] = auth_number
+        error = func_send_sms_auth(self.validated_data['phone_number'], self.validated_data['auth_number'],
+                                   'PTERS-CONNECT')
+
+        if error is not None:
+            raise serializers.ValidationError('인증번호 전송에 실패했습니다.')
+        return super().save(**self.validated_data)
+
+
+class SmsValidateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SmsAuthTb
+        fields = ['phone_number', 'auth_number']
+
+
+class SnsCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SnsInfoTb
         fields = '__all__'

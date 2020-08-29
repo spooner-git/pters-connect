@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('account', '__first__'),
+        ('member', '__first__'),
         ('facility', '0002_delete_subjecttb'),
     ]
 
@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(blank=True, db_column='NAME', default='', max_length=255, verbose_name='수업명')),
                 ('note', models.CharField(blank=True, db_column='NOTE', default='', max_length=1000, verbose_name='설명')),
                 ('facility_tb', models.ForeignKey(blank=True, on_delete=django.db.models.deletion.CASCADE, to='facility.FacilityTb', verbose_name='지점')),
-                ('main_trainer', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='MAIN_TRAINER_ID', to='account.MemberTb', verbose_name='메인 담당 강사')),
+                ('main_trainer', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='MAIN_TRAINER_ID', to='member.MemberTb', verbose_name='메인 담당 강사')),
             ],
             options={
                 'verbose_name': '수업',
@@ -42,8 +42,8 @@ class Migration(migrations.Migration):
                 ('member_subject_id', models.AutoField(db_column='ID', primary_key=True, serialize=False)),
                 ('auth_cd', models.CharField(choices=[('VIEW', '연결 완료'), ('WAIT', '연결 대기'), ('DELETE', '연결 해제')], db_column='AUTH_CD', default='VIEW', max_length=20, verbose_name='권한 코드')),
                 ('own_cd', models.CharField(choices=[('OWNER', '오너'), ('SHARE', '공유'), ('EMPLOYEE', '직원')], db_column='OWN_CD', default='OWNER', max_length=20, verbose_name='소유 코드')),
-                ('member', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='account.MemberTb', verbose_name='회원')),
-                ('mod_member', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='MOD_MEMBER_ID', to='account.MemberTb', verbose_name='최종수정 회원')),
+                ('member', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='member.MemberTb', verbose_name='회원')),
+                ('mod_member', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='MOD_MEMBER_ID', to='member.MemberTb', verbose_name='최종수정 회원')),
                 ('subject_tb', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='subject.SubjectTb', verbose_name='지점')),
             ],
             options={
