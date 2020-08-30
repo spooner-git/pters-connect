@@ -1,0 +1,30 @@
+.connect_edit_center_basic_info_page{
+    overflow-y: auto;
+    padding-top: 20px;
+    height:calc(100vh - 60px)
+}
+
+.connect_edit_center_basic_info_top_tool{
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 20px;
+    padding: 0 15px;   
+}
+
+.connect_edit_center_basic_info_input_wrap{
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    padding: 20px 15px;  
+}
+
+.connect_edit_center_basic_info_inputs{
+    width: 100%;
+    margin: 8px 0;
+}
+
+@media(min-width:900px){
+    .connect_edit_center_basic_info_input_wrap{
+        box-shadow: 0 0 5px 0 #cccccc;
+    }
+}

@@ -1,0 +1,15 @@
+.flat_button_general{
+    height: 35px;
+    line-height: 35px;
+    padding: 0px 10px;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+}
+
+.flat_button_highlighted{
+    /* color: #fe4e65;
+    font-weight: bold; */
+    color: #fe4e65;
+    font-weight: bold;
+}

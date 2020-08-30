@@ -1,44 +1,80 @@
-from django.core import serializers
+from rest_framework import serializers
+from api.member.serializers import MemberReadSerializer
+from api.serializer_mixins import DynamicFieldsMixin
+from api.subject.serializers import SubjectReadSerializer
+from apps.facility.models import FacilityTb, MemberFacilityTb
+from apps.subject.models import SubjectTb
+from configs.const import OWN_TYPE_OWNER, AUTH_TYPE_VIEW
 
 
-class SnippetSerializer(serializers.Serializer):
-    facility_id = serializers.IntegerField(read_only=True)
-    member = serializers.CharField(required=False, allow_blank=True, max_length=100)
-    name = serializers.CharField(style={'base_template': 'textarea.html'})
-    linenos = serializers.BooleanField(required=False)
-    language = serializers.ChoiceField(choices=LANGUAGE_CHOICES, default='python')
-    style = serializers.ChoiceField(choices=STYLE_CHOICES, default='friendly')
-
-    def create(self, validated_data):
-        """
-        Create and return a new `Snippet` instance, given the validated data.
-        """
-        return Snippet.objects.create(**validated_data)
-
-    def update(self, instance, validated_data):
-        """
-        Update and return an existing `Snippet` instance, given the validated data.
-        """
-        instance.title = validated_data.get('title', instance.title)
-        instance.code = validated_data.get('code', instance.code)
-        instance.linenos = validated_data.get('linenos', instance.linenos)
-        instance.language = validated_data.get('language', instance.language)
-        instance.style = validated_data.get('style', instance.style)
-        instance.save()
-        return instance
-
-class FacilityTb(TimeStampedModel):
-    facility_id = models.AutoField(db_column='ID', primary_key=True, null=False)
-    member = models.ForeignKey(MemberTb, on_delete=models.CASCADE)  # Field name made lowercase.
-    name = models.CharField(db_column='NAME', max_length=20, blank=True, null=True)
-    address = models.CharField(db_column='ADDRESS', max_length=255, blank=True,
-                               null=True)  # Field name made lowercase.
-    facility_type_cd = models.CharField(db_column='FACILITY_TYPE_CD', max_length=20, blank=True, null=True)
-    main_img_url = models.CharField(db_column='MAIN_IMG_URL', max_length=255, blank=True, null=True)
+class FacilityCreateSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
 
     class Meta:
-        managed = False
-        db_table = 'FACILITY_TB'
+        model = FacilityTb
+        fields = [
+            'name', 'address', 'title', 'contents', 'main_type_cd', 'sub_type_cd', 'support_tag',
+            'main_img_url', 'sub_img_url', 'start_date', 'member_id'
+        ]
+        extra_kwargs = {
+            'name': {
+                'style': {
+                    'placeholder': '지점명을 입력해주세요'
+                }
+            },
+            'address': {
+                'style': {
+                    'placeholder': '주소를 입력해주세요'
+                },
+                'required': False
+            },
+        }
 
-    def __str__(self):
-        return self.name.__str__()
+    def create(self, validated_data):
+
+        member_id = validated_data['member_id']
+        instance = FacilityTb(**validated_data)
+        instance.save()
+
+        member_facility_info = MemberFacilityTb(facility_tb=instance, auth_cd=AUTH_TYPE_VIEW, own_cd=OWN_TYPE_OWNER,
+                                                member_id=member_id, mod_member_id=member_id)
+        member_facility_info.save()
+        return instance
+
+
+class FacilityUpdateSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
+
+    class Meta:
+        model = FacilityTb
+        fields = [
+            'name', 'address', 'title', 'contents', 'main_type_cd', 'sub_type_cd', 'support_tag',
+            'main_img_url', 'sub_img_url', 'start_date', 'member_id'
+        ]
+
+
+class FacilityReadSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
+    member = MemberReadSerializer()
+
+    class Meta:
+        model = FacilityTb
+        fields = ['facility_id', 'name', 'address', 'main_type_cd', 'sub_type_cd', 'title', 'contents',
+                  'main_img_url', 'sub_img_url', 'member', 'mod_dt', 'reg_dt', 'use']
+
+
+class FacilityWithSubjectReadSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
+    member = MemberReadSerializer()
+    subjects = serializers.SerializerMethodField()
+
+    class Meta:
+        model = FacilityTb
+        fields = ['name', 'address', 'main_type_cd', 'sub_type_cd', 'title', 'contents', 'main_img_url', 'sub_img_url',
+                  'member', 'subjects', 'mod_dt', 'reg_dt', 'use']
+
+        extra_kwargs = {
+            'member': {
+                'required': False
+            },
+        }
+
+    def get_subjects(self, obj):
+        subject_data = SubjectTb.objects.filter(facility_tb=obj)
+        return SubjectReadSerializer(instance=subject_data, many=True).data

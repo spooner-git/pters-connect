@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import "./ConnectHome.css";
 import ButtonToggle from '../component/Buttons/ButtonToggle';
 import { PROGRAM_CATEGORY } from '../const';
-import { NavLink } from 'react-router-dom';
 import TopBanner from '../component/TopBanner/TopBanner';
 import ImageButton from '../component/Buttons/ImageButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRunning, faMusic } from '@fortawesome/free-solid-svg-icons';
-import Footer from '../component/Footer';
-import Title from '../component/Title';
+import Footer from '../assembly/Footer/Footer';
+import Title from '../component/Title/Title';
 import Button from '../component/Buttons/Button';
 
 class PAGEConnectHome extends Component {
@@ -46,13 +45,12 @@ class PAGEConnectHome extends Component {
        return (
             <div className={this.props.classes}>
                 <section className="section_at_home">
-                    <TopBanner>
+                    <TopBanner image_url={"/images/front_page/top_banner1.jpg"}>
                         {/* <h1 style={{textAlign:"center", fontSize:"20px", color:"#ffffff", fontWeight:"bold"}}>PTERS 커넥트</h1> */}
                         {/* <p className="topbanner_description_at_home">레슨, 쉽게 찾자</p> */}
-                        <h1 className="topbanner_description_at_home">레슨, 쉽게 찾자</h1>
+                        <h1 className="topbanner_description_at_home">골프 레슨, 쉽게 찾자</h1>
                     </TopBanner>
                 </section>
-
                 <section style={{display:"none"}}>
                     <h2 style={{textAlign:"center", fontSize:"16px", fontWeight:"normal", maxWidth:"540px", margin:"auto", padding:"20px", wordBreak:"keep-all"}}>
                         배우고 싶은게 있는데,<br></br> 어떻게 시작해야할 지 고민인가요?<br></br><br></br>
@@ -63,7 +61,7 @@ class PAGEConnectHome extends Component {
 
                 <section className="section_at_home" style={{padding:"20px 0", paddingBottom:"0"}}>
                     <h2 style={{textAlign:"left", fontSize:"30px", fontWeight:"900", margin:0, padding:"0 20px", wordBreak:"keep-all"}}>
-                        원하는 레슨을 선택하세요
+                        원하는 장소를 선택하세요
                     </h2>
                     <h3 style={{textAlign:"left", fontWeight:"normal", marginTop:0, padding:"0 20px"}}>간편하게 검색하고, 상담요청을 보내세요</h3>
                     <div className="home_category1_wrap" hidden>
@@ -92,8 +90,8 @@ class PAGEConnectHome extends Component {
                             Object.keys(PROGRAM_CATEGORY[this.state.category1].sub_category).map((el)=>{
                                 let name = PROGRAM_CATEGORY[this.state.category1].sub_category[el].name;
                                 let code = el;
-                                return  <ImageButton key={code} 
-                                                    onClick={()=>{this.handle_category2_set(code);this.go_url(`/list/?${this.state.category1}/?${code}`)}} 
+                                return  <ImageButton key={code}
+                                                    onClick={()=>{this.handle_category2_set(code);this.go_url(`/list/?main_category=${this.state.category1}&sub_category=${code}`)}} 
                                                     image_url={`/images/category/category_image_${code}.jpg`} 
                                                     style={{display:"inline-block", height:"80px", border:"1px solid black", padding:"10px 20px", verticalAlign:"top", backgroundColor:"#282828"}}
                                                     className="lesson_brick_image_button"
@@ -113,9 +111,9 @@ class PAGEConnectHome extends Component {
                         </div>
                         <div style={{textAlign:"left"}}>
                             <div style={{position:"absolute", top:"50%", transform:"translateY(-50%)"}}>
-                                <Title style={{fontSize:"28px", fontWeight:"900", padding:"10px 0", wordBreak:"keep-all"}}>레슨을 만나는 가장 쉬운 방법</Title>
+                                <Title style={{fontSize:"28px", fontWeight:"900", padding:"10px 0", wordBreak:"keep-all"}}>골프 레슨을 만나는 가장 쉬운 방법</Title>
                                 <Title style={{fontSize:"16px", fontWeight:"400", padding:"0", wordBreak:"keep-all"}}>좋은 강사님 어떻게 찾을지 고민 하지마세요.</Title>
-                                <Title style={{fontSize:"16px", fontWeight:"400", padding:"0", wordBreak:"keep-all"}}>간편하게 검색하고, 나와 맞는 강사님을 찾아 부담없이 상담할 수 있습니다.</Title>
+                                <Title style={{fontSize:"16px", fontWeight:"400", padding:"0", wordBreak:"keep-all"}}>간편하게 검색하고, 상담을 요청할 수 있습니다.</Title>
                                 <Title style={{fontSize:"16px", fontWeight:"400", padding:"0", wordBreak:"keep-all"}}>지금 바로 시작해보세요!</Title>
                                 {/* <Button highlight={true} style={{border: "0", borderRadius:"3px", marginTop:"15px", padding:"0 15px", fontWeight:"500"}}>회원 가입</Button> */}
                             </div>
@@ -123,7 +121,7 @@ class PAGEConnectHome extends Component {
                         </div>
                     </div>
                 </section>
-                <section className="section_at_home section_introduce" style={{backgroundColor:"#fff"}}>
+                <section className="section_at_home section_introduce" style={{backgroundColor:"#fff", display:"none"}}>
                     <div className="home_flex_parent">
                         <div style={{textAlign:"left"}}>
                             <div style={{position:"absolute", top:"50%", transform:"translateY(-50%)"}}>

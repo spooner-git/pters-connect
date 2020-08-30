@@ -27,11 +27,7 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.6.10 virtualenv at ~/.pyenv/versions/pters-connect-env" project-jdk-type="Python SDK" />
-  <component name="VagrantProjectSettings">
-    <option name="instanceFolder" value="" />
-    <option name="provider" value="" />
-  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.6 (pters-connect-venv)" project-jdk-type="Python SDK" />
   <component name="masterDetails">
     <states>
       <state key="ScopeChooserConfigurable.UI">

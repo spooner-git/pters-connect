@@ -30,7 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,13 +41,22 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django.contrib.sites',
+    'oauth2_provider',
     'rest_framework',
-    # 'apps.account',
-    # 'apps.facility',
-    # 'facility.apps.FacilityConfig',
-    # 'debug_toolbar',
-    'golf_pro',
-    'connect_home'
+    'rest_framework.authtoken',
+    'corsheaders',
+    'drf_yasg',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.kakao',
+    'allauth.socialaccount.providers.naver',
+    'apps.member',
+    'apps.facility',
+    'apps.subject',
+    'apps.trainer',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
     # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
@@ -70,7 +80,7 @@ AUTHENTICATION_BACKENDS = (
     # If is_active is 0, login will be ok
     'django.contrib.auth.backends.AllowAllUsersModelBackend'
     # `allauth` specific authentication methods, such as login by e-mail
-    # "allauth.account.auth_backends.AuthenticationBackend",
+    # "allauth.member.auth_backends.AuthenticationBackend",
 )
 
 TEMPLATES = [
@@ -98,11 +108,15 @@ WSGI_APPLICATION = 'configs.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pters',
+        'NAME': 'pters-test',
         'USER': os.environ.get("PTERS_DB_USER", ''),
         'PASSWORD': os.environ.get("PTERS_DB_PASSWORD", ''),
         'HOST': os.environ.get("PTERS_DB_HOST", ''),
         'PORT': '3306',
+        'OPTIONS': {
+            # 'init_command': "SET sql_mode='STRICT_TRANS_TABLES', innodb_strict_mode=1",
+            'sql_mode': 'traditional',
+        }
     }
 }
 
@@ -153,23 +167,166 @@ STATICFILES_DIRS = (
   os.path.join(BASE_DIR, "static"),
   'static/',
 )
+# STATIC_ROOT = 'static/'
 
 # LOGIN URL
-LOGIN_URL = '/'
-LOGIN_REDIRECT_URL = '/check_index/'
+LOGIN_URL = 'rest_framework:login'
+LOGOUT_URL = 'rest_framework:logout'
+# LOGIN_REDIRECT_URL = '/'
+
+OAUTH2_PROVIDER = {
+    # this is the list of available scopes
+    'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'groups': 'Access to your groups'},
+    # 'ACCESS_TOKEN_EXPIRE_SECONDS': 3*24*60*60
+    'ACCESS_TOKEN_EXPIRE_SECONDS': 1*60
+}
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        # 'rest_framework.authentication.BasicAuthentication',  # enables simple command line authentication
+        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
 }
 
-# AWS S3 Upload
-SKILL_ABC_AWS_ACCESS_KEY_ID = os.environ.get("SKILL_ABC_AWS_ACCESS_KEY_ID", '')
-SKILL_ABC_AWS_SECRET_ACCESS_KEY = os.environ.get("SKILL_ABC_AWS_SECRET_ACCESS_KEY", '')
-SKILL_ABC_AWS_S3_BUCKET_NAME = os.environ.get("SKILL_ABC_AWS_S3_BUCKET_NAME", '')
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
+SITE_ID = 1
 
-SKILL_ABC_BLIZZARD_CLIENT_ID = os.environ.get('SKILL_ABC_BLIZZARD_CLIENT_ID', '')
-SKILL_ABC_BLIZZARD_CLIENT_SECRET = os.environ.get('SKILL_ABC_BLIZZARD_CLIENT_SECRET', '')
+PTERS_reCAPTCHA_SECRET_KEY = os.environ.get("PTERS_reCAPTCHA_SECRET_KEY", '')
+PTERS_SMS_ACTIVATION_MAX_COUNT = 10
+
+PTERS_NAVER_ACCESS_KEY_ID = os.environ.get("PTERS_NAVER_ACCESS_KEY_ID", '')
+PTERS_NAVER_SECRET_KEY = os.environ.get("PTERS_NAVER_SECRET_KEY", '')
+PTERS_NAVER_SMS_API_KEY_ID = os.environ.get("PTERS_NAVER_SMS_API_KEY_ID", '')
+PTERS_NAVER_SMS_SECRET_KEY = os.environ.get("PTERS_NAVER_SMS_SECRET_KEY", '')
+PTERS_NAVER_SMS_PHONE_NUMBER = os.environ.get("PTERS_NAVER_SMS_PHONE_NUMBER", '')
+SMS_ACTIVATION_SECONDS = 180
+
+PTERS_NAVER_ID_LOGIN_CLIENT_ID = os.environ.get("PTERS_NAVER_ID_LOGIN_CLIENT_ID", '')
+PTERS_NAVER_ID_LOGIN_CLIENT_SECRET = os.environ.get("PTERS_NAVER_ID_LOGIN_CLIENT_SECRET", '')
+
+
+# # AWS S3 Upload
+# SKILL_ABC_AWS_ACCESS_KEY_ID = os.environ.get("SKILL_ABC_AWS_ACCESS_KEY_ID", '')
+# SKILL_ABC_AWS_SECRET_ACCESS_KEY = os.environ.get("SKILL_ABC_AWS_SECRET_ACCESS_KEY", '')
+# SKILL_ABC_AWS_S3_BUCKET_NAME = os.environ.get("SKILL_ABC_AWS_S3_BUCKET_NAME", '')
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl': 'max-age=86400',
+# }
+#
+# SKILL_ABC_BLIZZARD_CLIENT_ID = os.environ.get('SKILL_ABC_BLIZZARD_CLIENT_ID', '')
+# SKILL_ABC_BLIZZARD_CLIENT_SECRET = os.environ.get('SKILL_ABC_BLIZZARD_CLIENT_SECRET', '')
+
+LOG_FILE = os.path.join(os.path.dirname(__file__), '..', 'logs/default_log.log')
+LOG_FILE_MEMBER = os.path.join(os.path.dirname(__file__), '..', 'logs/member_log.log')
+LOG_FILE_FACILITY = os.path.join(os.path.dirname(__file__), '..', 'logs/facility_log.log')
+LOG_FILE_SUBJECT = os.path.join(os.path.dirname(__file__), '..', 'logs/subject_log.log')
+LOG_FILE_TRAINER = os.path.join(os.path.dirname(__file__), '..', 'logs/trainer_log.log')
+LOG_FILE_CONFIGS = os.path.join(os.path.dirname(__file__), '..', 'logs/configs_log.log')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt': "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'default': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': LOG_FILE,
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'formatter': 'verbose',
+            'backupCount': 5,
+        },
+        'member_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': LOG_FILE_MEMBER,
+            'maxBytes': 1024*1024*10,
+            'backupCount': 5,
+        },
+        'facility_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': LOG_FILE_FACILITY,
+            'maxBytes': 1024*1024*10,
+            'backupCount': 5,
+        },
+        'subject_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': LOG_FILE_SUBJECT,
+            'maxBytes': 1024*1024*10,
+            'backupCount': 5,
+        },
+        'trainer_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': LOG_FILE_TRAINER,
+            'maxBytes': 1024*1024*10,
+            'backupCount': 5,
+        },
+        'configs_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': LOG_FILE_CONFIGS,
+            'maxBytes': 1024*1024*10,
+            'backupCount': 5,
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['default'],
+            'propagate': False,
+            'level': 'ERROR',
+        },
+        'django': {
+            'handlers': ['default'],
+            'propagate': False,
+            'level': 'ERROR',
+        },
+        'django.request': {
+            'handlers': ['default'],
+            'propagate': False,
+            'level': 'ERROR',
+        },
+        'member': {
+            'handlers': ['member_file'],
+            'level': 'DEBUG',
+        },
+        'facility': {
+            'handlers': ['facility_file'],
+            'level': 'DEBUG',
+        },
+        'subject': {
+            'handlers': ['subject_file'],
+            'level': 'DEBUG',
+        },
+        'trainer': {
+            'handlers': ['trainer_file'],
+            'level': 'DEBUG',
+        },
+        'configs': {
+            'handlers': ['configs_file'],
+            'level': 'DEBUG',
+        },
+    }
+}

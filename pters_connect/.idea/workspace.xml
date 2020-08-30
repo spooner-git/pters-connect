@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="37d2705e-e653-4ab0-9a06-347ac84378a3" name="Default" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
+    <list default="true" id="37d2705e-e653-4ab0-9a06-347ac84378a3" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/savek.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/facility/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/facility/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/facility/viewsets.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/facility/viewsets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/member/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/member/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/member/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/member/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/member/viewsets.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/member/viewsets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/trainer/viewsets.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/trainer/viewsets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/default_log.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/default_log.log" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,9 +21,24 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
+<<<<<<< HEAD
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -130,199 +154,40 @@
       </file>
     </leaf>
   </component>
+=======
+>>>>>>> b519f1dfdbf7c1e61f4772fa90f1227ca9ca901e
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>Pag</find>
-      <find>debug</find>
-      <find>LANGUAGE_CODE</find>
-      <find>is_contact_valid</find>
-    </findStrings>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/connect_home/serializers.py" />
-        <option value="$PROJECT_DIR$/connect_home/views.py" />
-        <option value="$PROJECT_DIR$/configs/views.py" />
-        <option value="$PROJECT_DIR$/configs/urls.py" />
-        <option value="$PROJECT_DIR$/configs/models.py" />
-        <option value="$PROJECT_DIR$/facility/models.py" />
-        <option value="$PROJECT_DIR$/facility/Serializers.py" />
-        <option value="$PROJECT_DIR$/facility/serializers.py" />
-        <option value="$PROJECT_DIR$/api/account/viewsets.py" />
-        <option value="$PROJECT_DIR$/configs/settings.py" />
-        <option value="$PROJECT_DIR$/apps/account/models.py" />
-        <option value="$PROJECT_DIR$/api/facility/models.py" />
-        <option value="$PROJECT_DIR$/api/account/serializers.py" />
-      </list>
-    </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="width" value="1280" />
-    <option name="height" value="800" />
-  </component>
-  <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pters_connect" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pters_connect" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pters_connect" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pters_connect" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pters_connect" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pters_connect" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pters_connect" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pters_connect" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pters_connect" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="account" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pters_connect" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pters_connect" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pters_connect" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pters_connect" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="facility" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pters_connect" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pters_connect" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="account" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectId" id="1fwvNQgcMPVydCxEaHwur3JFoVv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="FullScreen" value="true" />
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
-    <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
-    <property name="js.eslint.eslintPackage" value="/usr/local/lib/node_modules/eslint" />
-    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="FullScreen" value="true" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+    <property name="js.eslint.eslintPackage" value="/usr/local/lib/node_modules/eslint" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pters_connect_new" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -333,142 +198,20 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\apps" />
+      <recent name="C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\facility" />
       <recent name="$PROJECT_DIR$/apps" />
       <recent name="$PROJECT_DIR$/api" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/api" />
-      <recent name="$PROJECT_DIR$/api/account" />
+      <recent name="C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\account" />
+      <recent name="C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api" />
+      <recent name="C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\apps\trainer\migrations" />
+      <recent name="C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\apps" />
+      <recent name="C:\Users\savek\Documents\spooner\project\pters-connect\pters_connect\api\facility" />
     </key>
   </component>
-  <component name="RunManager" selected="Django server.pters_connect">
-    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pters_connect" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
-      <config-file value="" />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pters_connect" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="ADDITIONAL_ARGS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pters_connect" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="ADDITIONAL_ARGS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pters_connect" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pters_connect" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <module name="pters_connect" />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run" />
-      <scripts />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
+  <component name="RunManager">
     <configuration default="true" type="tests" factoryName="Attests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -489,125 +232,54 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="tests" factoryName="Doctests">
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <module name="pters_connect" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs />
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pters_connect" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="tests" factoryName="Nosetests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
+    <configuration name="pters_connect" type="Python.DjangoServer" factoryName="Django server">
       <module name="pters_connect" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Unittests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pters_connect" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="py.test">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pters_connect" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="testToRun" value="" />
-      <option name="keywords" value="" />
-      <option name="params" value="" />
-      <option name="USE_PARAM" value="false" />
-      <option name="USE_KEYWORD" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="pters_connect" type="Python.DjangoServer" factoryName="Django server">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="$USER_HOME$/.pyenv/versions/pters-connect-env/bin/python" />
+      <option name="SDK_HOME" value="C:\Users\savek\Documents\spooner\project\pters-connect-venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pters_connect" />
       <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="" />
+      <option name="port" value="8080" />
+      <option name="host" value="localhost" />
       <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
+      <option name="browserUrl" value="http://localhost:8080/" />
       <option name="runTestServer" value="false" />
       <option name="runNoReload" value="false" />
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
-      <method />
+      <method v="2" />
     </configuration>
-    <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Django server.pters_connect" />
-    </list>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method v="2" />
+    </configuration>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -616,43 +288,32 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1596617489280</updated>
+      <workItem from="1597141931124" duration="1352000" />
+      <workItem from="1597216814606" duration="3980000" />
+      <workItem from="1597309828076" duration="17210000" />
+      <workItem from="1597490941111" duration="2087000" />
+      <workItem from="1597830548419" duration="16691000" />
+      <workItem from="1597910319711" duration="17460000" />
+      <workItem from="1598098720914" duration="1858000" />
+      <workItem from="1598270342986" duration="3460000" />
+      <workItem from="1598278712431" duration="347000" />
+      <workItem from="1598352301565" duration="10995000" />
+      <workItem from="1598425200064" duration="14871000" />
+      <workItem from="1598519583951" duration="19564000" />
+      <workItem from="1598614954196" duration="10216000" />
+      <workItem from="1598709776245" duration="3953000" />
+      <workItem from="1598717155548" duration="1034000" />
+      <workItem from="1598718387011" duration="6312000" />
     </task>
     <servers />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
-    <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25928918" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="processedProjectFiles" value="true" />
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+    <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="false" />
     <option name="SHOW_UNVERSIONED_FILES_WHILE_COMMIT" value="false" />
   </component>
+<<<<<<< HEAD
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
@@ -1023,5 +684,90 @@
         </state>
       </provider>
     </entry>
+=======
+  <component name="WindowStateProjectService">
+    <state x="376" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597219713023">
+      <screen x="0" y="0" width="1844" height="1080" />
+    </state>
+    <state x="376" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1844.1080/-1858.-104.1858.1080@0.0.1844.1080" timestamp="1597219713023" />
+    <state x="-1199" y="182" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1597866870060">
+      <screen x="-1858" y="-104" width="1858" height="1080" />
+    </state>
+    <state x="-1199" y="182" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1844.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1597492052702" />
+    <state x="-1199" y="182" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1855.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1597866870060" />
+    <state x="640" y="145" key="#pters_connect" timestamp="1597218880357">
+      <screen x="0" y="0" width="1844" height="1080" />
+    </state>
+    <state x="640" y="145" key="#pters_connect/0.0.1844.1080/-1858.-104.1858.1080@0.0.1844.1080" timestamp="1597218880357" />
+    <state x="645" y="145" key="#pters_connect/0.0.1858.1080/-1858.-104.1858.1080@0.0.1858.1080" timestamp="1597148040638" />
+    <state x="706" y="295" key="FileChooserDialogImpl" timestamp="1598716425563">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state x="701" y="295" key="FileChooserDialogImpl/0.0.1844.1080/-1858.-104.1858.1080@0.0.1844.1080" timestamp="1597314821056" />
+    <state x="705" y="295" key="FileChooserDialogImpl/0.0.1855.1080/-1858.-104.1858.1080@0.0.1855.1080" timestamp="1598273616542" />
+    <state x="-1152" y="191" key="FileChooserDialogImpl/0.0.1857.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1598715261885" />
+    <state x="706" y="295" key="FileChooserDialogImpl/0.0.1857.1080/-1858.-104.1858.1080@0.0.1857.1080" timestamp="1598716425563" />
+    <state width="1815" height="299" key="GridCell.Tab.0.bottom" timestamp="1598724704073">
+      <screen x="-1858" y="-104" width="1858" height="1080" />
+    </state>
+    <state width="1801" height="294" key="GridCell.Tab.0.bottom/0.0.1844.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1597493028811" />
+    <state width="1801" height="294" key="GridCell.Tab.0.bottom/0.0.1844.1080/-1858.-104.1858.1080@0.0.1844.1080" timestamp="1597490952319" />
+    <state width="1815" height="294" key="GridCell.Tab.0.bottom/0.0.1845.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1597840805074" />
+    <state width="1815" height="294" key="GridCell.Tab.0.bottom/0.0.1855.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1597935302636" />
+    <state width="1812" height="294" key="GridCell.Tab.0.bottom/0.0.1855.1080/-1858.-104.1858.1080@0.0.1855.1080" timestamp="1598448825824" />
+    <state width="1815" height="299" key="GridCell.Tab.0.bottom/0.0.1857.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1598724704073" />
+    <state width="1814" height="299" key="GridCell.Tab.0.bottom/0.0.1857.1080/-1858.-104.1858.1080@0.0.1857.1080" timestamp="1598721175718" />
+    <state width="1815" height="299" key="GridCell.Tab.0.center" timestamp="1598724704073">
+      <screen x="-1858" y="-104" width="1858" height="1080" />
+    </state>
+    <state width="1801" height="294" key="GridCell.Tab.0.center/0.0.1844.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1597493028810" />
+    <state width="1801" height="294" key="GridCell.Tab.0.center/0.0.1844.1080/-1858.-104.1858.1080@0.0.1844.1080" timestamp="1597490952319" />
+    <state width="1815" height="294" key="GridCell.Tab.0.center/0.0.1845.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1597840805074" />
+    <state width="1815" height="294" key="GridCell.Tab.0.center/0.0.1855.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1597935302635" />
+    <state width="1812" height="294" key="GridCell.Tab.0.center/0.0.1855.1080/-1858.-104.1858.1080@0.0.1855.1080" timestamp="1598448825824" />
+    <state width="1815" height="299" key="GridCell.Tab.0.center/0.0.1857.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1598724704073" />
+    <state width="1814" height="299" key="GridCell.Tab.0.center/0.0.1857.1080/-1858.-104.1858.1080@0.0.1857.1080" timestamp="1598721175718" />
+    <state width="1815" height="299" key="GridCell.Tab.0.left" timestamp="1598724704073">
+      <screen x="-1858" y="-104" width="1858" height="1080" />
+    </state>
+    <state width="1801" height="294" key="GridCell.Tab.0.left/0.0.1844.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1597493028809" />
+    <state width="1801" height="294" key="GridCell.Tab.0.left/0.0.1844.1080/-1858.-104.1858.1080@0.0.1844.1080" timestamp="1597490952319" />
+    <state width="1815" height="294" key="GridCell.Tab.0.left/0.0.1845.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1597840805074" />
+    <state width="1815" height="294" key="GridCell.Tab.0.left/0.0.1855.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1597935302635" />
+    <state width="1812" height="294" key="GridCell.Tab.0.left/0.0.1855.1080/-1858.-104.1858.1080@0.0.1855.1080" timestamp="1598448825824" />
+    <state width="1815" height="299" key="GridCell.Tab.0.left/0.0.1857.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1598724704073" />
+    <state width="1814" height="299" key="GridCell.Tab.0.left/0.0.1857.1080/-1858.-104.1858.1080@0.0.1857.1080" timestamp="1598721175718" />
+    <state width="1815" height="299" key="GridCell.Tab.0.right" timestamp="1598724704073">
+      <screen x="-1858" y="-104" width="1858" height="1080" />
+    </state>
+    <state width="1801" height="294" key="GridCell.Tab.0.right/0.0.1844.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1597493028810" />
+    <state width="1801" height="294" key="GridCell.Tab.0.right/0.0.1844.1080/-1858.-104.1858.1080@0.0.1844.1080" timestamp="1597490952319" />
+    <state width="1815" height="294" key="GridCell.Tab.0.right/0.0.1845.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1597840805074" />
+    <state width="1815" height="294" key="GridCell.Tab.0.right/0.0.1855.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1597935302636" />
+    <state width="1812" height="294" key="GridCell.Tab.0.right/0.0.1855.1080/-1858.-104.1858.1080@0.0.1855.1080" timestamp="1598448825824" />
+    <state width="1815" height="299" key="GridCell.Tab.0.right/0.0.1857.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1598724704073" />
+    <state width="1814" height="299" key="GridCell.Tab.0.right/0.0.1857.1080/-1858.-104.1858.1080@0.0.1857.1080" timestamp="1598721175718" />
+    <state x="423" y="182" key="SettingsEditor" timestamp="1597317713973">
+      <screen x="0" y="0" width="1844" height="1080" />
+    </state>
+    <state x="423" y="182" key="SettingsEditor/0.0.1844.1080/-1858.-104.1858.1080@0.0.1844.1080" timestamp="1597317713973" />
+    <state x="522" y="146" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1597922359694">
+      <screen x="0" y="0" width="1855" height="1080" />
+    </state>
+    <state x="522" y="146" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1855.1080/-1858.-104.1858.1080@0.0.1855.1080" timestamp="1597922359694" />
+    <state x="-1238" y="167" width="620" height="538" key="find.popup" timestamp="1598723658312">
+      <screen x="-1858" y="-104" width="1858" height="1080" />
+    </state>
+    <state x="-1238" y="167" width="618" height="538" key="find.popup/0.0.1844.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1597491730245" />
+    <state x="615" y="271" width="613" height="538" key="find.popup/0.0.1844.1080/-1858.-104.1858.1080@0.0.1844.1080" timestamp="1597491294316" />
+    <state x="-1238" y="167" width="619" height="538" key="find.popup/0.0.1855.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1597935112680" />
+    <state x="619" y="271" width="618" height="538" key="find.popup/0.0.1855.1080/-1858.-104.1858.1080@0.0.1855.1080" timestamp="1598444241336" />
+    <state x="-1238" y="167" width="620" height="538" key="find.popup/0.0.1857.1080/-1858.-104.1858.1080@-1858.-104.1858.1080" timestamp="1598723658312" />
+    <state x="620" y="271" width="619" height="538" key="find.popup/0.0.1857.1080/-1858.-104.1858.1080@0.0.1857.1080" timestamp="1598541788579" />
+    <state x="591" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1598534901402">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state x="591" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1857.1080/-1858.-104.1858.1080@0.0.1857.1080" timestamp="1598534901402" />
+>>>>>>> b519f1dfdbf7c1e61f4772fa90f1227ca9ca901e
   </component>
 </project>

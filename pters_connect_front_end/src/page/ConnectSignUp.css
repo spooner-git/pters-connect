@@ -1,0 +1,62 @@
+.signup_wrap{
+    background-color: #f5f2f3;
+}
+.signup_box{
+    margin: 0 auto;
+    max-width: 350px;
+    padding: 32px 16px;
+}
+
+.signup_inputs{
+    width: 100%;
+    margin: 5px 0;
+}
+
+.signup_article{
+    margin-bottom: 5px;
+}
+
+.signup_button{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #fe4e65;
+    color: #ffffff;
+    border-radius: 3px;
+    border: 0;
+    font-weight: 500;
+}
+
+.sns_signup_wrapper{
+    display: flex
+}
+.sns_signup_button{
+    flex: 1 1 0;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 3px;
+    border: 0;
+    font-weight: 500;
+}
+
+.sign_in_button{
+    width: 100%;
+    max-width: 308px;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid #282828;   
+    border-radius: 3px;
+    background-color: #ffffff;
+    color: #282828;
+    font-weight: 500;
+}
+
+.phoneAuthButon{
+    background-color: white;
+    border-color: #cccccc;
+    vertical-align: middle;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 5px;
+    width: 100%;
+}
