@@ -103,11 +103,13 @@ class PAGEConnectCenterCreate extends Component{
                 "start_date":this.start_date
             }
         ).then((data)=>{
-            console.log(`성공: `);
+            if(data.status == 403){
+                storeOfLogin.getToken().then(()=>{
+                    this._upload();
+                })
+            }
+            console.log(`ajaxPost: `);
             console.log(data);
-        }).catch((error)=>{
-            console.log(`에러: `);
-            console.log(error);
         })
     }
 
@@ -121,9 +123,6 @@ class PAGEConnectCenterCreate extends Component{
         ).then((data)=>{
             console.log(`성공: `);
             console.log(data);
-        }).catch((error)=>{
-            console.log(`에러: `);
-            console.log(error);
         })
     }
 
