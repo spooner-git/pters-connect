@@ -841,6 +841,7 @@ Traceback (most recent call last):
     error = func_send_sms_auth(kwargs['phone_number'], kwargs['auth_number'], 'PTERS-CONNECT')
 KeyError: 'phone_number'
 [30/Aug/2020 03:09:53] ERROR [django.server:157] "POST /member/get_sms_auth_number/ HTTP/1.1" 500 26443
+<<<<<<< HEAD
 [01/Sep/2020 15:31:56] ERROR [django.request:228] Internal Server Error: /facility/
 Traceback (most recent call last):
   File "/home/ubuntu/.pyenv/versions/3.6.10/lib/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
@@ -2007,3 +2008,49 @@ Traceback (most recent call last):
   File "/home/ubuntu/.pyenv/versions/3.6.10/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1467, in names_to_path
     "Choices are: %s" % (name, ", ".join(available)))
 django.core.exceptions.FieldError: Cannot resolve keyword 'facility_type_cd' into field. Choices are: address, contact_number, contents, end_date, facility_id, facilityauthtb, main_img_url, main_type_cd, member, member_id, memberfacilitytb, mod_dt, name, reg_dt, start_date, state_cd, sub_img_url, sub_type_cd, subjecttb, support_tag, title, use
+=======
+[01/Sep/2020 17:27:11] ERROR [django.request:228] Internal Server Error: /facility/
+Traceback (most recent call last):
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\viewsets.py", line 114, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\generics.py", line 150, in filter_queryset
+    queryset = backend().filter_queryset(self.request, queryset, self)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\rest_framework\filters.py", line 121, in filter_queryset
+    queryset = queryset.filter(reduce(operator.and_, conditions))
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\query.py", line 904, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\query.py", line 923, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\sql\query.py", line 1337, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\sql\query.py", line 1359, in _add_q
+    current_negated, allow_joins, split_subq, simple_col)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\sql\query.py", line 1365, in _add_q
+    split_subq=split_subq, simple_col=simple_col,
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\sql\query.py", line 1239, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\sql\query.py", line 1077, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "C:\Users\savek\Documents\spooner\project\pters-connect-venv\lib\site-packages\django\db\models\sql\query.py", line 1467, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'facility_type_cd' into field. Choices are: address, contact_number, contents, end_date, facility_id, facilityauthtb, main_img_url, main_type_cd, member, member_id, memberfacilitytb, mod_dt, name, reg_dt, start_date, state_cd, sub_img_url, sub_type_cd, subjecttb, support_tag, title, use
+[01/Sep/2020 17:27:11] ERROR [django.server:157] "GET /facility/?search=12 HTTP/1.1" 500 28467
+>>>>>>> d1f52b9cac3c96012449bb4b90a222c81f85a446
