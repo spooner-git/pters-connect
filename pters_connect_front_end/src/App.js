@@ -18,6 +18,7 @@ import PAGEConnectSignUp from './page/ConnectSignUp';
 import AuthRoute from './page/AuthRoute';
 import { inject, observer } from 'mobx-react';
 import { observable, action } from 'mobx';
+import PAGEConnectCenterCreate from './page/ConnectCenterCreate';
 
 @inject("storeOfLogin")
 @observer
@@ -40,16 +41,12 @@ class App extends Component{
     this.user = AToken;
   }
 
-  
-
   componentDidMount(){
     const { storeOfLogin } = this.props;
-    this._setToken(storeOfLogin.getToken());
-    console.log("constructor");
+    this._setToken(storeOfLogin.getCurrentUser());
   }
 
   render(){
-    
 
     return (
       <div id="root">
@@ -68,8 +65,10 @@ class App extends Component{
               <Route path="/aboutus" render={() => <PAGEConnectAboutUs classes={this.menu_open === 1 ? "hide_page" : ""} />}></Route>
               
               <AuthRoute authenticated={this.user} exact path="/center_manage" render={ (props) => <PAGEConnectCenterManage classes={this.menu_open === 1 ? "hide_page" : ""} {...props} /> }></AuthRoute>
+              <AuthRoute authenticated={this.user} exact path="/center_create" render={ (props) => <PAGEConnectCenterCreate classes={this.menu_open === 1 ? "hide_page" : ""} {...props} /> }></AuthRoute>
 
               <Route path="/center_basic_info_edit" render={(location) =><EDITCenterBasicInfo class={this.menu_open === 1 ? "hide_page" : ""} location={location}></EDITCenterBasicInfo>}></Route>
+              
           </RootContent>
         </Router>
       </div>

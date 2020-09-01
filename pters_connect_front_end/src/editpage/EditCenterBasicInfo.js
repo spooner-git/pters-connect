@@ -32,7 +32,6 @@ class EDITCenterBasicInfo extends Component{
 
     @action
     setCenterName = (e) => {
-        console.log(e.target.value);
         this.centerName = e.target.value;
     }
 
@@ -47,22 +46,22 @@ class EDITCenterBasicInfo extends Component{
     }
 
     componentDidMount(){
-        CFunc.ajax(
-            {
-                url:"https://httpbin.org/get",
-                type:"GET",
-                data:{"pters":this.centerID}
-            },
-            {
-                callback: (data)=>{
-                    console.log("정상통신"+JSON.stringify(data));
-                },
-                error_callback:(data)=>{
-                    console.log(data);
-                    console.log("에러데이터");
-                }
-            }
-        )
+        // CFunc.ajax(
+        //     {
+        //         url:"https://httpbin.org/get",
+        //         type:"GET",
+        //         data:{"pters":this.centerID}
+        //     },
+        //     {
+        //         callback: (data)=>{
+        //             console.log("정상통신"+JSON.stringify(data));
+        //         },
+        //         error_callback:(data)=>{
+        //             console.log(data);
+        //             console.log("에러데이터");
+        //         }
+        //     }
+        // )
     }
 
     _goBack = () =>{
