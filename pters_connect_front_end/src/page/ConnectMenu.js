@@ -24,10 +24,13 @@ class PAGEConnectMenu extends Component{
         this.user = storeOfLogin.getCurrentUser();
     }
 
+    componentDidMount(){
+        this._setUser()
+    }
+
     render(){
         const { classes, event_menu_close } = this.props;
-        this._setUser()
-
+        
         return (
             <div className={classes}>
                 <div className="menu_item_wrap">

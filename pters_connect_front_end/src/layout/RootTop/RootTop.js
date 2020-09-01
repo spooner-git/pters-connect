@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import './RootTop.css';
-import { NavLink, withRouter } from 'react-router-dom';
-// import { OPEN, CLOSE } from '../const';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
-import Modal from '../../modal/Modal';
-import { OFF } from "../../const";
-import PAGEConnectMenu from '../../page/ConnectMenu';
 import Button from '../../component/Buttons/Button';
 import FlatButton from '../../component/Buttons/FlatButton';
 import { observer, inject } from 'mobx-react';
 import { observable, action } from 'mobx';
-import StoreOfLogin from '../../store/store_login';
 
 @inject("storeOfLogin")
 @observer
@@ -31,8 +26,12 @@ class RootTop extends Component {
         this.user = storeOfLogin.getCurrentUser();
     }
 
+    componentDidMount(){
+        this._setUser();
+    }
+
     render(){
-        this._setUser()
+        // this._setUser()
         return (
                 <header className="root_top">
                     <NavLink to="/" className="item" onClick={this.props.event_close}>

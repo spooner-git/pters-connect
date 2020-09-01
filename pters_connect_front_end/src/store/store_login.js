@@ -8,6 +8,7 @@ class StoreOfLogin{
     @observable ReceivedTimeStamp;
 
     @action getCurrentUser = () => {
+        // console.log(this,this.getToken())
         return localStorage.getItem("ptersAToken");
     }
 
