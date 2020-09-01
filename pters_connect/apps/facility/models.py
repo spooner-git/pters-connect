@@ -52,6 +52,7 @@ class FacilityTb(TimeStampedModel):
     title = models.CharField('타이틀', db_column='TITLE', max_length=1000, blank=True, default='')
     contents = models.CharField('소개', db_column='CONTENTS', max_length=3000, blank=True, default='')
     address = models.CharField('주소', db_column='ADDRESS', max_length=255, blank=True, default='')
+    contact_number = models.CharField('연락처', db_column='CONTACT_NUMBER', max_length=20, blank=True, default='')
     main_img_url = models.URLField('메인 이미지 URL', db_column='MAIN_IMG_URL', max_length=255, blank=True)
     sub_img_url = models.URLField('서브 이미지 URL', db_column='SUB_IMG_URL', max_length=255, blank=True)
     start_date = models.DateField('시작일', db_column='START_DATE', blank=True, null=True)

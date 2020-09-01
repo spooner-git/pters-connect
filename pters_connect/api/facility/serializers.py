@@ -12,8 +12,8 @@ class FacilityCreateSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
     class Meta:
         model = FacilityTb
         fields = [
-            'name', 'address', 'title', 'contents', 'main_type_cd', 'sub_type_cd', 'support_tag',
-            'main_img_url', 'sub_img_url', 'start_date', 'member_id'
+            'facility_id', 'name', 'address', 'contact_number', 'title', 'contents', 'main_type_cd', 'sub_type_cd',
+            'support_tag', 'main_img_url', 'sub_img_url', 'start_date', 'member_id'
         ]
         extra_kwargs = {
             'name': {
@@ -46,7 +46,7 @@ class FacilityUpdateSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
     class Meta:
         model = FacilityTb
         fields = [
-            'name', 'address', 'title', 'contents', 'main_type_cd', 'sub_type_cd', 'support_tag',
+            'name', 'address', 'contact_number', 'title', 'contents', 'main_type_cd', 'sub_type_cd', 'support_tag',
             'main_img_url', 'sub_img_url', 'start_date', 'member_id'
         ]
 
@@ -56,8 +56,8 @@ class FacilityReadSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
 
     class Meta:
         model = FacilityTb
-        fields = ['facility_id', 'name', 'address', 'main_type_cd', 'sub_type_cd', 'title', 'contents',
-                  'main_img_url', 'sub_img_url', 'member', 'mod_dt', 'reg_dt', 'use']
+        fields = ['facility_id', 'name', 'address', 'contact_number', 'main_type_cd', 'sub_type_cd',
+                  'title', 'contents', 'main_img_url', 'sub_img_url', 'member', 'mod_dt', 'reg_dt', 'use']
 
 
 class FacilityWithSubjectReadSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
@@ -66,8 +66,8 @@ class FacilityWithSubjectReadSerializer(DynamicFieldsMixin, serializers.ModelSer
 
     class Meta:
         model = FacilityTb
-        fields = ['name', 'address', 'main_type_cd', 'sub_type_cd', 'title', 'contents', 'main_img_url', 'sub_img_url',
-                  'member', 'subjects', 'mod_dt', 'reg_dt', 'use']
+        fields = ['name', 'address', 'contact_number', 'main_type_cd', 'sub_type_cd', 'title', 'contents',
+                  'main_img_url', 'sub_img_url', 'member', 'subjects', 'mod_dt', 'reg_dt', 'use']
 
         extra_kwargs = {
             'member': {
