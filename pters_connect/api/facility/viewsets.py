@@ -32,7 +32,7 @@ class FacilityViewSet(DynamicSerializerMixin,
         'with_subjects': FacilityWithSubjectReadSerializer,
     }
     filter_backends = [SearchFilter]
-    search_fields = ['facility_id', 'name', 'address', 'facility_type_cd']
+    search_fields = ['facility_id', 'name', 'address', 'main_type_cd']
 
     def perform_create(self, serializer):
         serializer.save(member_id=self.request.user.id)
