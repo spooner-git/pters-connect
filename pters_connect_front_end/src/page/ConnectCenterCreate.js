@@ -119,19 +119,6 @@ class PAGEConnectCenterCreate extends Component{
         })
     }
 
-    _readAllFacilities = () => {
-        const { storeOfLogin } = this.props;
-        CFunc.ajaxGet(
-            "https://api.pters.co.kr/facility/",
-            {
-                "access_token":storeOfLogin.getCurrentUser()
-            }
-        ).then((data)=>{
-            console.log(`성공: `);
-            console.log(data);
-        })
-    }
-
 
     _goBack = () => {
         this.props.history.goBack();   

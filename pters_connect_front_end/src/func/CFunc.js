@@ -60,14 +60,8 @@ class CFunc{
           params:data != null ? formData : {},
           headers:header != null ? header : "",
         }).then((resp)=>{
-        //   if(callback != null){
-        //       callback(resp.data);
-        //   }
             return resp;
         }).catch((error)=>{
-        //   if(error_callback != null){
-        //       error_callback(error);
-        //   }
             return error;
         })
     }
@@ -94,25 +88,61 @@ class CFunc{
 
     static ajaxGet(url, header, data){
         
+        // let formData = new FormData();
+        // for(let el in data){
+        //     formData.append(el, data[el])
+        // }
+
+        return axios.get(
+            url,
+            data != null ? {params:data} : {},
+            {
+                headers:header
+            },
+        ).then((resp)=>{
+            return resp;
+        }).catch((error)=>{
+            return error.response;
+        })
+    }
+
+    static ajaxPut(url, header, data){
+        
         let formData = new FormData();
         for(let el in data){
             formData.append(el, data[el])
         }
 
-        return axios.get(
+        return axios.put(
             url,
             data != null ? formData : {},
-            header != null ? header : "",
+            {
+                headers:header
+            },
         ).then((resp)=>{
-            // if(callback != null){
-            //     callback(resp.data);
-            // }
             return resp;
         }).catch((error)=>{
-            // if(error_callback != null){
-            //     error_callback(error);
-            // }
-            return error;
+            return error.response;
+        })
+    }
+
+    static ajaxDelete(url, header, data){
+        
+        let formData = new FormData();
+        for(let el in data){
+            formData.append(el, data[el])
+        }
+
+        return axios.delete(
+            url,
+            data != null ? formData : {},
+            {
+                headers:header
+            },
+        ).then((resp)=>{
+            return resp;
+        }).catch((error)=>{
+            return error.response;
         })
     }
 }
