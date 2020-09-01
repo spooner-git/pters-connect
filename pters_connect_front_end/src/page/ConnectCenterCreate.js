@@ -18,6 +18,7 @@ import Input from '../component/Inputs/Input';
 class PAGEConnectCenterCreate extends Component{
     @observable name = null; //String
     @observable address = null; //String
+    @observable phone = null; //String
     @observable title = null; //String
     @observable contents = null; //String
     @observable main_type_cd = "GOLF"; //String
@@ -36,6 +37,11 @@ class PAGEConnectCenterCreate extends Component{
     @action
     setState_address = (e) => {
         this.address = e.target.value;
+    }
+
+    @action
+    setState_Phone = (e) => {
+        this.phone = e.target.value;
     }
 
     @action
@@ -103,11 +109,13 @@ class PAGEConnectCenterCreate extends Component{
                 "start_date":this.start_date
             }
         ).then((data)=>{
-            console.log(`성공: `);
+            if(data.status == 403){
+                storeOfLogin.getToken().then(()=>{
+                    this._upload();
+                })
+            }
+            console.log(`ajaxPost: `);
             console.log(data);
-        }).catch((error)=>{
-            console.log(`에러: `);
-            console.log(error);
         })
     }
 
@@ -121,9 +129,6 @@ class PAGEConnectCenterCreate extends Component{
         ).then((data)=>{
             console.log(`성공: `);
             console.log(data);
-        }).catch((error)=>{
-            console.log(`에러: `);
-            console.log(error);
         })
     }
 
@@ -145,12 +150,12 @@ class PAGEConnectCenterCreate extends Component{
                         </FlatButton>
                     </div>
                     <div style={{textAlign:"right"}}>
-                        <FlatButton>
+                        {/* <FlatButton>
                             <div style={{fontSize:"18px"}} onClick={this._upload}>
                                 <FontAwesomeIcon icon={faCheck} color={"green"}></FontAwesomeIcon>
                                 <span> 추가</span>
                             </div>
-                        </FlatButton>
+                        </FlatButton> */}
                     </div>
                 </div>
                 <div className="connect_create_center_input_wrap">
@@ -162,10 +167,10 @@ class PAGEConnectCenterCreate extends Component{
                         <Title style={{fontSize:"16px", color:"#7f7f7f"}}>주소</Title>
                         <Input onChange={this.setState_address} className="connect_create_center_inputs" placeholder=""></Input>
                     </div>
-                    {/* <div>
+                    <div>
                         <Title style={{fontSize:"16px", color:"#7f7f7f"}}>연락처</Title>
                         <Input onChange={this.setState_Phone} className="connect_create_center_inputs" placeholder=""></Input>
-                    </div> */}
+                    </div>
                     <div>
                         <Title style={{fontSize:"16px", color:"#7f7f7f"}}>한줄 설명</Title>
                         <Input onChange={this.setState_title} className="connect_create_center_inputs" placeholder=""></Input>
@@ -204,7 +209,7 @@ class PAGEConnectCenterCreate extends Component{
                     </div>
                     <div style={{textAlign:"right", marginTop:"15px"}}>
                         <FlatButton style={{width:"75px"}} onClick={this._goBack}>취소</FlatButton>
-                        <Button style={{width:"75px"}} highlight={true}>저장</Button>
+                        <Button style={{width:"75px"}} highlight={true} onClick={this._upload}>저장</Button>
                     </div>
                 </div>
             </div>

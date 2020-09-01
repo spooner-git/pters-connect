@@ -88,7 +88,7 @@ class CFunc{
         ).then((resp)=>{
             return resp;
         }).catch((error)=>{
-            return error;
+            return error.response;
         })
     }
 

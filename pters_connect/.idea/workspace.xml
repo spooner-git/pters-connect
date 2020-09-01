@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="37d2705e-e653-4ab0-9a06-347ac84378a3" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/savek.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/facility/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/facility/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/facility/viewsets.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/facility/viewsets.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/member/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/member/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/member/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/member/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/member/viewsets.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/member/viewsets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/trainer/viewsets.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/trainer/viewsets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/default_log.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/default_log.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/subject/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/subject/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/facility/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/facility/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -304,6 +299,10 @@
       <workItem from="1598709776245" duration="3953000" />
       <workItem from="1598717155548" duration="1034000" />
       <workItem from="1598718387011" duration="6312000" />
+      <workItem from="1598724934006" duration="65000" />
+      <workItem from="1598725009493" duration="39000" />
+      <workItem from="1598864896440" duration="1630000" />
+      <workItem from="1598938086732" duration="1329000" />
     </task>
     <servers />
   </component>

@@ -11,7 +11,7 @@ class SubjectCreateSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
     class Meta:
         model = SubjectTb
         fields = [
-            'name', 'note', 'facility_tb', 'main_trainer'
+            'subject_id', 'name', 'note', 'facility_tb', 'main_trainer'
         ]
         extra_kwargs = {
             'name': {

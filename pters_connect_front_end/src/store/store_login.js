@@ -33,7 +33,6 @@ class StoreOfLogin{
         if(this.getCurrentUser() != null){
             if(Number(currentTimeStamp) - Number(localStorageATokenReceivedTimeStamp) > Number(localStorageATokenExpireIn) - 10){
                 //만료되었으면 새로 요청
-                console.log("토큰 만료됨");
                 await this.refreshToken().then(()=>{
                     //새로운 토큰을 setToken()한 후 새로운 토큰 리턴
                     return {
