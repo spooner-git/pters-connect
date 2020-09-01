@@ -41,13 +41,21 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django.contrib.sites',
     'oauth2_provider',
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
     'drf_yasg',
-    'apps.account',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.kakao',
+    'allauth.socialaccount.providers.naver',
+    'apps.member',
     'apps.facility',
+    'apps.subject',
     'apps.trainer',
 ]
 
@@ -72,7 +80,7 @@ AUTHENTICATION_BACKENDS = (
     # If is_active is 0, login will be ok
     'django.contrib.auth.backends.AllowAllUsersModelBackend'
     # `allauth` specific authentication methods, such as login by e-mail
-    # "allauth.account.auth_backends.AuthenticationBackend",
+    # "allauth.member.auth_backends.AuthenticationBackend",
 )
 
 TEMPLATES = [
@@ -188,6 +196,22 @@ REST_FRAMEWORK = {
     ),
 }
 
+SITE_ID = 1
+
+PTERS_reCAPTCHA_SECRET_KEY = os.environ.get("PTERS_reCAPTCHA_SECRET_KEY", '')
+PTERS_SMS_ACTIVATION_MAX_COUNT = 10
+
+PTERS_NAVER_ACCESS_KEY_ID = os.environ.get("PTERS_NAVER_ACCESS_KEY_ID", '')
+PTERS_NAVER_SECRET_KEY = os.environ.get("PTERS_NAVER_SECRET_KEY", '')
+PTERS_NAVER_SMS_API_KEY_ID = os.environ.get("PTERS_NAVER_SMS_API_KEY_ID", '')
+PTERS_NAVER_SMS_SECRET_KEY = os.environ.get("PTERS_NAVER_SMS_SECRET_KEY", '')
+PTERS_NAVER_SMS_PHONE_NUMBER = os.environ.get("PTERS_NAVER_SMS_PHONE_NUMBER", '')
+SMS_ACTIVATION_SECONDS = 180
+
+PTERS_NAVER_ID_LOGIN_CLIENT_ID = os.environ.get("PTERS_NAVER_ID_LOGIN_CLIENT_ID", '')
+PTERS_NAVER_ID_LOGIN_CLIENT_SECRET = os.environ.get("PTERS_NAVER_ID_LOGIN_CLIENT_SECRET", '')
+
+
 # # AWS S3 Upload
 # SKILL_ABC_AWS_ACCESS_KEY_ID = os.environ.get("SKILL_ABC_AWS_ACCESS_KEY_ID", '')
 # SKILL_ABC_AWS_SECRET_ACCESS_KEY = os.environ.get("SKILL_ABC_AWS_SECRET_ACCESS_KEY", '')
@@ -198,3 +222,111 @@ REST_FRAMEWORK = {
 #
 # SKILL_ABC_BLIZZARD_CLIENT_ID = os.environ.get('SKILL_ABC_BLIZZARD_CLIENT_ID', '')
 # SKILL_ABC_BLIZZARD_CLIENT_SECRET = os.environ.get('SKILL_ABC_BLIZZARD_CLIENT_SECRET', '')
+
+LOG_FILE = os.path.join(os.path.dirname(__file__), '..', 'logs/default_log.log')
+LOG_FILE_MEMBER = os.path.join(os.path.dirname(__file__), '..', 'logs/member_log.log')
+LOG_FILE_FACILITY = os.path.join(os.path.dirname(__file__), '..', 'logs/facility_log.log')
+LOG_FILE_SUBJECT = os.path.join(os.path.dirname(__file__), '..', 'logs/subject_log.log')
+LOG_FILE_TRAINER = os.path.join(os.path.dirname(__file__), '..', 'logs/trainer_log.log')
+LOG_FILE_CONFIGS = os.path.join(os.path.dirname(__file__), '..', 'logs/configs_log.log')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt': "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'default': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': LOG_FILE,
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'formatter': 'verbose',
+            'backupCount': 5,
+        },
+        'member_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': LOG_FILE_MEMBER,
+            'maxBytes': 1024*1024*10,
+            'backupCount': 5,
+        },
+        'facility_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': LOG_FILE_FACILITY,
+            'maxBytes': 1024*1024*10,
+            'backupCount': 5,
+        },
+        'subject_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': LOG_FILE_SUBJECT,
+            'maxBytes': 1024*1024*10,
+            'backupCount': 5,
+        },
+        'trainer_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': LOG_FILE_TRAINER,
+            'maxBytes': 1024*1024*10,
+            'backupCount': 5,
+        },
+        'configs_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': LOG_FILE_CONFIGS,
+            'maxBytes': 1024*1024*10,
+            'backupCount': 5,
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['default'],
+            'propagate': False,
+            'level': 'ERROR',
+        },
+        'django': {
+            'handlers': ['default'],
+            'propagate': False,
+            'level': 'ERROR',
+        },
+        'django.request': {
+            'handlers': ['default'],
+            'propagate': False,
+            'level': 'ERROR',
+        },
+        'member': {
+            'handlers': ['member_file'],
+            'level': 'DEBUG',
+        },
+        'facility': {
+            'handlers': ['facility_file'],
+            'level': 'DEBUG',
+        },
+        'subject': {
+            'handlers': ['subject_file'],
+            'level': 'DEBUG',
+        },
+        'trainer': {
+            'handlers': ['trainer_file'],
+            'level': 'DEBUG',
+        },
+        'configs': {
+            'handlers': ['configs_file'],
+            'level': 'DEBUG',
+        },
+    }
+}

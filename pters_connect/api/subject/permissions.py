@@ -1,7 +1,7 @@
 from rest_framework import permissions
 
 
-class IsFacilityUpdateOrReadOnly(permissions.BasePermission):
+class IsSubjectUpdateOrReadOnly(permissions.BasePermission):
 
     def has_permission(self, request, view):
         # 요청시 인증이 되어있지 않아도 조회는 혀용

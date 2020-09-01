@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-from apps.account.models import MemberTb
+from apps.member.models import MemberTb
 from configs.const import OWN_TYPE_OWNER, AUTH_TYPE_VIEW, AUTH_TYPE_WAIT, AUTH_TYPE_DELETE, OWN_TYPE_SHARE, \
     OWN_TYPE_EMPLOYEE
 from configs.models import TimeStampedModel
@@ -98,22 +98,3 @@ class FacilityAuthTb(TimeStampedModel):
         db_table = 'FACILITY_AUTH_TB'
         verbose_name = '공유 지점 권한'
         verbose_name_plural = '공유 지점 권한'
-
-
-# 수업 정보
-class SubjectTb(TimeStampedModel):
-    subject_id = models.AutoField(db_column='ID', primary_key=True, null=False)
-    facility_tb = models.ForeignKey(FacilityTb, verbose_name='지점', on_delete=models.CASCADE, blank=True)
-    name = models.CharField('수업명', db_column='NAME', max_length=255, blank=True, default='')
-    note = models.CharField('설명', db_column='NOTE', max_length=1000, blank=True, default='')
-    main_trainer = models.ForeignKey(MemberTb, verbose_name='메인 담당 강사', on_delete=models.SET_NULL,
-                                     related_name='MAIN_TRAINER_ID', null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'SUBJECT_TB'
-        verbose_name = '수업'
-        verbose_name_plural = '수업'
-
-    def __str__(self):
-        return self.facility_tb.__str__()+'-'+self.name.__str__()

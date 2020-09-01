@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('facility', '0001_initial'),
-        ('account', '__first__'),
+        ('member', '__first__'),
     ]
 
     operations = [
@@ -23,8 +23,8 @@ class Migration(migrations.Migration):
                 ('member_subject_id', models.AutoField(db_column='ID', primary_key=True, serialize=False)),
                 ('auth_cd', models.CharField(blank=True, choices=[('VIEW', '골프'), ('WAIT', '필라테스'), ('DELETE', '웨이트 트레이닝')], db_column='AUTH_CD', default='', max_length=20, verbose_name='권한 코드')),
                 ('own_cd', models.CharField(blank=True, choices=[('OWNER', '오너'), ('SHARE', '공유'), ('EMPLOYEE', '직원')], db_column='OWN_CD', default='OWNER', max_length=20, verbose_name='소유 코드')),
-                ('member', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='account.MemberTb', verbose_name='회원')),
-                ('mod_member', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='MOD_MEMBER_ID', to='account.MemberTb', verbose_name='최종수정 회원')),
+                ('member', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='member.MemberTb', verbose_name='회원')),
+                ('mod_member', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='MOD_MEMBER_ID', to='member.MemberTb', verbose_name='최종수정 회원')),
                 ('subject_tb', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='facility.SubjectTb', verbose_name='지점')),
             ],
             options={

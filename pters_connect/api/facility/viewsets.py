@@ -1,15 +1,20 @@
+import logging
+
+# from rest_framework import mixins, viewsets
 from rest_framework.decorators import action
 from rest_framework.filters import SearchFilter
+from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
-from rest_framework.status import HTTP_201_CREATED
 from rest_framework.viewsets import ModelViewSet
 
-from api.facility.permissions import IsFacilityUpdateOrReadOnly, IsSubjectUpdateOrReadOnly
+from api.facility.permissions import IsFacilityUpdateOrReadOnly
 from api.facility.serializers import FacilityReadSerializer, FacilityCreateSerializer, FacilityUpdateSerializer, \
-    SubjectReadSerializer, SubjectCreateSerializer, SubjectUpdateSerializer
+    FacilityWithSubjectReadSerializer
 from api.viewset_mixins import DynamicSerializerMixin
-from apps.facility.models import FacilityTb, SubjectTb
+from apps.facility.models import FacilityTb, MemberFacilityTb
 from configs.const import USE
+
+logger = logging.getLogger(__name__)
 
 
 class FacilityViewSet(DynamicSerializerMixin,
@@ -24,38 +29,39 @@ class FacilityViewSet(DynamicSerializerMixin,
         'read':  FacilityReadSerializer,
         'create': FacilityCreateSerializer,
         'update': FacilityUpdateSerializer,
+        'with_subjects': FacilityWithSubjectReadSerializer,
     }
     filter_backends = [SearchFilter]
-    search_fields = ['name', 'address', 'facility_type_cd']
+    search_fields = ['facility_id', 'name', 'address', 'facility_type_cd']
 
     def perform_create(self, serializer):
         serializer.save(member_id=self.request.user.id)
 
+    # url : facility/{pk}/with_subjects
+    @action(detail=True, methods=['get'])
+    def with_subjects(self, request, pk):
+        facility_info = get_object_or_404(self.get_queryset(), pk=pk)
+        serializer = self.get_serializer(facility_info)
+        return Response(data=serializer.data)
 
-class SubjectViewSet(DynamicSerializerMixin,
-                     ModelViewSet):
-    """
-    과목 정보 관련 기능
 
-    """
-    permission_classes = [IsSubjectUpdateOrReadOnly]
-    queryset = SubjectTb.objects.filter(use=USE).order_by('-subject_id')
-    serializer_classes = {
-        'read':  SubjectReadSerializer,
-        'create': SubjectCreateSerializer,
-        'update': SubjectUpdateSerializer,
-    }
-    filter_backends = [SearchFilter]
-    search_fields = ['name', 'subject_tb__name']
-
-    def perform_create(self, serializer):
-        serializer.save(member_id=self.request.user.id)
-
-    # @action(methods=['post'], detail=False)
-    # def set_subject_to_trainer(self, *args, **kwargs):
-    #     # serializer = self.get_serializer(data=request.data)
-    #     # serializer.is_valid(raise_exception=True)
-    #     kwargs = {'member', 'subject_tb', 'auth_cd', 'own_cd'}
-    #
-    #     return Response(status=HTTP_201_CREATED)
-
+# class FacilityTrainerViewSet(DynamicSerializerMixin,
+#                              mixins.CreateModelMixin,
+#                              mixins.RetrieveModelMixin,
+#                              mixins.UpdateModelMixin,
+#                              mixins.DestroyModelMixin,
+#                              viewsets.GenericViewSet):
+#     """
+#     시설에 강사 추가
+#
+#     """
+#     permission_classes = [IsFacilityUpdateOrReadOnly]
+#     queryset = MemberFacilityTb.objects.filter(use=USE).order_by('-facility_id')
+#     serializer_classes = {
+#         'read': FacilityTrainerReadSerializer,
+#         # 권한 관련 내용 추가 필요
+#         'create': FacilityTrainerCreateSerializer,
+#         'update': FacilityTrainerUpdateSerializer,
+#     }
+#     filter_backends = [SearchFilter]
+#     search_fields = ['member__name', 'subject_tb__name']
