@@ -1,13 +1,13 @@
 .connect_center_manage_page{
     overflow-y: auto;
-    padding-top: 20px;
-    height:calc(100vh - 60px)
+    /* padding-top: 20px; */
+    /* height:calc(100vh - 60px) */
 }
 
 .connect_center_manage_wrap{
     width: 100%;
     max-width: 900px;
-    margin: 0 auto 40px;
+    margin: 10px auto 10px;
     padding: 0 15px;  
 }
 

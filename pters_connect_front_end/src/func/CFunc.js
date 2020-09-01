@@ -82,16 +82,12 @@ class CFunc{
         return axios.post(
             url,
             data != null ? formData : {},
-            header != null ? header : "",
+            {
+                headers:header
+            }
         ).then((resp)=>{
-            // if(callback != null){
-            //     callback(resp.data);
-            // }
             return resp;
         }).catch((error)=>{
-            // if(error_callback != null){
-            //     error_callback(error);
-            // }
             return error;
         })
     }
@@ -103,7 +99,7 @@ class CFunc{
             formData.append(el, data[el])
         }
 
-        axios.get(
+        return axios.get(
             url,
             data != null ? formData : {},
             header != null ? header : "",
