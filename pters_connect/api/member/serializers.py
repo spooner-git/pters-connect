@@ -115,7 +115,7 @@ class MemberUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = MemberTb
         fields = [
-            'name', 'phone', 'sex', 'birthday_dt', 'profile_url', 'reg_info', 'age', 'address',
+            'member_id', 'name', 'phone', 'sex', 'birthday_dt', 'profile_url', 'reg_info', 'age', 'address',
             'job', 'contents', 'email'
         ]
 
