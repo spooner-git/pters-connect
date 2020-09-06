@@ -1,0 +1,33 @@
+version: '3'
+services:
+        nginx:
+                image: nginx:latest
+                ports:
+                        - "80:80"
+                volumes:
+                        - .:/code
+                        - ./configs/nginx:/etc/nginx.conf.d
+                depends_on:
+                        - web
+        web:
+                build:
+                        context: .
+                        dockerfile: Dockerfile
+                        command: gunicorn pters-connect.wsgi:application -- bind 0.0.0.0:8000
+                volumes:
+                        - .:/code
+                expose:
+                        - "8000"
+                          #env:
+                          # - SKILL_ABC_DJANGO_SECRET='-l1!351j25c+&vs&6r9@!jajum*fqgzyeppkn$u7y2j1fskxnh'
+                          #- PTERS_DB_HOST='pters-db.cbnmlhmcqiyl.ap-northeast-2.rds.amazonaws.com'
+                          #- PTERS_DB_USER='bebep'
+                          #- PTERS_DB_PASSWORD='cgvcgv820'
+                          #- DJANGO_SETTING_MODULE='configs.settings'
+
+                          #- PTERS_NAVER_ACCESS_KEY_ID='mEGQnb9YqWJFqPJbIuPW'
+                          #- PTERS_NAVER_SECRET_KEY='ChDn7etluAdizAGWbRqTUrIixuY4OVfNjZoqmopF'
+                          #- PTERS_NAVER_SMS_API_KEY_ID='ncp:sms:kr:259526437900:pters'
+                        
+                          #- PTERS_NAVER_SMS_PHONE_NUMBER='07088161010'
+                          #- PTERS_NAVER_SMS_SECRET_KEY='0ab3f67f343d4d399cc3fb0c834c8fae'
