@@ -89,14 +89,14 @@ class PAGEConnectCenterManage extends Component{
     }
 
     DOMCenterCard = () => {
-        return <div>
-                    <div className={`connect_center_manage_wrap`} style={{boxShadow:"unset"}}>
+        return <div className={this.props.classes}>
+                    <div className={`connect_center_manage_wrap`} style={{boxShadow:"unset", padding:"0"}}>
                         <ListTile 
                             title={<span>내 센터</span>}
                             trailing={<FlatButton><NavLink to="/center_create">추가</NavLink></FlatButton>}
                         ></ListTile>
                     </div>
-                    <div className={`connect_center_manage_page ${this.props.classes}`}>
+                    <div className={`connect_center_manage_page`}>
                         <div className="connect_center_manage_wrap">
                             <section className="center_manage_section center_basic_info_wrap">
                                 <div>
